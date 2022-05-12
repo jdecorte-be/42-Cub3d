@@ -50,7 +50,16 @@ int main(int ac, char **av)
     void *img = mlx_new_image(data->mlx, 1920, 1080);
     data->img.p_img = mlx_get_data_addr(img, &data->img.bt,
         &data->img.s_line, &data->img.endian);
+    
+    int l = 1;
+    int l2 = 1;
+    // data->point.p_img = mlx_get_data_addr(point, &data->point.bt,
+        // &data->point.s_line, &data->point.endian);
+
+
     tracing(worldMap, mapHeight, mapWidth, &data->img);
+    put_spawn(10, 10, img);
+
     mlx_put_image_to_window(data->mlx, data->mlx_win, img, 0, 0);
 	mlx_loop(data->mlx);
 }

@@ -1,8 +1,18 @@
 #include "../inc/cub3d.h"
 
-void    put_spawn(float x, float y)
+void    put_spawn(float x, float y, t_img *img)
 {
-    
+    float step = 2 * M_PI / 20;  // see note 1
+    int h = 150; 
+    int k = 150;
+    int r = 50;
+
+    for(int theta=0;  theta < 2*M_PI;  theta+=step)
+     {
+		 int x = h + r* cos(theta);
+       int y = k - r* sin(theta);    //note 2.
+       put_pxl(img, x, y, 0xffffff);
+     }
 }
 
 void	trace_line(float x0, float y0, float x1, float y1,t_img *img)
