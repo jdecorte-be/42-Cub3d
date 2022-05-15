@@ -32,8 +32,16 @@ void	put_pxl(t_img *img, int x, int y, int color)
 {
 	int		i;
 
-	i = (x * img->bt / 8) + (y * img->s_line);
-    img->p_img[i] = color;
-	img->p_img[++i] = color >> 8;
-	img->p_img[++i] = color >> 16;
+	if(x < screenWidth && y < screenHeight)
+	{
+		i = (x * img->bt / 8) + (y * img->s_line);
+		img->p_img[i] = color;
+		img->p_img[++i] = color >> 8;
+		img->p_img[++i] = color >> 16;
+	}
+}
+
+void ft_error()
+{
+	
 }

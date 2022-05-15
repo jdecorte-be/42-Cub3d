@@ -1,8 +1,8 @@
-NAME = fdf
+NAME = cub3d
 
 CC = gcc
 
-CFLAGS = -I /usr/local/include -L /usr/local/lib/ -lmlx -framework OpenGL -framework AppKit
+CFLAGS = -I minilibx -L minilibx_macos -lmlx -framework OpenGL -framework AppKit -fsanitize=address -g
 
 RM = rm -rf
 

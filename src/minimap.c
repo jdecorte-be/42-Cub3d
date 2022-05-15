@@ -1,26 +1,11 @@
 #include "../inc/cub3d.h"
 
-void    put_spawn(float x, float y, t_img *img)
+void	trace_line(float x0, float y0, float x1, float y1,t_img *img, int color)
 {
-    float step = 2 * M_PI / 20;  // see note 1
-    int h = 150; 
-    int k = 150;
-    int r = 50;
-
-    for(int theta=0;  theta < 2*M_PI;  theta+=step)
-     {
-		 int x = h + r* cos(theta);
-       int y = k - r* sin(theta);    //note 2.
-       put_pxl(img, x, y, 0xffffff);
-     }
-}
-
-void	trace_line(float x0, float y0, float x1, float y1,t_img *img)
-{
-    x0 *= 20;
-    x1 *= 20;
-    y1 *= 20;
-    y0 *= 20;
+    x0 *= 10;
+    x1 *= 10;
+    y1 *= 10;
+    y0 *= 10;
 
 
 	float x_step = x1 - x0;
@@ -31,28 +16,57 @@ void	trace_line(float x0, float y0, float x1, float y1,t_img *img)
 	while((int)(x0 - x1) || (int)(y0 - y1))
 	{
         if (x0 < 1000 && y0 < 800 && x0 > 0 && y0 > 0)
-            put_pxl(img, x0, y0, 0xffffff);
+            put_pxl(img, x0, y0, color);
 		x0 += x_step;
 		y0 += y_step;
 	}
 }
 
-void	tracing(int **tab, int height, int width, t_img *img)
+
+
+void	draw_wall(t_data *data, double x, double y)
+{
+	double i = y;
+	while(i < y + 1)
+	{
+		trace_line(x, i, x + 1, i, data->img[0], 0xffffff);
+		i += 0.1; // a changer pour augmenter les fps
+	}
+}
+
+int splitlen(char **tab)
+{
+	int i = 0;
+	while(tab[i])
+		i++;
+	return i;
+}
+
+void	minimap(t_data *data)
 {
 	int i = 0;
 	int j;
+	int t_posX = 10.5;
+	int t_posY = 10.5;
+	// trace_line(1, 1, 20, 1, data->img[0], 0xffffff);
+	// trace_line(1, 1, 1, 20, data->img[0], 0xffffff);
+	// trace_line(20, 1, 20, 20, data->img[0], 0xffffff);
+	// trace_line(1, 20, 20, 20, data->img[0], 0xffffff);
 
-	while(i < height)
+	trace_line(t_posX, t_posY, (t_posX + data->pl->dirX - data->pl->plX), (t_posY + data->pl->dirY - data->pl->plY),data->img[0], 0xf7948e);
+	trace_line(t_posX, t_posY, (t_posX + data->pl->dirX + data->pl->plX), (t_posY + data->pl->dirY + data->pl->plY),data->img[0], 0xf7948e);
+
+	int x = 0;
+	int y = 0;
+	while(data->map->map[x])
 	{
-		j = 0;
-		while(j < width)
+		y = 0;
+		while(data->map->map[x][y])
 		{
-			if (j < width - 1)
-				trace_line(j, i, j + 1, i, img);
-			if (i < height - 1)
-				trace_line(j, i, j , i  + 1, img);
-			j++;
+			if(data->map->map[x][y] == '1')
+				draw_wall(data, x + data->pl->posX , y + data->pl->posY);
+			y++;
 		}
-		i++;
+		x++;
 	}
 }
