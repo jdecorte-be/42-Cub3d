@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: decortejohn <decortejohn@student.42.fr>    +#+  +:+       +#+         #
+#    By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/18 09:58:01 by lxu-wu            #+#    #+#              #
-#    Updated: 2022/01/29 13:48:24 by decortejohn      ###   ########.fr        #
+#    Updated: 2022/05/16 20:50:04 by jdecorte42       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ OBJSBONUS = ${BONUS:.c=.o}
 CC		= gcc
 RM		= rm -f
 
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 all:	${NAME}
 

@@ -2,12 +2,6 @@
 
 void	trace_line(float x0, float y0, float x1, float y1,t_img *img, int color)
 {
-    x0 *= 10;
-    x1 *= 10;
-    y1 *= 10;
-    y0 *= 10;
-
-
 	float x_step = x1 - x0;
 	float y_step = y1 - y0;
 	int max = find_max(find_mod(x_step), find_mod(y_step));
@@ -46,8 +40,8 @@ void	minimap(t_data *data)
 {
 	int i = 0;
 	int j;
-	int t_posX = 10.5;
-	int t_posY = 10.5;
+	double t_posX = 10.5;
+	double t_posY = 10.5;
 	// trace_line(1, 1, 20, 1, data->img[0], 0xffffff);
 	// trace_line(1, 1, 1, 20, data->img[0], 0xffffff);
 	// trace_line(20, 1, 20, 20, data->img[0], 0xffffff);

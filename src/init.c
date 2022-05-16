@@ -45,18 +45,18 @@ void    init_data(t_data *data)
 
 	data->t->time = 0;
 	data->t->oldtime = 0;
-	// data->pl->rot = 0;
 
     int i = 0;
     if (!(data->img = malloc(sizeof(t_img *) * 7)))
         return ;
-	while (i <= 5)
+	while (i <= 6)
 	{
 		if (!(data->img[i] = malloc(sizeof(t_img))))
 			return ;
 		i++;
 	}
-	data->buffer = malloc(sizeof(double) * (screenWidth + 1));
+	data->sp = malloc(sizeof(t_sprite));
+	data->sp->buffer = malloc(sizeof(double) * (screenWidth + 1));
 
     
 }

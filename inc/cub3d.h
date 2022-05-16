@@ -12,10 +12,17 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
-#define mapWidth 24
-#define mapHeight 24
 #define screenWidth 900
 #define screenHeight 680
+
+typedef struct l_sprite
+{
+	int texX;
+	int texY;
+	int stripe;
+	double *buffer;
+
+}	t_sprite;
 
 typedef struct l_time
 {
@@ -94,10 +101,10 @@ typedef struct l_data
 {
 	void *mlx;
 	void *mlx_win;
+	int n_sprites;
 
-	double *buffer;
 
-
+	t_sprite *sp;
 	t_time	*t;
 	t_img	**img;
 	t_map *map;
@@ -122,5 +129,10 @@ void	put_pxl(t_img *img, int x, int y, int color);
 void    put_spawn(t_data *data);
 int    key_exit(int key, t_data *data);
 void	minimap(t_data *data);
+int    count_sprites(char **map);
+void draw_sprites(t_data *data, int x, int y);
+void draw_door(t_data *data, int x, int y);
+void			put_sprite(t_data *data, int y);
+
 
 #endif // !CUB3D_H

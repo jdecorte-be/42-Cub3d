@@ -47,34 +47,33 @@ void    init_var(t_data *data, int fd)
 char **parse_map(t_data *data, int fd)
 {
     char *str;
-    char **map = malloc(sizeof(char *) * (15 + 1)); // change len
     int i = 0;
     int len;
-
+    int j;
     // data->map->NO = "./texture/WALL46.xpm";
     // data->map->SO = "./texture/WALL2.xpm";
     // data->map->WE = "./texture/WALL0.xpm";
     // data->map->EA = "./texture/WALL4.xpm";
-	init_texture(data, 1, "./texture/WALL46.xpm");
-	init_texture(data, 2, "./texture/WALL2.xpm");
-	init_texture(data, 3, "./texture/WALL0.xpm");
-	init_texture(data, 4, "./texture/WALL4.xpm");
+	init_texture(data, 1, "./texture/wall0.xpm");
+	init_texture(data, 2, "./texture/wall0.xpm");
+	init_texture(data, 3, "./texture/wall0.xpm");
+	init_texture(data, 4, "./texture/wall0.xpm");
+	init_texture(data, 5, "./texture/potion.xpm");
+	init_texture(data, 6, "./texture/door.xpm");
+
+
 
     // init_var(data);
+    char **map = malloc(sizeof(char *) * (15 + 1)); // change len
     while((str = get_next_line(fd)))
     {
-        int j = 0;
-        len = ft_strlen(str);
-        map[i] = malloc(sizeof(char) * (len + 1));
-        while(str[j])
-        {
-            map[i][j] = str[j];
-            j++;
-        }
-        map[i][j - 1] = 0;
+        j = 0;
+        map[i] = malloc(sizeof(char) * (ft_strlen(str) + 1));
+        ft_strlcpy(map[i], str, ft_strlen(str));
         i++;
     }
     map[i] = 0;
+    // data->n_sprites = count_sprites(map);
     find_spawn(map, data);
     set_plane(data, data->map->dirSpawn);
     return map;
