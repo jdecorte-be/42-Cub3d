@@ -59,8 +59,11 @@ void			check_dist(t_data *ptr)
 		}
 		if (ptr->map->map[ptr->dda->map_x][ptr->dda->map_y] == '1')
 			is_side(ptr);
-		if (ptr->map->map[ptr->dda->map_x][ptr->dda->map_y] == 'D')
-			is_side(ptr);
+		// if (ptr->map->map[ptr->dda->map_x][ptr->dda->map_y] == 'D')
+		// {
+		// 	is_side(ptr);
+		// 	return ;
+		// }
 	}
 	if (ptr->dda->side == 1 || ptr->dda->side == 2)
 		ptr->dda->walldist = (ptr->dda->map_x - ptr->pl->posX + (1 - ptr->dda->stepx) / 2) / ptr->dda->raydir_x;
@@ -116,7 +119,14 @@ void    raycaster(t_data *data)
 		data->sp->buffer[data->dda->screenx] = data->dda->walldist;
 		data->dda->screenx++;
 	}
+
+
+	// test !!!
+	if(data->map->map[(int)data->pl->posX][(int)data->pl->posY] == '2')
+		data->map->map[(int)data->pl->posX][(int)data->pl->posY] = '0';
 	// update_fps(data);
+
 	draw_sprites(data, 2, 2);
+	// draw_door(data, 5, 5);
 	// draw_door(data, 2, 2);
 }

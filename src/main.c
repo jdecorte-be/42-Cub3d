@@ -32,7 +32,7 @@ int    launch_game(t_data *data)
 
     update_param(data);
     raycaster(data);
-    // minimap(data);
+    minimap(data);
 
     mlx_put_image_to_window(data->mlx, data->mlx_win, img, 0, 0);
     return 0;

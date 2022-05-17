@@ -112,6 +112,8 @@ typedef struct l_data
 	t_dda *dda;
 }   t_data;
 
+
+void draw_door(t_data *data, int x, int y);
 void    update_fps(t_data *data);
 void		set_plane(t_data *ptr, char flag);
 void    init_data(t_data *data);

@@ -23,8 +23,6 @@ int    count_sprites(char **map)
     
     while(map[i])
     {
-        
-        printf("%s\n", map[i]);
         while(map[i][j])
         {
             if(map[i][j] == '2')
@@ -36,13 +34,23 @@ int    count_sprites(char **map)
     return count;
 }
 
+void init_sprites(t_data *data)
+{
+    int i = 0;
+    while(i < data->n_sprites)
+    {
+
+        i++;
+    }
+}
+
 void draw_sprites(t_data *data, int x, int y)
 {
 
 	// int dist;
-
     // dist = pow(x - data->pl->posX, 2) + pow(y - data->pl->posY, 2);
 
+    init_sprites(data);
 
     double invDet = 1.0 / (data->pl->plX * data->pl->dirY - data->pl->dirX * data->pl->plY);
 
@@ -50,11 +58,11 @@ void draw_sprites(t_data *data, int x, int y)
     double transfX = (1.0 / (data->pl->plX * data->pl->dirY - data->pl->dirX * data->pl->plY)) * (data->pl->dirY * (x - data->pl->posX) - data->pl->dirX * (y - data->pl->posY));
     double transfY = (1.0 / (data->pl->plX * data->pl->dirY - data->pl->dirX * data->pl->plY)) * (-data->pl->plY * (x - data->pl->posX) + data->pl->plX * (y - data->pl->posY));
 
-    int vmovescreen = 64 / transfY;
+    int vmovescreen = 120 / transfY;
 
     int spriteScreenX = (int)((screenWidth / 2) * (1 + transfX / transfY));
 
-    int spriteHeight = abs((int)(screenHeight / (transfY)));
+    int spriteHeight = abs((int)(screenHeight / (transfY))) / 3;
 
     int drawStartY = -spriteHeight / 2 + screenHeight / 2 + vmovescreen;
     if(drawStartY < 0)
@@ -63,7 +71,7 @@ void draw_sprites(t_data *data, int x, int y)
     if(drawEndY >= screenHeight)
         drawEndY = screenHeight - 1;
 
-    int spriteWidth = abs((int)(screenHeight / (transfY))) / 2;
+    int spriteWidth = abs((int)(screenHeight / (transfY))) / 3;
 
     int drawStartX = -spriteWidth / 2 + spriteScreenX;
     if(drawStartX < 0)

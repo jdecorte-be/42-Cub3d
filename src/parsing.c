@@ -62,7 +62,6 @@ char **parse_map(t_data *data, int fd)
 	init_texture(data, 6, "./texture/door.xpm");
 
 
-
     // init_var(data);
     char **map = malloc(sizeof(char *) * (15 + 1)); // change len
     while((str = get_next_line(fd)))
@@ -73,7 +72,7 @@ char **parse_map(t_data *data, int fd)
         i++;
     }
     map[i] = 0;
-    // data->n_sprites = count_sprites(map);
+    data->n_sprites = count_sprites(map);
     find_spawn(map, data);
     set_plane(data, data->map->dirSpawn);
     return map;
