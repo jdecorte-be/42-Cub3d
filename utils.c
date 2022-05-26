@@ -35,3 +35,23 @@ char	*ft_free_join(char const *s1, char const *s2, int e)
 		free_join((void *)s1, (void *)s2, e);
 	return (dst);
 }
+
+int	ft_atoi_positive(const char *str)
+{
+	size_t	i;
+	size_t	nb;
+
+	i = 0;
+	nb = 0;
+	if (!str || !str[i])
+		return (-1);
+	while (str[i] && str[i] >= 48 && str[i] <= 57)
+	{
+		nb = nb * 10 + (str[i++] - 48);
+		if (nb > 2147483647)
+			return (-1);
+	}
+	if (str[i])
+		return (-1);
+	return (nb);
+}

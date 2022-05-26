@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 10:27:02 by lxu-wu            #+#    #+#             */
-/*   Updated: 2022/05/19 17:33:52 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/05/25 23:20:32 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	second_gnl(char **res, char *buff, char **backup, int fd)
 			return (1);
 		buff[ret] = '\0';
 		tmp = *backup;
-		*backup = ft_strjoin(tmp, buff, 0);
+		*backup = ft_strjoin(tmp, buff);
 		free_all(tmp, NULL, NULL, NULL);
 	}
 	free_all(buff, NULL, NULL, NULL);

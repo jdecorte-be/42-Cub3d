@@ -9,9 +9,18 @@ void	ft_error(void *arg, int e)
 	exit (1);
 }
 
+void	map_init(t_map *map)
+{
+	map->spawn_dir.type = 0;
+	map->spawn_dir.px = 0;
+	map->spawn_dir.py = 0;
+	map->item = 0;
+}
+
 int main(int argc, char **argv)
 {
 	t_map	map;
 
+	map_init(&map);
 	parsing(&map, argv);
 }
