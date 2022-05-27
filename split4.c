@@ -7,7 +7,7 @@ static int	ft_count_words(const char *str, char c)
 	int	trigger;
 
 	i = 0;
-	trigger = 0;
+	trigger = 1;
 	count = 0;
 	while (str[i])
 	{
@@ -15,7 +15,7 @@ static int	ft_count_words(const char *str, char c)
 			trigger = 1;
 		else if (str[i] == c && trigger == 1)
 			count++;
-		else if (str[i] != c)
+		else if (str[i] != c && trigger == 1)
 		{
 			count++;
 			trigger = 0;
@@ -40,19 +40,23 @@ static char	**ft_to_create_tab(char **tab, const char *s, char c)
 	{
 		if (s[i] == c && trig == 0 && ++trig)
 			start = ++i;
-		else if (trig || s[i] != c)
+		else if (s[i] && (trig || s[i] != c))
 		{
-			while (s[i] && s[i] == c && trig == 1)
+			if (s[i] == c)
 				i++;
-			while (s[i] && s[i] != c)
-				i++;
+			else if (s[i] && s[i] != c)
+			{
+				while (s[i] && s[i] != c)
+					i++;
+				trig = 0;
+			}
 			tab[count] = ft_substr(s, start, i - start);
 			if (!tab[count++])
 			{
 				free_tab(tab, 0);
 				return (0);
 			}
-			trig = 0;
+			start = i;
 		}
 	}
 	tab[count] = NULL;
@@ -65,7 +69,7 @@ char	**split1(char const *s, char c)
 
 	if (!s)
 		return (0);
-	// printf("%d\n", ft_count_words(s, c));
+	printf("%d\n", ft_count_words(s, c));
 	tab = malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
 	if (!tab)
 		return (NULL);

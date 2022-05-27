@@ -154,7 +154,7 @@ int	elem_type(char *str, size_t i)
 		return (7);
 	else
 	{
-		printf("%d\n", i);
+		// printf("%d\n", i);
 		return (0);
 	}
 }
@@ -268,8 +268,11 @@ void	ft_tab_len(t_file *file, char **tab)
 	size_t	i;
 
 	i = file->map_start;
+	printf("%zu \n", i);
 	while (tab[i])
 		i++;
+	// 	printf("%s\n", tab[i++]);
+	// printf("%zu\n", i);
 	file->tab_len = i - file->map_start;
 }
 
@@ -296,6 +299,8 @@ int	take_map(t_file *file, t_map *map, char **tab)
 		i++;
 	}
 	map->tab[i2] = 0;
+	// for (int z=0;map->tab[z];z++)
+	// 	printf("%s\n", map->tab[z]);
 	map->map_len = file->tab_len;
 	return (0);
 }
@@ -312,7 +317,7 @@ int	check(t_map *map, size_t *map_len)
 		x = 0;
 		while (map->tab[y][x])
 		{
-			if (ismap(map->tab[y][x] && inmap(map->tab[y][x]) && !(x && ismap(map->tab[y][x - 1]) && map->tab[y][x + 1] && ismap(map->tab[y][x + 1]) && y && map_len[y - 1] >= x + 1 && ismap(map->tab[y - 1][x - 1]) && ismap(map->tab[y - 1][x]) && ismap(map->tab[y - 1][x + 1]) && map->tab[y + 1] && map_len[y + 1] >= x && ismap(map->tab[y + 1][x - 1]) && ismap(map->tab[y + 1][x]) && ismap(map->tab[y + 1][x + 1]))))
+			if (map->tab[y][x] == '\n' || (ismap(map->tab[y][x] && inmap(map->tab[y][x]) && !(x && ismap(map->tab[y][x - 1]) && map->tab[y][x + 1] && ismap(map->tab[y][x + 1]) && y && map_len[y - 1] >= x + 1 && ismap(map->tab[y - 1][x - 1]) && ismap(map->tab[y - 1][x]) && ismap(map->tab[y - 1][x + 1]) && map->tab[y + 1] && map_len[y + 1] >= x && ismap(map->tab[y + 1][x - 1]) && ismap(map->tab[y + 1][x]) && ismap(map->tab[y + 1][x + 1])))))
 			{
 				// printf("%zu %zu\n", x, y);
 				// printf("error\n");
@@ -424,7 +429,7 @@ int	parse_map(t_map *map, t_file *file, char **argv)
 	// tab = ws_cute(tab);
 	if (map_elem(file, tab))
 		return (1);
-	printf("caca1\n");
+	// printf("caca1\n");
 	if (all_face(file))
 		return (1);
 	if (take_map(file, map, tab))
@@ -557,7 +562,7 @@ int	convert_file(t_map *map, t_file *file)
 		write(2, "color error\n", 12);
 		return (1);
 	}
-	printf("caca\n");
+	// printf("caca\n");
 	// if (take_item())
 	// printf("F == %p\n", map->F);
 	// printf("c == %p\n", map->C);
