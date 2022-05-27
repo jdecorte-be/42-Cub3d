@@ -7,9 +7,16 @@ int isspawn(char c)
 	return (0);
 }
 
+int	isitem(char c)
+{
+	if (c == 2) //|| c == 3 ...)
+		return (1);
+	return (0);
+}
+
 int	inmap(char c)
 {
-	if (c == '0' || c == '2' || isspawn(c))
+	if (c == '0' || isitem(c) || isspawn(c))
 		return (1);
 	return (0);
 }
@@ -120,7 +127,7 @@ int	get_file(int fd, char ***tab)
 		if (read_file(&s1, fd))
 			return (1);//
 	}
-	*tab = ft_split(str, "\n");
+	*tab = split1(str, '\n');
 	// for(int i=0;(*tab)[i];i++)
 	// 	printf("%s\n", (*tab)[i]);
 	free(s1);
@@ -143,10 +150,29 @@ int	elem_type(char *str, size_t i)
 		return (5);
 	else if (!ft_strncmp("C ", &str[i], 1))
 		return (6);
-	else if (str[i] == '1')
+	else if (ismap(str[i]))
 		return (7);
 	else
+	{
+		printf("%d\n", i);
 		return (0);
+	}
+}
+
+void	cpl_free(t_file *file, int face)
+{
+	if (face == 1)
+		free(file->NO);
+	else if (face == 2)
+		free(file->SO);
+	else if (face == 3)
+		free(file->WE);
+	else if (face == 4)
+		free(file->EA);
+	else if (face == 5)
+		free(file->F);
+	else if (face == 6)
+		free(file->C);
 }
 
 int	cpl_face(t_file *file, char *str, size_t start, int face)
@@ -181,16 +207,19 @@ int	map_face(t_file *file, char *str)
 	int		face;
 
 	i = 0;
-	while (str[i] && str[i] == 32)
+	while (str[i] && (str[i] == 32 || str[i] == '\n'))
 		i++;
+	if (!str[i])
+		return (0);
 	face = elem_type(str, i);
 	if (face == 0)
+	{
+		// printf("caca\n");
 		return (1);
+	}
 	else if (face == 7)
 	{
-		// printf("face == %d\n", face);
-		file->tab_len++;
-		return (0);
+		return (2);
 	}
 	while (str[i] && str[i] != 32)
 		i++;
@@ -212,12 +241,21 @@ int	map_elem(t_file *file, char **tab)
 {
 	size_t	i;
 	size_t	i2;
+	int		ret;
 
 	i = 0;
 	while (tab[i])
 	{
-		if (map_face(file, tab[i]))
+		// printf("zu %zu\n", i);
+		ret = map_face(file, tab[i]);
+		// printf("ret == %d\n", ret);
+		if (ret == 1)
 			return (1);
+		else if (ret == 2)
+		{
+			file->map_start = i;
+			return (0);
+		}
 		i++;
 		// else if (ft_strncmp("F ", tab[i][i2], 2))
 		// else if (ft_strncmp("C ", tab[i][i2], 2))
@@ -225,27 +263,39 @@ int	map_elem(t_file *file, char **tab)
 	return (0);
 }
 
+void	ft_tab_len(t_file *file, char **tab)
+{
+	size_t	i;
+
+	i = file->map_start;
+	while (tab[i])
+		i++;
+	file->tab_len = i - file->map_start;
+}
+
 int	take_map(t_file *file, t_map *map, char **tab)
 {
 	size_t	i;
 	size_t	i2;
-	size_t	i3;
+	// size_t	i3;
 
+	ft_tab_len(file, tab);
 	map->tab = malloc(sizeof(char *) * (file->tab_len + 1));
 	if (!map->tab)
 		ft_error(0, 2);
-	i = 0;
-	i3 = 0;
+	i = file->map_start;
+	// i3 = 0;
+	i2 = 0;
 	while (tab[i])
 	{
-		i2 = 0;
-		while (tab[i][i2] && tab[i][i2] == 32)
-			i2++;
-		if (tab[i][i2] == '1')
-			map->tab[i3++] = tab[i];
+		// i2 = 0;
+		// while (tab[i][i2] && tab[i][i2] == 32)
+		// 	i2++;
+		// if (tab[i][i2] == '1')
+		map->tab[i2++] = tab[i];
 		i++;
 	}
-	map->tab[i3] = 0;
+	map->tab[i2] = 0;
 	map->map_len = file->tab_len;
 	return (0);
 }
@@ -254,6 +304,7 @@ int	check(t_map *map, size_t *map_len)
 {
 	size_t	x;
 	size_t	y;
+	t_item	item;
 
 	y = 0;
 	while (map->tab[y])
@@ -261,7 +312,7 @@ int	check(t_map *map, size_t *map_len)
 		x = 0;
 		while (map->tab[y][x])
 		{
-			if (inmap(map->tab[y][x]) && !(x && ismap(map->tab[y][x - 1]) && map->tab[y][x + 1] && ismap(map->tab[y][x + 1]) && y && map_len[y - 1] >= x + 1 && ismap(map->tab[y - 1][x - 1]) && ismap(map->tab[y - 1][x]) && ismap(map->tab[y - 1][x + 1]) && map->tab[y + 1] && map_len[y + 1] >= x && ismap(map->tab[y + 1][x - 1]) && ismap(map->tab[y + 1][x]) && ismap(map->tab[y + 1][x + 1])))
+			if (ismap(map->tab[y][x] && inmap(map->tab[y][x]) && !(x && ismap(map->tab[y][x - 1]) && map->tab[y][x + 1] && ismap(map->tab[y][x + 1]) && y && map_len[y - 1] >= x + 1 && ismap(map->tab[y - 1][x - 1]) && ismap(map->tab[y - 1][x]) && ismap(map->tab[y - 1][x + 1]) && map->tab[y + 1] && map_len[y + 1] >= x && ismap(map->tab[y + 1][x - 1]) && ismap(map->tab[y + 1][x]) && ismap(map->tab[y + 1][x + 1]))))
 			{
 				// printf("%zu %zu\n", x, y);
 				// printf("error\n");
@@ -269,9 +320,17 @@ int	check(t_map *map, size_t *map_len)
 			}
 			if (isspawn(map->tab[y][x]))
 			{
-				map->spawn_dir.type = map->tab[y][x];
-				map->spawn_dir.px = x;
-				map->spawn_dir.py = y;
+				item.type = map->tab[y][x];
+				item.px = x;
+				item.py = y;
+				dlstadd_back(&map->spawn, dlstnew(&item));
+			}
+			if (isitem(map->tab[y][x]))
+			{
+				item.type = map->tab[y][x];
+				item.px = x;
+				item.py = y;
+				ft_lstadd_back(&map->item, ft_lstnew(&item));
 			}
 			x++;
 		}
@@ -322,9 +381,10 @@ int	check_map(t_map *map)
 	cpl_map_len(map->tab, &map_len);
 	if (check(map, map_len))
 		return (1);
-	if (!isspawn(map->spawn_dir.type))
+	if (!map->spawn)
 	{
-		printf("a\n");
+		write(2, "no spawn\n", 9);
+		// printf("\n");
 		return (1);
 	}
 	// printf("c == %d\n", map->spawn_dir.type);
@@ -361,17 +421,16 @@ int	parse_map(t_map *map, t_file *file, char **argv)
 	if (get_file(fd, &tab))
 		return (1);
 	close(fd);
-	tab = ws_cute(tab);
+	// tab = ws_cute(tab);
 	if (map_elem(file, tab))
 		return (1);
+	printf("caca1\n");
 	if (all_face(file))
 		return (1);
 	if (take_map(file, map, tab))
 		return (1);
 	if (check_map(map))
 		return (1);
-	// for(int i=0; tab[i]; i++)
-	// 	printf("%s\n", tab[i]);
 	printf("%s\n", file->NO);
 	printf("%s\n", file->SO);
 	printf("%s\n", file->WE);
@@ -498,6 +557,8 @@ int	convert_file(t_map *map, t_file *file)
 		write(2, "color error\n", 12);
 		return (1);
 	}
+	printf("caca\n");
+	// if (take_item())
 	// printf("F == %p\n", map->F);
 	// printf("c == %p\n", map->C);
 	return (0);
@@ -522,3 +583,4 @@ int	parsing(t_map *map, char **argv)
 	// 	printf("%s\n", map->tab[i]);
 	return (0);
 }
+// 

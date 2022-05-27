@@ -11,9 +11,7 @@ void	ft_error(void *arg, int e)
 
 void	map_init(t_map *map)
 {
-	map->spawn_dir.type = 0;
-	map->spawn_dir.px = 0;
-	map->spawn_dir.py = 0;
+	map->spawn = 0;
 	map->item = 0;
 }
 
