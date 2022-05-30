@@ -317,7 +317,7 @@ int	check(t_map *map, size_t *map_len)
 		x = 0;
 		while (map->tab[y][x])
 		{
-			if (map->tab[y][x] == '\n' || (ismap(map->tab[y][x] && inmap(map->tab[y][x]) && !(x && ismap(map->tab[y][x - 1]) && map->tab[y][x + 1] && ismap(map->tab[y][x + 1]) && y && map_len[y - 1] >= x + 1 && ismap(map->tab[y - 1][x - 1]) && ismap(map->tab[y - 1][x]) && ismap(map->tab[y - 1][x + 1]) && map->tab[y + 1] && map_len[y + 1] >= x && ismap(map->tab[y + 1][x - 1]) && ismap(map->tab[y + 1][x]) && ismap(map->tab[y + 1][x + 1])))))
+			if ((ismap(map->tab[y][x]) && inmap(map->tab[y][x]) && !(x && ismap(map->tab[y][x - 1]) && map->tab[y][x + 1] && ismap(map->tab[y][x + 1]) && y && map_len[y - 1] >= x + 1 && ismap(map->tab[y - 1][x - 1]) && ismap(map->tab[y - 1][x]) && ismap(map->tab[y - 1][x + 1]) && map->tab[y + 1] && map_len[y + 1] >= x && ismap(map->tab[y + 1][x - 1]) && ismap(map->tab[y + 1][x]) && ismap(map->tab[y + 1][x + 1]))))
 			{
 				// printf("%zu %zu\n", x, y);
 				// printf("error\n");
