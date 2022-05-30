@@ -2,22 +2,22 @@
 
 void		set_plane(t_data *ptr, char flag)
 {
-	if (flag == 'N')
+	if (flag == 'W')
 	{
 		ptr->pl->plX = -0.66;
 		ptr->pl->dirY = -1;
 	}
-	else if (flag == 'S')
+	else if (flag == 'E')
 	{
 		ptr->pl->plX = 0.66;
 		ptr->pl->dirY = 1;
 	}
-	else if (flag == 'W')
+	else if (flag == 'N')
 	{
 		ptr->pl->plY = 0.66;
 		ptr->pl->dirX = -1;
 	}
-	else if (flag == 'E')
+	else if (flag == 'S')
 	{
 		ptr->pl->plY = -0.66;
 		ptr->pl->dirX = 1;

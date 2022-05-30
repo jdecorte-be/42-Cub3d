@@ -26,8 +26,8 @@ typedef struct s_dlist
 typedef struct s_item
 {
 	char	type;
-	size_t	px;
-	size_t	py;
+	int		px;
+	int		py;
 }	t_item;
 
 typedef struct s_file

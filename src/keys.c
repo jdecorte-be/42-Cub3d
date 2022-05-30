@@ -28,7 +28,7 @@ int    key_handler(int key, t_data *data)
     if(key == 53)
     {
          mlx_destroy_window(data->mlx, data->mlx_win);
-
+        exit(0);
     }
     if(key == 14)
     {

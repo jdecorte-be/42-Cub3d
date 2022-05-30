@@ -12,8 +12,8 @@ void    find_spawn(char **map, t_data *data)
             if(map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W')
             {
                 data->map->dirSpawn = map[i][j];
-                data->pl->posX = i;
-                data->pl->posY = j;
+                data->pl->posX = i + 0.5;
+                data->pl->posY = j + 0.5;
                 break;
             }
             j++;
@@ -29,6 +29,13 @@ int isspawn(char c)
 	return (0);
 }
 
+int	isdoor(char c)
+{
+	if (c == 'D')
+		return (1);
+	return (0);
+}
+
 int	isitem(char c)
 {
 	if (c == 2) //|| c == 3 ...)
@@ -38,7 +45,7 @@ int	isitem(char c)
 
 int	inmap(char c)
 {
-	if (c == '0' || isitem(c) || isspawn(c))
+	if (c == '0' || isitem(c) || isspawn(c) || isdoor(c))
 		return (1);
 	return (0);
 }
@@ -304,6 +311,10 @@ int	take_map(t_file *file, t_map *map, char **tab)
 	size_t	i2;
 	// size_t	i3;
 
+	if (!file->map_start)
+	{
+		return (1);
+	}
 	ft_tab_len(file, tab);
 	map->map = malloc(sizeof(char *) * (file->tab_len + 1));
 	if (!map->map)
@@ -404,7 +415,8 @@ int	check_map(t_map *map)
 
 	map_len = malloc(sizeof(size_t) * map->map_len);
 	if (!map_len)
-		ft_error(map, 2);
+		exit(1);
+		// ft_error(map, 2);
 	cpl_map_len(map->map, &map_len);
 	if (check(map, map_len))
 		return (1);
@@ -471,6 +483,7 @@ int	parse_map(t_map *map, t_file *file, char **argv)
 
 void	file_init(t_file *file)
 {
+	file->map_start = 0;
 	file->tab_len = 0;
 	file->NO = 0;
 	file->SO = 0;
@@ -559,8 +572,9 @@ int	conv_color(int *color, char *str)
 	}
 	i = 0;
 	*color = 0;
-	while (rgb[i] && i < 3)
+	while (i < 3)
 	{
+		printf("2\n");
 		if (rgb[i] > 255)
 		{
 			// write(2, "color value error\n", 18);
@@ -571,6 +585,7 @@ int	conv_color(int *color, char *str)
 		*color += (rgb[i] << (((i + 2) - (i * 2)) * 8));
 		i++;
 	}
+	// *color += 0xFF000000;
 	// printf("color == %p\n", *color);
 	return (0);
 }

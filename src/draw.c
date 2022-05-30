@@ -76,7 +76,7 @@ void			run_draw(t_data *data)
 	data->dda->drawend = data->dda->lineheight / 2 + screenHeight / 2;
 	if (data->dda->drawend > screenHeight)
 		data->dda->drawend = screenHeight - 1;
-	y += draw_vertline(data, data->dda->screenx, data->dda->drawstart, 0xffffff, 0);
+	y += draw_vertline(data, data->dda->screenx, data->dda->drawstart, data->map->C, 0);
 	y += draw_texture(data, y);
-	draw_vertline(data, data->dda->screenx, screenHeight, 0x115661, y);
+	draw_vertline(data, data->dda->screenx, screenHeight, data->map->F, y);
 }

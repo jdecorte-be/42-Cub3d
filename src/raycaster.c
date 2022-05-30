@@ -99,7 +99,7 @@ void			calc_dda(t_data *ptr)
 	ptr->dda->cam_x = 2 * (double)ptr->dda->screenx / (double)screenWidth - 1;
 	ptr->dda->raydir_x = ptr->pl->dirX + ptr->pl->plX * ptr->dda->cam_x;
 	ptr->dda->raydir_y = ptr->pl->dirY + ptr->pl->plY * ptr->dda->cam_x;
-	ptr->dda->map_x = (int)ptr->pl->posX;
+	ptr->dda->map_x = (int)ptr->pl->posX ;
 	ptr->dda->map_y = (int)ptr->pl->posY;
 	ptr->dda->deltadist_x = fabs(1 / ptr->dda->raydir_x);
 	ptr->dda->deltadist_y = fabs(1 / ptr->dda->raydir_y);
