@@ -45,7 +45,7 @@ int	inmap(char c)
 
 int	ismap(char c)
 {
-	if (c == '\n' || c == '32' || c == '1' || isspawn(c) || inmap(c))
+	if (c == '\n' || c == 32 || c == '1' || isspawn(c) || inmap(c))
 		return (1);
 	return (0);
 }
