@@ -25,6 +25,11 @@ int    key_exit(int key, t_data *data)
 int    key_handler(int key, t_data *data)
 {
     printf("%d\n", key);
+    if(key == 53)
+    {
+         mlx_destroy_window(data->mlx, data->mlx_win);
+
+    }
     if(key == 14)
     {
         if(data->map->map[(int)(data->pl->posX - 1.0)][(int)(data->pl->posY)] == 'D')

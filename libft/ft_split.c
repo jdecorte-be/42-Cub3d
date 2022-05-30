@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.s19.be>             +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 09:59:01 by lxu-wu            #+#    #+#             */
-/*   Updated: 2021/12/22 21:42:29 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/05/25 23:21:32 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static char	*ft_word_dup(const char *str, int start, int end)
 	i = 0;
 	word = malloc(sizeof(*word) * end - start + 1);
 	if (!word)
-		ft_error(2);
+		ft_error(0, 2);
 	while (start < end)
 		word[i++] = str[start++];
 	word[i] = '\0';
@@ -66,7 +66,7 @@ static char	**ft_to_create_tab(char **tab, const char *s, char *set)
 		{
 			tab[count] = ft_word_dup(s, start, i);
 			if (!tab[count] || !++count)
-				ft_error(2);
+				ft_error(0, 2);
 			start = -1;
 		}
 		i++;
@@ -83,6 +83,6 @@ char	**ft_split(char const *s, char *set)
 		return (0);
 	tab = malloc(sizeof(char *) * (ft_count_words(s, set) + 1));
 	if (!tab)
-		ft_error(2);
+		ft_error(0, 2);
 	return (ft_to_create_tab(tab, s, set));
 }

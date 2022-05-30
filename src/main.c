@@ -53,6 +53,12 @@ int    launch_game(t_data *data)
     return 0;
 }
 
+int free_exit(t_data *data)
+{
+   mlx_destroy_window(data->mlx, data->mlx_win);
+   exit(0);
+}
+
 int main(int ac, char **av)
 {
     if(ac == 1)
@@ -65,17 +71,18 @@ int main(int ac, char **av)
     t_map map;
     init_data(data);
     map_init(&map);
-	parsing(data, &map, av);
-    
+	if (parsing(data, &map, av))
+        exit (0);
     data->map = &map;
     find_spawn(data->map->map, data);
+    set_plane(data, data->map->dirSpawn);
     // data->map->map = parse_map(data, open(av[1], O_RDONLY));
     // data->map->minimap = data->map->map;
 
     mlx_do_key_autorepeaton(data->mlx);
     mlx_hook(data->mlx_win, 2, 0, key_handler, data);
     mlx_hook(data->mlx_win, 3, 0, key_exit, data);
-    
+    mlx_hook(data->mlx_win, 17, 0, free_exit, data);
 	mlx_loop_hook(data->mlx, launch_game, data);
 	mlx_loop(data->mlx);
 }

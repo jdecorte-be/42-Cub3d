@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 10:03:35 by lxu-wu            #+#    #+#             */
-/*   Updated: 2022/05/30 15:20:46 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/05/19 18:24:40 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ typedef struct s_list
 char	*ft_strstr(char	*str, char	*to_find);
 int		ft_strrcmp(const char *s1, const char *s2, size_t n);
 t_list	*ft_next(t_list *lst);
-// void	ft_error(int e);
+void	ft_error(void *arg, int e);
 char	*get_next_line(int fd);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_isspace(char c);

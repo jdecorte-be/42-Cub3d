@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.s19.be>             +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/18 10:27:02 by lxu-wu            #+#    #+#             */
-/*   Updated: 2021/12/10 13:25:39 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/05/27 02:06:00 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,21 +80,13 @@ int	second_gnl(char **res, char *buff, char **backup, int fd)
 	ssize_t	ret;
 	char	*tmp;
 
-	ret = read(fd, buff, BUFFER_SIZE);
-	if (ret == -1 || ret == 0)
-		return (1);
-	buff[ret] = '\0';
-	tmp = *backup;
-	*backup = ft_strjoin(tmp, buff);
-	free_all(tmp, NULL, NULL, NULL);
+	ret = 1;
 	while (ret && ft_nins(*backup))
 	{
-		buff[0] = '\n';
 		ret = read(fd, buff, BUFFER_SIZE);
-		if (ret == 0)
-			write(1, "  \b\b\n", 5);
-		else
-			buff[ret] = '\0';
+		if (ret == -1)
+			return (1);
+		buff[ret] = '\0';
 		tmp = *backup;
 		*backup = ft_strjoin(tmp, buff);
 		free_all(tmp, NULL, NULL, NULL);
@@ -117,7 +109,7 @@ char	*get_next_line(int fd)
 		backup = ft_strdup("");
 	buff = malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!buff)
-		ft_error(2);
+		return (0);
 	if (second_gnl(&res, buff, &backup, fd))
 	{
 		free_all(NULL, buff, 0, &backup);

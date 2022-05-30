@@ -57,7 +57,7 @@ void			check_dist(t_data *ptr)
 			ptr->dda->map_y += ptr->dda->stepy;
 			ptr->dda->side = 1;
 		}
-		printf("---> %c %d %d\n", ptr->map->map[ptr->dda->map_x][ptr->dda->map_y], ptr->dda->map_x, ptr->dda->map_y);
+		//printf("---> %c %d %d\n", ptr->map->map[ptr->dda->map_x][ptr->dda->map_y], ptr->dda->map_x, ptr->dda->map_y);
 		if (ptr->map->map[ptr->dda->map_x][ptr->dda->map_y] == '1')
 			is_side(ptr);
 		if (ptr->map->map[ptr->dda->map_x][ptr->dda->map_y] == 'D')

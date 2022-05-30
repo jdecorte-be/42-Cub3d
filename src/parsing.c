@@ -578,10 +578,12 @@ int	conv_color(int *color, char *str)
 int	convert_file(t_data *data, t_map *map, t_file *file)
 {
 	//ft (xpm to img)
-	init_texture(data, 0, file->NO);
-	init_texture(data, 1, file->SO);
-	init_texture(data, 2, file->EA);
-	init_texture(data, 3, file->WE);
+	init_texture(data, 1, file->NO);
+	init_texture(data, 2, file->SO);
+	init_texture(data, 3, file->EA);
+	init_texture(data, 4, file->WE);
+	init_texture(data, 6, "./res/door1.xpm");
+
 
 	if (conv_color(&map->F, file->F) || conv_color(&map->C, file->C))
 	{
@@ -607,7 +609,10 @@ int	parsing(t_data *data, t_map *map, char **argv)
 	}
 	file_init(&file);
 	if (parse_map(map, &file, argv))
+	{
 		write(2, "map error\n", 10);
+		return (1);
+	}
 	if (convert_file(data, map, &file))
 		return (1);
 	// for(int i=0; map->tab[i]; i++)
