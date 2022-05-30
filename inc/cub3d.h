@@ -15,6 +15,39 @@
 #define screenWidth 900
 #define screenHeight 680
 
+
+typedef struct s_dlist
+{
+	void			*content;
+	struct s_dlist	*next;
+	struct s_dlist	*prev;
+}	t_dlist;
+
+typedef struct s_item
+{
+	char	type;
+	size_t	px;
+	size_t	py;
+}	t_item;
+
+typedef struct s_file
+{
+	int		f1;
+	int		f2;
+	int		f3;
+	int		f4;
+	int		f5;
+	int		f6;
+	char	*SO;
+	char	*NO;
+	char	*WE;
+	char	*EA;
+	char	*F;
+	char	*C;
+	size_t	map_start;
+	size_t	tab_len;
+}	t_file;
+
 typedef struct l_sprite
 {
 	int texX;
@@ -85,15 +118,18 @@ typedef struct l_img
 
 typedef struct l_map
 {
+	size_t	map_len;
 	char	**map;
-	char	**minimap;
-	char	*NO;
-	char	*SO;
-	char	*WE;
-	char	*EA;
 
-	char	*F;
-	char	*T;
+	void	*NO;
+	void	*SO;
+	void	*WE;
+	void	*EA;
+
+	int		F;
+	int		C;
+	t_dlist	*spawn;
+	t_list	*item;
 
 	char dirSpawn;
 
@@ -120,7 +156,6 @@ void    update_fps(t_data *data);
 void		set_plane(t_data *ptr, char flag);
 void    init_data(t_data *data);
 void			run_draw(t_data *data);
-char **parse_map(t_data *data, int fd);
 int    key_handler(int key, t_data *data);
 void			init_texture(t_data *ptr, int flag, char *path);
 void	ft_free_tab(char **tab);
@@ -138,5 +173,17 @@ void draw_sprites(t_data *data, int x, int y);
 void draw_door(t_data *data, int x, int y);
 void			put_sprite(t_data *data, int y);
 
+int		parsing(t_data *data, t_map *map, char **argv);
+void	ft_error(void *arg, int e);
+char	*ft_free_join(char const *s1, char const *s2, int e);
+int		ft_atoi_positive(const char *str);
+
+
+t_dlist	*dlstnew(void *content);
+void	dlstadd_back(t_dlist **lst, t_dlist *new);
+void	dlst_free(t_dlist **lst);
+void    find_spawn(char **map, t_data *data);
+char	**split1(char const *s, char c);
+int		free_tab(char **tab, int ret);
 
 #endif // !CUB3D_H

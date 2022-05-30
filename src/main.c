@@ -1,5 +1,20 @@
 #include "../inc/cub3d.h"
 
+void	ft_error(void *arg, int e)
+{
+	if (e == 2)
+		write (2, "malloc\n", 7);
+	else if (e == 9)
+		write (2, "map error\n", 10);
+	exit (1);
+}
+
+void	map_init(t_map *map)
+{
+	map->spawn = 0;
+	map->item = 0;
+}
+
 void    update_param(t_data *data)
 {
     double oldDirX;
@@ -47,10 +62,15 @@ int main(int ac, char **av)
     if(!data)
         return 0;
 
+    t_map map;
     init_data(data);
-
-    data->map->map = parse_map(data, open(av[1], O_RDONLY));
-    data->map->minimap = data->map->map;
+    map_init(&map);
+	parsing(data, &map, av);
+    
+    data->map = &map;
+    find_spawn(data->map->map, data);
+    // data->map->map = parse_map(data, open(av[1], O_RDONLY));
+    // data->map->minimap = data->map->map;
 
     mlx_do_key_autorepeaton(data->mlx);
     mlx_hook(data->mlx_win, 2, 0, key_handler, data);

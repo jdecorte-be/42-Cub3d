@@ -283,8 +283,8 @@ int	take_map(t_file *file, t_map *map, char **tab)
 	// size_t	i3;
 
 	ft_tab_len(file, tab);
-	map->tab = malloc(sizeof(char *) * (file->tab_len + 1));
-	if (!map->tab)
+	map->map = malloc(sizeof(char *) * (file->tab_len + 1));
+	if (!map->map)
 		ft_error(0, 2);
 	i = file->map_start;
 	// i3 = 0;
