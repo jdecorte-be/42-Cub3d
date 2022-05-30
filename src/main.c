@@ -6,20 +6,20 @@ void    update_param(t_data *data)
     double oldPlaneX;
 
     oldDirX = data->pl->dirX;
+    data->pl->totalrots += data->pl->rot;
     data->pl->dirX = data->pl->dirX * cos(data->pl->rot) - data->pl->dirY * sin(data->pl->rot);
     data->pl->dirY = oldDirX * sin(data->pl->rot) + data->pl->dirY * cos(data->pl->rot);
     oldPlaneX = data->pl->plX;
     data->pl->plX = data->pl->plX * cos(data->pl->rot) - data->pl->plY * sin(data->pl->rot);
     data->pl->plY = oldPlaneX * sin(data->pl->rot) + data->pl->plY * cos(data->pl->rot);
 
-    if(data->map->map[(int)(data->pl->posX + data->pl->dirX * data->pl->deY)][(int)(data->pl->posY)] != '1')
+    if(!ft_strchr("1D",data->map->map[(int)(data->pl->posX + data->pl->dirX * data->pl->deY)][(int)(data->pl->posY)]))
         data->pl->posX += data->pl->dirX * data->pl->deY;
-    if(data->map->map[(int)(data->pl->posX)][(int)(data->pl->posY + data->pl->dirY * data->pl->deY)] != '1')
+    if(!ft_strchr("1D",data->map->map[(int)(data->pl->posX)][(int)(data->pl->posY + data->pl->dirY * data->pl->deY)]))
         data->pl->posY += data->pl->dirY * data->pl->deY;
-
-    if (data->map->map[(int)(data->pl->posX + data->pl->plX * data->pl->deX)][(int)data->pl->posY] != '1')
+    if (!ft_strchr("1D",data->map->map[(int)(data->pl->posX + data->pl->plX * data->pl->deX)][(int)data->pl->posY]))
         data->pl->posX += data->pl->plX * data->pl->deX;
-    if (data->map->map[(int)data->pl->posX][(int)(data->pl->posY + data->pl->plY * data->pl->deX)] != '1')
+    if (!ft_strchr("1D",data->map->map[(int)data->pl->posX][(int)(data->pl->posY + data->pl->plY * data->pl->deX)]))
         data->pl->posY += data->pl->plY * data->pl->deX;
 }
 
@@ -50,6 +50,7 @@ int main(int ac, char **av)
     init_data(data);
 
     data->map->map = parse_map(data, open(av[1], O_RDONLY));
+    data->map->minimap = data->map->map;
 
     mlx_do_key_autorepeaton(data->mlx);
     mlx_hook(data->mlx_win, 2, 0, key_handler, data);

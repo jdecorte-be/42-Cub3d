@@ -43,6 +43,7 @@ typedef struct l_player
 	double rot;
 	double deX;
 	double deY;
+	double totalrots;
 }   t_player;
 
 typedef struct l_dda
@@ -85,6 +86,7 @@ typedef struct l_img
 typedef struct l_map
 {
 	char	**map;
+	char	**minimap;
 	char	*NO;
 	char	*SO;
 	char	*WE;

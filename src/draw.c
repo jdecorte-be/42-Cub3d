@@ -27,7 +27,7 @@ void draw_verttext(t_data *data, int x, int y, t_img *text)
 
 void			set_texture(t_data *p)
 {
-	if (p->dda->side == 1 || p->dda->side == 2)
+	if (p->dda->side == 1 || p->dda->side == 2 || p->dda->side == 6)
 	{
 		p->dda->wallx = p->pl->posY + p->dda->walldist * p->dda->raydir_y;
 		p->dda->wallx -= floor(p->dda->wallx);
@@ -35,7 +35,7 @@ void			set_texture(t_data *p)
 		if (p->dda->raydir_x > 0)
 			p->dda->textx = p->img[p->dda->side]->width - p->dda->textx - 1;
 	}
-	else if (p->dda->side == 3 || p->dda->side == 4)
+	else if (p->dda->side == 3 || p->dda->side == 4 || p->dda->side == 6)
 	{
 		p->dda->wallx = p->pl->posX + p->dda->walldist * p->dda->raydir_x;
 		p->dda->wallx -= floor(p->dda->wallx);

@@ -58,5 +58,5 @@ void    init_data(t_data *data)
 	data->sp = malloc(sizeof(t_sprite));
 	data->sp->buffer = malloc(sizeof(double) * (screenWidth + 1));
 
-    
+    data->pl->totalrots = 0;
 }

@@ -54,12 +54,12 @@ char **parse_map(t_data *data, int fd)
     // data->map->SO = "./texture/WALL2.xpm";
     // data->map->WE = "./texture/WALL0.xpm";
     // data->map->EA = "./texture/WALL4.xpm";
-	init_texture(data, 1, "./texture/wall0.xpm");
-	init_texture(data, 2, "./texture/wall0.xpm");
+	init_texture(data, 1, "./res/d_wall5.xpm");
+	init_texture(data, 2, "./res/d_wall6.xpm");
 	init_texture(data, 3, "./texture/wall0.xpm");
 	init_texture(data, 4, "./texture/wall0.xpm");
 	init_texture(data, 5, "./texture/potion.xpm");
-	init_texture(data, 6, "./texture/door.xpm");
+	init_texture(data, 6, "./res/door1.xpm");
 
 
     // init_var(data);

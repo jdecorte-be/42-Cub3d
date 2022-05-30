@@ -8,14 +8,14 @@ void			is_side_door(t_data *ptr)
 		if (ptr->dda->raydir_x < 0)
 			ptr->dda->side = 6;
 		else if (ptr->dda->raydir_x > 0)
-			ptr->dda->side = 6;
+			ptr->dda->side = 2;
 	}
 	else if (ptr->dda->side == 1)
 	{
 		if (ptr->dda->raydir_y < 0)
-			ptr->dda->side = 6;
+			ptr->dda->side = 3;
 		else if (ptr->dda->raydir_y > 0)
-			ptr->dda->side = 6;
+			ptr->dda->side = 4;
 	}
 }
 
@@ -59,15 +59,12 @@ void			check_dist(t_data *ptr)
 		}
 		if (ptr->map->map[ptr->dda->map_x][ptr->dda->map_y] == '1')
 			is_side(ptr);
-		// if (ptr->map->map[ptr->dda->map_x][ptr->dda->map_y] == 'D')
-		// {
-		// 	is_side(ptr);
-		// 	return ;
-		// }
+		if (ptr->map->map[ptr->dda->map_x][ptr->dda->map_y] == 'D')
+			is_side_door(ptr);
 	}
-	if (ptr->dda->side == 1 || ptr->dda->side == 2)
+	if (ptr->dda->side == 1 || ptr->dda->side == 2 || ptr->dda->side == 6)
 		ptr->dda->walldist = (ptr->dda->map_x - ptr->pl->posX + (1 - ptr->dda->stepx) / 2) / ptr->dda->raydir_x;
-	else if (ptr->dda->side == 3 || ptr->dda->side == 4)
+	else if (ptr->dda->side == 3 || ptr->dda->side == 4 || ptr->dda->side == 6)
 		ptr->dda->walldist = (ptr->dda->map_y - ptr->pl->posY + (1 - ptr->dda->stepy) / 2) / ptr->dda->raydir_y;
 }
 
@@ -116,17 +113,15 @@ void    raycaster(t_data *data)
 	{
 		calc_dda(data);
 		run_draw(data);
+		// trace_line(100, 100, (data->dda->map_x * 10) + 100, (data->dda->map_y * 10) + 100, data->img[0], 0xDC143C);
+
 		data->sp->buffer[data->dda->screenx] = data->dda->walldist;
 		data->dda->screenx++;
 	}
 
 
-	// test !!!
 	if(data->map->map[(int)data->pl->posX][(int)data->pl->posY] == '2')
 		data->map->map[(int)data->pl->posX][(int)data->pl->posY] = '0';
-	// update_fps(data);
 
-	draw_sprites(data, 2, 2);
-	// draw_door(data, 5, 5);
-	// draw_door(data, 2, 2);
+	// draw_sprites(data, 2, 2);
 }
