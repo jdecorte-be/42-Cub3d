@@ -45,7 +45,7 @@ int	inmap(char c)
 
 int	ismap(char c)
 {
-	if (c == '\n' || c == 32 || c == '1' || isspawn(c) || inmap(c))
+	if (c == '1' || isspawn(c) || inmap(c))
 		return (1);
 	return (0);
 }
@@ -339,7 +339,7 @@ int	check(t_map *map, size_t *map_len)
 		x = 0;
 		while (map->map[y][x])
 		{
-			if ((ismap(map->map[y][x] && inmap(map->map[y][x]) && !(x && ismap(map->map[y][x - 1]) && map->map[y][x + 1] && ismap(map->map[y][x + 1]) && y && map_len[y - 1] >= x + 1 && ismap(map->map[y - 1][x - 1]) && ismap(map->map[y - 1][x]) && ismap(map->map[y - 1][x + 1]) && map->map[y + 1] && map_len[y + 1] >= x && ismap(map->map[y + 1][x - 1]) && ismap(map->map[y + 1][x]) && ismap(map->map[y + 1][x + 1])))))
+			if (inmap(map->map[y][x]) && !(x && ismap(map->map[y][x - 1]) && map->map[y][x + 1] && ismap(map->map[y][x + 1]) && y && map_len[y - 1] >= x + 1 && ismap(map->map[y - 1][x - 1]) && ismap(map->map[y - 1][x]) && ismap(map->map[y - 1][x + 1]) && map->map[y + 1] && map_len[y + 1] >= x && ismap(map->map[y + 1][x - 1]) && ismap(map->map[y + 1][x]) && ismap(map->map[y + 1][x + 1])))
 			{
 				// printf("%zu %zu\n", x, y);
 				// printf("error\n");
