@@ -365,7 +365,7 @@ int	check(t_map *map, size_t *map_len)
 				item->type = map->map[y][x];
 				item->px = x;
 				item->py = y;
-				dlstadd_back(&map->spawn, dlstnew(&item));
+				dlstadd_back(&map->spawn, dlstnew(item));
 			}
 			if (isitem(map->map[y][x]))
 			{
@@ -376,7 +376,7 @@ int	check(t_map *map, size_t *map_len)
 				item->type = map->map[y][x];
 				item->px = x;
 				item->py = y;
-				ft_lstadd_back(&map->item, ft_lstnew(&item));
+				ft_lstadd_back(&map->item, ft_lstnew(item));
 				
 			}
 			x++;
