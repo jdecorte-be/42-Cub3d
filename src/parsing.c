@@ -38,7 +38,7 @@ int	isdoor(char c)
 
 int	isitem(char c)
 {
-	if (c == 2) //|| c == 3 ...)
+	if (c == '2') //|| c == 3 ...)
 		return (1);
 	return (0);
 }
@@ -340,9 +340,10 @@ int	take_map(t_file *file, t_map *map, char **tab)
 
 int	check(t_map *map, size_t *map_len)
 {
-	size_t	x;
-	size_t	y;
+	int	x;
+	int	y;
 	t_item	item;
+	map->item = NULL;
 
 	y = 0;
 	while (map->map[y])
@@ -365,10 +366,12 @@ int	check(t_map *map, size_t *map_len)
 			}
 			if (isitem(map->map[y][x]))
 			{
+				// printf("spawn\n");
 				item.type = map->map[y][x];
 				item.px = x;
 				item.py = y;
 				ft_lstadd_back(&map->item, ft_lstnew(&item));
+				
 			}
 			x++;
 		}

@@ -140,7 +140,7 @@ typedef struct l_data
 	void *mlx;
 	void *mlx_win;
 	int n_sprites;
-
+	int n_ennemy;
 
 	t_sprite *sp;
 	t_time	*t;
@@ -155,6 +155,7 @@ void draw_door(t_data *data, int x, int y);
 void    update_fps(t_data *data);
 void		set_plane(t_data *ptr, char flag);
 void    init_data(t_data *data);
+void put_spirtes(t_data *data);
 void			run_draw(t_data *data);
 int    key_handler(int key, t_data *data);
 void			init_texture(t_data *ptr, int flag, char *path);
@@ -168,7 +169,7 @@ void	put_pxl(t_img *img, int x, int y, int color);
 void    put_spawn(t_data *data);
 int    key_exit(int key, t_data *data);
 void	minimap(t_data *data);
-int    count_sprites(char **map);
+void    count_sprites(t_data *data);
 void draw_sprites(t_data *data, int x, int y);
 void draw_door(t_data *data, int x, int y);
 void			put_sprite(t_data *data, int y);
@@ -178,7 +179,7 @@ void	ft_error(void *arg, int e);
 char	*ft_free_join(char const *s1, char const *s2, int e);
 int		ft_atoi_positive(const char *str);
 
-
+void put_hud(t_data *data);
 t_dlist	*dlstnew(void *content);
 void	dlstadd_back(t_dlist **lst, t_dlist *new);
 void	dlst_free(t_dlist **lst);

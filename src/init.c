@@ -28,7 +28,7 @@ void			init_texture(t_data *ptr, int flag, char *path)
 {
 	if (!(ptr->img[flag]->p_img = mlx_xpm_file_to_image(ptr->mlx,
 	path, &ptr->img[flag]->width, &ptr->img[flag]->height)))
-		return ;
+		exit(1);
 	ptr->img[flag]->p_img = mlx_get_data_addr(ptr->img[flag]->p_img,
 	&ptr->img[flag]->bt, &ptr->img[flag]->s_line, &ptr->img[flag]->endian);
 }
@@ -47,9 +47,9 @@ void    init_data(t_data *data)
 	data->t->oldtime = 0;
 
     int i = 0;
-    if (!(data->img = malloc(sizeof(t_img *) * 7)))
+    if (!(data->img = malloc(sizeof(t_img *) * 8)))
         return ;
-	while (i <= 6)
+	while (i <= 7)
 	{
 		if (!(data->img[i] = malloc(sizeof(t_img))))
 			return ;

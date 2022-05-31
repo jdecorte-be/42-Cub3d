@@ -14,43 +14,54 @@ void			put_sprite(t_data *data, int y)
 	data->img[0]->p_img[++i] = data->img[5]->p_img[++j];
 }
 
-int    count_sprites(char **map)
-{
-    int count = 0;
-    int i = 0;
-    int j;
-
+// void    count_sprites(t_data *data)
+// {
+//     int countS = 0;
+//     int countE = 0;
+//     int i = 0;
+//     int j;
+//     t_coord *tmp;
     
-    while(map[i])
-    {
-        while(map[i][j])
-        {
-            if(map[i][j] == '2')
-                count++;
-            j++;
-        }
-        i++;
-    }
-    return count;
-}
+//     while(data->map->map[i])
+//     {
+//         printf("%s\n ", data->map->map[i]);
+//         while(data->map->map[i][j])
+//         {
+//             if(data->map->map[i][j] == '2')
+//             {
+//                 printf("HERE1\n");
+//                 tmp = new_coord(i, j);
+//                 coordadd_back(&data->potion, tmp);
+//                 countS++;
+//             }
+//             if(data->map->map[i][j] == 'E')
+//                 countE++;
+//             j++;
+//         }
+//         i++;
+//     }
+//     data->n_sprites = countS;
+//     data->n_ennemy = countE;
+// }
 
-void init_sprites(t_data *data)
+void put_spirtes(t_data *data)
 {
-    int i = 0;
-    while(i < data->n_sprites)
-    {
+    // t_list *tmp = data->map->item;
+    // t_item *content;
+    // while(tmp)
+    // {
+        // content = ((t_item *)data->map->item->content);
 
-        i++;
-    }
+        printf("--->%d %d ->\n", ((t_item *)data->map->item->content)->px, ((t_item *)data->map->item->content)->py);
+        // draw_sprites(data, content->px, content->py);
+        // tmp = tmp->next;
+    // }
 }
 
 void draw_sprites(t_data *data, int x, int y)
 {
-
-	// int dist;
+    // int dist;
     // dist = pow(x - data->pl->posX, 2) + pow(y - data->pl->posY, 2);
-
-    init_sprites(data);
 
     double invDet = 1.0 / (data->pl->plX * data->pl->dirY - data->pl->dirX * data->pl->plY);
 

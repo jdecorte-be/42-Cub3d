@@ -114,15 +114,12 @@ void    raycaster(t_data *data)
 	{
 		calc_dda(data);
 		run_draw(data);
-		// trace_line(100, 100, (data->dda->map_x * 10) + 100, (data->dda->map_y * 10) + 100, data->img[0], 0xDC143C);
-
 		data->sp->buffer[data->dda->screenx] = data->dda->walldist;
 		data->dda->screenx++;
 	}
-
+	put_spirtes(data);
 
 	if(data->map->map[(int)data->pl->posX][(int)data->pl->posY] == '2')
 		data->map->map[(int)data->pl->posX][(int)data->pl->posY] = '0';
 
-	// draw_sprites(data, 2, 2);
 }
