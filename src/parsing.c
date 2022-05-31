@@ -357,7 +357,7 @@ int	check(t_map *map, size_t *map_len)
 				// printf("error\n");
 				return (1);
 			}
-			if (isspawn(map->map[y][x]))
+			if (isspawn(map->map[y][x]) || isitem(map->map[y][x]))
 			{
 				item = malloc(sizeof(t_item));
 				if (!item)
@@ -365,19 +365,10 @@ int	check(t_map *map, size_t *map_len)
 				item->type = map->map[y][x];
 				item->px = x;
 				item->py = y;
-				dlstadd_back(&map->spawn, dlstnew(item));
-			}
-			if (isitem(map->map[y][x]))
-			{
-				// printf("spawn\n");
-				item = malloc(sizeof(t_item));
-				if (!item)
-					return (1);
-				item->type = map->map[y][x];
-				item->px = x;
-				item->py = y;
-				ft_lstadd_back(&map->item, ft_lstnew(item));
-				
+				if (isspawn(map->map[y][x]))
+					dlstadd_back(&map->spawn, dlstnew(item));
+				else
+					ft_lstadd_back(&map->item, ft_lstnew(item));
 			}
 			x++;
 		}
