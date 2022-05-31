@@ -597,6 +597,7 @@ int	convert_file(t_data *data, t_map *map, t_file *file)
 	init_texture(data, 2, file->SO);
 	init_texture(data, 3, file->EA);
 	init_texture(data, 4, file->WE);
+	init_texture(data, 5, "./res/potion.xpm");
 	init_texture(data, 6, "./res/door1.xpm");
 
 

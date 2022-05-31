@@ -40,8 +40,6 @@ void    update_param(t_data *data)
 
 int    launch_game(t_data *data)
 {
-    printf("--->%d %d \n", ((t_item *)data->map->item->content)->px, ((t_item *)data->map->item->content)->py);
-    exit(0);
     void *img = mlx_new_image(data->mlx, screenWidth, screenHeight);
     data->img[0]->p_img = mlx_get_data_addr(img, &data->img[0]->bt,
         &data->img[0]->s_line, &data->img[0]->endian);
@@ -86,7 +84,7 @@ int main(int ac, char **av)
     mlx_hook(data->mlx_win, 2, 0, key_handler, data);
     mlx_hook(data->mlx_win, 3, 0, key_exit, data);
     mlx_hook(data->mlx_win, 17, 0, free_exit, data);
-    printf("--->%d %d \n", ((t_item *)data->map->item->content)->px, ((t_item *)data->map->item->content)->py);
+
 	mlx_loop_hook(data->mlx, launch_game, data);
 	mlx_loop(data->mlx);
 }

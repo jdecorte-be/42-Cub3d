@@ -107,6 +107,23 @@ void			calc_dda(t_data *ptr)
 	check_dist(ptr);
 }
 
+void destroy_item(t_data *data, int x, int y)
+{
+	t_list *tmp = data->map->item;
+    t_item *content;
+
+    while(tmp)
+    {
+        content = (t_item *)tmp->content;
+		if((content)->px == x && (content)->py == y)
+		{
+			(content) = NULL;
+		}
+        draw_sprites(data, ((double)(content)->px) + 0.5, (double)(content)->py + 0.5);
+        tmp = tmp->next;
+    }
+}
+
 void    raycaster(t_data *data)
 {
 	data->dda->screenx = 0;
@@ -117,9 +134,10 @@ void    raycaster(t_data *data)
 		data->sp->buffer[data->dda->screenx] = data->dda->walldist;
 		data->dda->screenx++;
 	}
-	put_spirtes(data);
-
+	// draw_sprites(data, data->pl->posX + 1, data->pl->posX + 1);
 	if(data->map->map[(int)data->pl->posX][(int)data->pl->posY] == '2')
 		data->map->map[(int)data->pl->posX][(int)data->pl->posY] = '0';
+	put_spirtes(data);
+
 
 }

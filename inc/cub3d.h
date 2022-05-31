@@ -170,7 +170,7 @@ void    put_spawn(t_data *data);
 int    key_exit(int key, t_data *data);
 void	minimap(t_data *data);
 void    count_sprites(t_data *data);
-void draw_sprites(t_data *data, int x, int y);
+void draw_sprites(t_data *data, double x, double y);
 void draw_door(t_data *data, int x, int y);
 void			put_sprite(t_data *data, int y);
 
