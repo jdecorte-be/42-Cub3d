@@ -53,6 +53,18 @@ int    key_handler(int key, t_data *data)
         data->pl->rot = 0.1;
     if(key == 124)
         data->pl->rot = -0.1;
+    if (key == 126)
+    {
+        data->map->spawn = data->map->spawn->next;
+        set_spawn(data);
+        set_plane(data, data->map->dirSpawn);
+    }
+    if (key == 125)
+    {
+        data->map->spawn = data->map->spawn->prev;
+        set_spawn(data);
+        set_plane(data, data->map->dirSpawn);
+    }
     return 0;
 }
 

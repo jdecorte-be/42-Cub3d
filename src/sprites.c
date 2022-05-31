@@ -52,7 +52,7 @@ void put_spirtes(t_data *data)
     // {
         // content = ((t_item *)data->map->item->content);
 
-        printf("--->%d %d ->\n", ((t_item *)data->map->item->content)->px, ((t_item *)data->map->item->content)->py);
+        // printf("--->%d %d ->\n", ((t_item *)data->map->item->content)->px, ((t_item *)data->map->item->content)->py);
         // draw_sprites(data, content->px, content->py);
         // tmp = tmp->next;
     // }
