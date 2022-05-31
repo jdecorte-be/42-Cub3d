@@ -188,5 +188,6 @@ char	**split1(char const *s, char c);
 int		free_tab(char **tab, int ret);
 
 void    set_spawn(t_data *data);
+void	pl_init(t_data *data);
 
 #endif // !CUB3D_H

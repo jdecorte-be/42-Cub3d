@@ -60,3 +60,15 @@ void    init_data(t_data *data)
 
     data->pl->totalrots = 0;
 }
+
+void	pl_init(t_data *data)
+{
+	data->pl->deX = 0;
+	data->pl->deY = 0;
+	data->pl->dirX = 0;
+	data->pl->dirY = 0;
+	data->pl->plX = 0;
+	data->pl->plY = 0;
+	data->pl->rot = 0;
+	data->pl->totalrots = 0;
+}

@@ -21,6 +21,29 @@ int    key_exit(int key, t_data *data)
     return 0;
 }
 
+void    set_dir(t_data *ptr, char flag)
+{
+	if (flag == 'W')
+	{
+        ptr->pl->dirX = 1;
+		ptr->pl->dirY = -1;
+	}
+	else if (flag == 'E')
+	{
+        ptr->pl->dirX = 1;
+		ptr->pl->dirY = 1;
+	}
+	else if (flag == 'N')
+	{
+        ptr->pl->dirY = 1;
+		ptr->pl->dirX = -1;
+	}
+	else if (flag == 'S')
+	{
+        ptr->pl->dirY = 1;
+		ptr->pl->dirX = 1;
+	}
+}
 
 int    key_handler(int key, t_data *data)
 {
@@ -55,12 +78,14 @@ int    key_handler(int key, t_data *data)
         data->pl->rot = -0.1;
     if (key == 126)
     {
+        pl_init(data);
         data->map->spawn = data->map->spawn->next;
         set_spawn(data);
         set_plane(data, data->map->dirSpawn);
     }
     if (key == 125)
     {
+        pl_init(data);
         data->map->spawn = data->map->spawn->prev;
         set_spawn(data);
         set_plane(data, data->map->dirSpawn);
