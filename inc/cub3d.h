@@ -150,7 +150,7 @@ typedef struct l_data
 	t_dda *dda;
 }   t_data;
 
-
+void draw_verttext(t_data *data, int x, int y, t_img *text);
 void draw_door(t_data *data, int x, int y);
 void    update_fps(t_data *data);
 void		set_plane(t_data *ptr, char flag);
@@ -186,5 +186,8 @@ void	dlst_free(t_dlist **lst);
 void    find_spawn(char **map, t_data *data);
 char	**split1(char const *s, char c);
 int		free_tab(char **tab, int ret);
+
+void    set_spawn(t_data *data);
+void	pl_init(t_data *data);
 
 #endif // !CUB3D_H

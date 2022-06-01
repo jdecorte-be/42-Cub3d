@@ -22,12 +22,13 @@ void put_spirtes(t_data *data)
     while(tmp)
     {
         content = (t_item *)tmp->content;
-        if(content->px == data->dda->map_x && content->py == data->dda->map_y)
+        if(content->px == (int)data->pl->posX && content->py == (int)data->pl->posY)
         {
-            printf("HERE");
-            content = NULL;
+            content->px = -1;
+            content->py = -1;
         }
-        draw_sprites(data, ((double)(content)->px) + 0.5, (double)(content)->py + 0.5);
+        if(!(content->px == -1 && content->py == -1))
+            draw_sprites(data, ((double)(content)->px) + 0.5, (double)(content)->py + 0.5);
         tmp = tmp->next;
     }
 }
