@@ -72,29 +72,26 @@ int    mousing(int x, int y, t_data *data)
     double      oldDirX;
     int         dx;
 
-    void *img = mlx_new_image(data->mlx, screenWidth, screenHeight);
-    data->img[0]->p_img = mlx_get_data_addr(img, &data->img[0]->bt,
-        &data->img[0]->s_line, &data->img[0]->endian);
-    mlx_hook(data->mlx_win, 2, 0, key_handler, data);
+    // void *img = mlx_new_image(data->mlx, screenWidth, screenHeight);
+    // data->img[0]->p_img = mlx_get_data_addr(img, &data->img[0]->bt,
+    //     &data->img[0]->s_line, &data->img[0]->endian);
+    // mlx_hook(data->mlx_win, 2, 0, key_handler, data);
 
-    if (mx == -1)
-        mx = x;
-    dx = x - mx;
+    // if (mx == -1)
+        // mx = x;
+    dx = x - screenWidth / 2;
     if (dx > 0)
     {
         // while (dx--)
-            update_param(data, -ROTX);
+            update_param(data, dx * (-ROTX));
     }
     else if (dx < 0)
     {
         // while (dx++)
-            update_param(data, ROTX);
+            update_param(data, -dx * ROTX);
     }
-    raycaster(data);
-    minimap(data);
-    mlx_put_image_to_window(data->mlx, data->mlx_win, img, 0, 0);
-    put_hud(data);
-    mx = x;
+    mlx_mouse_move(data->mlx_win, screenWidth / 2, screenHeight / 2);
+    // mx = x;
     return (0);
 }
 
@@ -127,6 +124,7 @@ int main(int ac, char **av)
     // data->map->map = parse_map(data, open(av[1], O_RDONLY));
     // data->map->minimap = data->map->map;
 
+    mlx_mouse_hide();
     mlx_do_key_autorepeaton(data->mlx);
     mlx_hook(data->mlx_win, 2, 0, key_handler, data);
     mlx_hook(data->mlx_win, 3, 0, key_exit, data);
