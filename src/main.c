@@ -1,4 +1,5 @@
 #include "../inc/cub3d.h"
+int    mousing(t_data *data);
 
 void	ft_error(void *arg, int e)
 {
@@ -45,6 +46,7 @@ int    launch_game(t_data *data)
         &data->img[0]->s_line, &data->img[0]->endian);
     mlx_hook(data->mlx_win, 2, 0, key_handler, data);
 
+    mousing(data);
     update_param(data, data->pl->rot);
     raycaster(data);
     minimap(data);
@@ -64,10 +66,12 @@ int free_exit(t_data *data)
 //     data->pl->dirY = oldDirX * sin(data->pl->rot) + data->pl->dirY * cos(data->pl->rot);
 
 #define CPL_ROT 2 * M_PI
-#define ROTX CPL_ROT / 90
+#define ROTX CPL_ROT / 77
 
-int    mousing(int x, int y, t_data *data)
+int    mousing(t_data *data)
 {
+    int x;
+    int y;
     static int  mx =- 1;
     double      oldDirX;
     int         dx;
@@ -77,18 +81,19 @@ int    mousing(int x, int y, t_data *data)
     //     &data->img[0]->s_line, &data->img[0]->endian);
     // mlx_hook(data->mlx_win, 2, 0, key_handler, data);
 
-    // if (mx == -1)
-        // mx = x;
+    if (mx == -1)
+        mx = x;
+    mlx_mouse_get_pos(data->mlx_win, &x, &y);
     dx = x - screenWidth / 2;
     if (dx > 0)
     {
         // while (dx--)
-            update_param(data, dx * (-ROTX));
+            update_param(data, (-ROTX));
     }
     else if (dx < 0)
     {
         // while (dx++)
-            update_param(data, -dx * ROTX);
+            update_param(data, ROTX);
     }
     mlx_mouse_move(data->mlx_win, screenWidth / 2, screenHeight / 2);
     // mx = x;
@@ -115,7 +120,9 @@ int main(int ac, char **av)
     init_data(data);
     map_init(&map);
 	if (parsing(data, &map, av))
+    {
         exit (0);
+    }
     data->map = &map;
     // find_spawn(data->map->map, data);
     set_spawn(data);
@@ -128,8 +135,9 @@ int main(int ac, char **av)
     mlx_do_key_autorepeaton(data->mlx);
     mlx_hook(data->mlx_win, 2, 0, key_handler, data);
     mlx_hook(data->mlx_win, 3, 0, key_exit, data);
-    mlx_hook(data->mlx_win, 6, 0, mousing, data);
+    // mlx_hook(data->mlx_win, 6, 0, mouing, data);
     mlx_hook(data->mlx_win, 17, 0, free_exit, data);
 	mlx_loop_hook(data->mlx, launch_game, data);
+    // mlx_loop_hook(data->mlx, mousing, data);
 	mlx_loop(data->mlx);
 }

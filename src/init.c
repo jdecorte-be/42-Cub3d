@@ -28,7 +28,7 @@ void			init_texture(t_data *ptr, int flag, char *path)
 {
 	if (!(ptr->img[flag]->p_img = mlx_xpm_file_to_image(ptr->mlx,
 	path, &ptr->img[flag]->width, &ptr->img[flag]->height)))
-		exit(1);
+		exit(write_error("Error\nMap load\n"));
 	ptr->img[flag]->p_img = mlx_get_data_addr(ptr->img[flag]->p_img,
 	&ptr->img[flag]->bt, &ptr->img[flag]->s_line, &ptr->img[flag]->endian);
 }

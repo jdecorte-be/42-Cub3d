@@ -22,6 +22,12 @@
 //     }
 // }
 
+int	write_error(char *str)
+{
+	write(2, str, ft_strlen(str));
+	return (1);
+}
+
 int isspawn(char c)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
@@ -147,14 +153,14 @@ int	get_file(int fd, char ***tab)
 	s1 = malloc(10241);
 	str = 0;
 	if (read_file(&s1, fd))
-		return (1);//
+		return (write_error("Error\nRead failed\n"));
 	while (s1 && *s1)
 	{
 		if (are_printable(s1))
 			ft_error(0, 9);
 		str = ft_free_join(str, s1, 1);
 		if (read_file(&s1, fd))
-			return (1);//
+			return (write_error("Error\nRead failed\n"));
 	}
 	*tab = split1(str, '\n');
 	// for(int i=0;(*tab)[i];i++)
@@ -244,7 +250,7 @@ int	map_face(t_file *file, char *str)
 	if (face == 0)
 	{
 		// printf("caca\n");
-		return (1);
+		return (write_error("Error\nBad elem\n"));
 	}
 	else if (face == 7)
 	{
@@ -262,7 +268,7 @@ int	map_face(t_file *file, char *str)
 	while (str[i] && str[i] == 32)
 		i++;
 	if (str[i])
-		return (1);
+		return (write_error("Error\nBad elem\n"));
 	return (0);
 }
 
@@ -313,7 +319,7 @@ int	take_map(t_file *file, t_map *map, char **tab)
 
 	if (!file->map_start)
 	{
-		return (1);
+		return (write_error("Error\nMap error\n"));
 	}
 	ft_tab_len(file, tab);
 	map->map = malloc(sizeof(char *) * (file->tab_len + 1));
@@ -355,7 +361,7 @@ int	check(t_map *map, size_t *map_len)
 			{
 				// printf("%zu %zu\n", x, y);
 				// printf("error\n");
-				return (1);
+				return (write_error("Error\nMap isnt close\n"));
 			}
 			if (isspawn(map->map[y][x]) || isitem(map->map[y][x]))
 			{
@@ -422,9 +428,7 @@ int	check_map(t_map *map)
 		return (1);
 	if (!map->spawn)
 	{
-		write(2, "no spawn\n", 9);
-		// printf("\n");
-		return (1);
+		return (write_error("Error\nNeed spawn\n"));
 	}
 	// printf("c == %d\n", map->spawn_dir.type);
 	// if (v_check(map->tab), map_len)
@@ -456,7 +460,7 @@ int	parse_map(t_map *map, t_file *file, char **argv)
 	
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
-		return (1);
+		return (write_error("Error\nOpen failed\n"));
 	if (get_file(fd, &tab))
 		return (1);
 	close(fd);
@@ -470,13 +474,13 @@ int	parse_map(t_map *map, t_file *file, char **argv)
 		return (1);
 	if (check_map(map))
 		return (1);
-	printf("%s\n", file->NO);
-	printf("%s\n", file->SO);
-	printf("%s\n", file->WE);
-	printf("%s\n", file->EA);
-	printf("%s\n", file->F);
-	printf("%s\n", file->C);
-	printf("%zu\n", file->tab_len);
+	// printf("%s\n", file->NO);
+	// printf("%s\n", file->SO);
+	// printf("%s\n", file->WE);
+	// printf("%s\n", file->EA);
+	// printf("%s\n", file->F);
+	// printf("%s\n", file->C);
+	// printf("%zu\n", file->tab_len);
 	return (0);
 	
 }
@@ -520,7 +524,7 @@ int	ext_cub(char *str)
 		i--;
 	// peut etre retire le !i en bas on sait pas pour le cas du fichier ".cub" si on l accept ou pas
 	if (!i || ft_strncmp(".cub", &str[i], 4))
-		return (1);
+		return (write_error("Error\nBad extension\n"));
 	return (0);
 }
 
@@ -603,8 +607,7 @@ int	convert_file(t_data *data, t_map *map, t_file *file)
 
 	if (conv_color(&map->F, file->F) || conv_color(&map->C, file->C))
 	{
-		write(2, "color error\n", 12);
-		return (1);
+		return (write_error("Error\nColor error\n"));
 	}
 	// printf("caca\n");
 	// if (take_item())
@@ -619,14 +622,10 @@ int	parsing(t_data *data, t_map *map, char **argv)
 
 	// map_init(map);
 	if (ext_cub(argv[1]))
-	{
-		write(2, "Error\nextantion\n", 16);
 		return (1);
-	}
 	file_init(&file);
 	if (parse_map(map, &file, argv))
 	{
-		write(2, "map error\n", 10);
 		return (1);
 	}
 	if (convert_file(data, map, &file))
