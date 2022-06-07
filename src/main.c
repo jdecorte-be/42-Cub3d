@@ -66,7 +66,7 @@ int free_exit(t_data *data)
 //     data->pl->dirY = oldDirX * sin(data->pl->rot) + data->pl->dirY * cos(data->pl->rot);
 
 #define CPL_ROT 2 * M_PI
-#define ROTX CPL_ROT / 77
+#define ROTX CPL_ROT / 1440
 
 int    mousing(t_data *data)
 {
@@ -88,12 +88,12 @@ int    mousing(t_data *data)
     if (dx > 0)
     {
         // while (dx--)
-            update_param(data, (-ROTX));
+            update_param(data, dx * (-ROTX));
     }
     else if (dx < 0)
     {
         // while (dx++)
-            update_param(data, ROTX);
+            update_param(data, -dx * ROTX);
     }
     mlx_mouse_move(data->mlx_win, screenWidth / 2, screenHeight / 2);
     // mx = x;
