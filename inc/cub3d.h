@@ -167,19 +167,19 @@ int mouse_hook(int key, t_data *data);
 void	trace_line(float x0, float y0, float x1, float y1, t_img *img, int color);
 void	put_pxl(t_img *img, int x, int y, int color);
 void    put_spawn(t_data *data);
-int    key_exit(int key, t_data *data);
+int		key_exit(int key, t_data *data);
 void	minimap(t_data *data);
 void    count_sprites(t_data *data);
-void draw_sprites(t_data *data, double x, double y);
-void draw_door(t_data *data, int x, int y);
-void			put_sprite(t_data *data, int y);
+void 	draw_sprites(t_data *data, double x, double y);
+void	draw_door(t_data *data, int x, int y);
+void	put_sprite(t_data *data, int y);
 
 int		parsing(t_data *data, t_map *map, char **argv);
 void	ft_error(void *arg, int e);
 char	*ft_free_join(char const *s1, char const *s2, int e);
 int		ft_atoi_positive(const char *str);
 
-void put_hud(t_data *data);
+void 	put_hud(t_data *data);
 t_dlist	*dlstnew(void *content);
 void	dlstadd_back(t_dlist **lst, t_dlist *new);
 void	dlst_free(t_dlist **lst);
@@ -189,5 +189,27 @@ int		free_tab(char **tab, int ret);
 
 void    set_spawn(t_data *data);
 void	pl_init(t_data *data);
+void	struct_init(t_file *file, t_map *map);
+
+
+int		write_error(char *str);
+int		isspawn(char c);
+int		isdoor(char c);
+int		isitem(char c);
+int		inmap(char c);
+int		ismap(char c);
+
+int		write_error(char *str);
+int		are_printable(char *str);
+int		are_space(char *str);
+int		ft_free(void *a1, void *a2, void *a3, void *a4);
+void	ft_tab_len(t_file *file, char **tab);
+
+int		get_file(int fd, char ***tab);
+int		map_elem(t_file *file, char **tab);
+int		take_map(t_file *file, t_map *map, char **tab);
+int		check_map(t_map *map);
+int		conv_color(int *color, char *str);
+
 
 #endif // !CUB3D_H

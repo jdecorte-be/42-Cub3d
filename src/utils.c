@@ -107,3 +107,23 @@ int	free_tab(char **tab, int ret)
 	free(tab);
 	return (ret);		
 }
+
+void	struct_init(t_file *file, t_map *map)
+{
+	file->map_start = 0;
+	file->tab_len = 0;
+	file->NO = 0;
+	file->SO = 0;
+	file->WE = 0;
+	file->EA = 0;
+	file->F = 0;
+	file->C = 0;
+	file->f1 = 0;
+	file->f2 = 0;
+	file->f3 = 0;
+	file->f4 = 0;
+	file->f5 = 0;
+	file->f6 = 0;
+	map->spawn = 0;
+	map->item = 0;
+}
