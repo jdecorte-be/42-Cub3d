@@ -6,7 +6,7 @@ void			is_side_door(t_data *ptr)
 	if (!ptr->dda->side)
 	{
 		if (ptr->dda->raydir_x < 0)
-			ptr->dda->side = 6;
+			ptr->dda->side = 5;
 		else if (ptr->dda->raydir_x > 0)
 			ptr->dda->side = 2;
 	}

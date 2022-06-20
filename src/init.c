@@ -43,13 +43,10 @@ void    init_data(t_data *data)
     data->map = malloc(sizeof(t_map));
     data->t = malloc(sizeof(t_time));
 
-	data->t->time = 0;
-	data->t->oldtime = 0;
-
     int i = 0;
-    if (!(data->img = malloc(sizeof(t_img *) * 8)))
+    if (!(data->img = malloc(sizeof(t_img *) * 13)))
         return ;
-	while (i <= 7)
+	while (i <= 12)
 	{
 		if (!(data->img[i] = malloc(sizeof(t_img))))
 			return ;
