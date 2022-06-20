@@ -601,8 +601,17 @@ int	convert_file(t_data *data, t_map *map, t_file *file)
 	init_texture(data, 2, file->SO);
 	init_texture(data, 3, file->EA);
 	init_texture(data, 4, file->WE);
-	init_texture(data, 5, "./res/potion.xpm");
-	init_texture(data, 6, "./res/door1.xpm");
+	init_texture(data, 5, "./res/door1.xpm");
+	init_texture(data, 6, "./res/frame_0.xpm");
+	init_texture(data, 7, "./res/frame_1.xpm");
+	init_texture(data, 8, "./res/frame_2.xpm");
+	init_texture(data, 9, "./res/frame_3.xpm");
+	init_texture(data, 10, "./res/frame_4.xpm");
+	init_texture(data, 11, "./res/frame_5.xpm");
+	init_texture(data, 12, "./res/frame_6.xpm");
+
+
+
 
 
 	if (conv_color(&map->F, file->F) || conv_color(&map->C, file->C))

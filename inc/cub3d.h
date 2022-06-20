@@ -2,6 +2,7 @@
 # define CUB3D_H
 
 # include <math.h>
+# include <time.h>
 # include "../minilibx_macos/mlx.h"
 # include "../libft/libft.h"
 # include <unistd.h>
@@ -59,10 +60,8 @@ typedef struct l_sprite
 
 typedef struct l_time
 {
-	double time;
-	double oldtime;
-	double ms;
-	double rotspeed;
+	clock_t start;
+	int n_frame;
 }	t_time;
 
 typedef struct l_player
