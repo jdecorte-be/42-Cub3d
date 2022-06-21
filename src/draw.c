@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:42:00 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 09:42:01 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 15:15:17 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	draw_verttext(t_data *data, int x, int y, t_img *text)
 
 	i = x * data->img[0]->bt / 8 + data->img[0]->s_line * y;
 	j = data->dda->textx * (text->bt / 8) + data->dda->texty * text->s_line;
-
 	data->img[0]->p_img[i] = text->p_img[j];
 	data->img[0]->p_img[++i] = text->p_img[++j];
 	data->img[0]->p_img[++i] = text->p_img[++j];

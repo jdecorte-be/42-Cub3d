@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:15:07 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/20 22:15:22 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 13:05:52 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,5 @@ void	raycaster(t_data *data)
 		data->sp->buffer[data->dda->screenx] = data->dda->walldist;
 		data->dda->screenx++;
 	}
-	if (data->map->map[(int)data->pl->posX][(int)data->pl->posY] == '2')
-		data->map->map[(int)data->pl->posX][(int)data->pl->posY] = '0';
 	put_spirtes(data);
 }

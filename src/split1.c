@@ -25,6 +25,26 @@ static int	ft_count_words(const char *str, char c)
 	return (count);
 }
 
+void	init(int *i, int *count, int *start, int *trig)
+{
+	*i = 0;
+	*count = 0;
+	*start = 0;
+	*trig = 0;
+}
+
+static void	creat2(const char *s, char c, int *i, int *trig)
+{
+	if (s[*i] == c)
+		(*i)++;
+	else if (s[*i] && s[*i] != c)
+	{
+		while (s[*i] && s[*i] != c)
+			(*i)++;
+		*trig = 0;
+	}
+}
+
 static char	**ft_to_create_tab(char **tab, const char *s, char c)
 {
 	int		count;
@@ -32,24 +52,14 @@ static char	**ft_to_create_tab(char **tab, const char *s, char c)
 	int		start;
 	int		trig;
 
-	i = 0;
-	count = 0;
-	start = 0;
-	trig = 0;
+	init(&count, &i, &start, &trig);
 	while (s[i])
 	{
 		if (s[i] == c && trig == 0 && ++trig)
 			start = ++i;
 		else if (s[i] && (trig || s[i] != c))
 		{
-			if (s[i] == c)
-				i++;
-			else if (s[i] && s[i] != c)
-			{
-				while (s[i] && s[i] != c)
-					i++;
-				trig = 0;
-			}
+			creat2(s, c, &i, &trig);
 			tab[count] = ft_substr(s, start, i - start);
 			if (!tab[count++])
 			{

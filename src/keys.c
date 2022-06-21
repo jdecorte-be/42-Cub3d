@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:28:39 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/20 22:34:47 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 15:23:23 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,4 +120,3 @@ int	key_handler(int key, t_data *data)
 	spawn_changer(key, data);
 	return (0);
 }
-

@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:31:39 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 10:53:46 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 15:35:17 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,16 @@ void	put_spirtes(t_data *data)
 	while (tmp)
 	{
 		content = (t_item *)tmp->content;
-		if (content->px == (int)data->pl->posX && \
-			content->py == (int)data->pl->posY)
+		if (content->py == (int)data->pl->posX && \
+			content->px == (int)data->pl->posY)
 		{
+			data->n_taken++;
 			content->px = -1;
 			content->py = -1;
 		}
 		if (!(content->px == -1 && content->py == -1))
-			draw_sprites(data, ((double)(content)->px) + \
-				0.5, (double)(content)->py + 0.5);
+			draw_sprites(data, ((double)(content)->py) + \
+				0.5, (double)(content)->px + 0.5);
 		tmp = tmp->next;
 	}
 }
@@ -102,7 +103,6 @@ void	calc(t_data *data, double x, double y)
 	data->sp->stripe = data->sp->drawStartX;
 }
 
-
 void	draw_sprites(t_data *data, double x, double y)
 {
 	int		d;
@@ -131,4 +131,3 @@ void	draw_sprites(t_data *data, double x, double y)
 		}
 	}
 }
-

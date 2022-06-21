@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:08:14 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 10:28:53 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 15:27:15 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ void	trace_line_wall(float x0, float y0, float x1, float y1,t_img *img, int colo
 		y0 += y_step;
 	}
 }
-
 
 void	draw_wall(t_data *data, double x, double y, int color)
 {

@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:34:59 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 10:28:50 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 15:22:56 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,31 @@ void	map_init(t_map *map, t_data *data)
 	data->map = map;
 	data->t->tmp = 1;
 	data->pl->totalrots = 0;
+	data->n_taken = 0;
+}
+
+void	put_text(t_data *data)
+{
+	char	*str;
+	char	*str2;
+	char	*n;
+	char	*n2;
+
+	n = ft_itoa(data->n_taken);
+	n2 = ft_itoa(data->n_sprites);
+	str = ft_strjoin(n, " / ");
+	str2 = ft_strjoin(str, n2);
+	if (data->n_taken != data->n_sprites)
+		mlx_string_put(data->mlx, data->mlx_win, 800, 650, 0xffffff, str2);
+	else
+		mlx_string_put(data->mlx, data->mlx_win, 700, 650, 0xffffff, \
+			"Good Job You Have Finished!");
 }
 
 int	launch_game(t_data *data)
 {
 	void	*img;
+	char	*str;
 
 	img = mlx_new_image(data->mlx, screenWidth, screenHeight);
 	data->img[0]->p_img = mlx_get_data_addr(img, &data->img[0]->bt, \
@@ -37,6 +57,7 @@ int	launch_game(t_data *data)
 	draw_bg(data);
 	minimap(data);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, img, 0, 0);
+	put_text(data);
 	return (0);
 }
 
@@ -57,9 +78,11 @@ int	main(int ac, char **av)
 	if (!data)
 		return (0);
 	init_data(data);
+	mlx_mouse_move(data->mlx_win, screenWidth / 2, screenHeight / 2);
 	map_init(&map, data);
 	if (parsing(data, &map, av))
 		exit (0);
+	data->n_sprites = ft_lstsize(data->map->item);
 	set_spawn(data);
 	set_plane(data, data->map->dirSpawn);
 	mlx_mouse_hide();

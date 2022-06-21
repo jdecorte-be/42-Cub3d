@@ -7,6 +7,7 @@ CFLAGS = -I minilibx -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
 RM = rm -rf
 
 SRCS = 	src/*.c\
+		src/parsing/*.c\
         libft/libft.a\
 
 SRCS_BONUS = src_bonus/*.c\

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/21 14:40:11 by jdecorte42        #+#    #+#             */
+/*   Updated: 2022/06/21 15:05:54 by jdecorte42       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d.h"
 
 int	add_item(t_map *map, int x, int y)
@@ -13,7 +25,7 @@ int	add_item(t_map *map, int x, int y)
 	item->py = y;
 	if (isspawn(map->map[y][x]))
 		dlstadd_back(&map->spawn, dlstnew(item));
-	else
+	else if (isitem(map->map[y][x]))
 		ft_lstadd_back(&map->item, ft_lstnew(item));
 	return (0);
 }
@@ -47,7 +59,7 @@ int	check(t_map *map, size_t *map_len)
 	return (0);
 }
 
-void	cpl_map_len(char **map, size_t	**map_len)
+int	cpl_map_len(char **map, size_t	**map_len)
 {
 	size_t	x;
 	size_t	y;
@@ -57,10 +69,15 @@ void	cpl_map_len(char **map, size_t	**map_len)
 	{
 		x = 0;
 		while (map[y][x])
+		{
+			if (!(ismap(map[y][x]) || map[y][x] == 32 || map[y][x] == '\n'))
+				return (write_error("Error\nMap elem error\n"));
 			x++;
+		}
 		(*map_len)[y] = x;
 		y++;
 	}
+	return (0);
 }
 
 int	check_map(t_map *map)
@@ -70,7 +87,8 @@ int	check_map(t_map *map)
 	map_len = malloc(sizeof(size_t) * map->map_len);
 	if (!map_len)
 		return (write_error("Error\nNeed map\n"));
-	cpl_map_len(map->map, &map_len);
+	if (cpl_map_len(map->map, &map_len))
+		return (1);
 	if (check(map, map_len))
 		return (1);
 	if (!map->spawn)

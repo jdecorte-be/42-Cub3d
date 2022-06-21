@@ -151,9 +151,8 @@ typedef struct l_data
 {
 	void *mlx;
 	void *mlx_win;
+	int n_taken;
 	int n_sprites;
-	int n_ennemy;
-
 	t_sprite *sp;
 	t_time	*t;
 	t_img	**img;

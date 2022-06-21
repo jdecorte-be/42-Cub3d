@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:44:43 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 09:39:49 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 15:13:26 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static void	free_join(void *s1, void *s2, int e)
 	else if (e == 2 || e == 3)
 		free(s2);
 }
-
 
 char	*ft_free_join(char const *s1, char const *s2, int e)
 {

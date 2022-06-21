@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_utils2.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/21 15:26:49 by jdecorte42        #+#    #+#             */
+/*   Updated: 2022/06/21 15:27:01 by jdecorte42       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d.h"
 
 int	write_error(char *str)
@@ -53,7 +65,5 @@ void	ft_tab_len(t_file *file, char **tab)
 	printf("%zu \n", i);
 	while (tab[i])
 		i++;
-	// 	printf("%s\n", tab[i++]);
-	// printf("%zu\n", i);
 	file->tab_len = i - file->map_start;
 }
