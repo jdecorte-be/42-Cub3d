@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:42:05 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 14:13:42 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 17:07:51 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,23 @@ void	set_plane(t_data *ptr, char flag)
 {
 	if (flag == 'W')
 	{
-		ptr->pl->plX = -0.66;
-		ptr->pl->dirY = -1;
+		ptr->pl->plx = -0.66;
+		ptr->pl->diry = -1;
 	}
 	else if (flag == 'E')
 	{
-		ptr->pl->plX = 0.66;
-		ptr->pl->dirY = 1;
+		ptr->pl->plx = 0.66;
+		ptr->pl->diry = 1;
 	}
 	else if (flag == 'N')
 	{
-		ptr->pl->plY = 0.66;
-		ptr->pl->dirX = -1;
+		ptr->pl->ply = 0.66;
+		ptr->pl->dirx = -1;
 	}
 	else if (flag == 'S')
 	{
-		ptr->pl->plY = -0.66;
-		ptr->pl->dirX = 1;
+		ptr->pl->ply = -0.66;
+		ptr->pl->dirx = 1;
 	}
 }
 
@@ -52,8 +52,8 @@ void	init_data(t_data *data)
 
 	i = 0;
 	data->mlx = mlx_init();
-	data->mlx_win = mlx_new_window(data->mlx, screenWidth, \
-		screenHeight, "cub3d");
+	data->mlx_win = mlx_new_window(data->mlx, WIN_WIDTH, \
+		WIN_HEIGHT, "cub3d");
 	data->pl = malloc(sizeof(t_player));
 	data->dda = malloc(sizeof(t_dda));
 	data->map = malloc(sizeof(t_map));
@@ -69,17 +69,17 @@ void	init_data(t_data *data)
 		i++;
 	}
 	data->sp = malloc(sizeof(t_sprite));
-	data->sp->buffer = malloc(sizeof(double) * (screenWidth + 1));
+	data->sp->buffer = malloc(sizeof(double) * (WIN_WIDTH + 1));
 }
 
 void	pl_init(t_data *data)
 {
-	data->pl->deX = 0;
-	data->pl->deY = 0;
-	data->pl->dirX = 0;
-	data->pl->dirY = 0;
-	data->pl->plX = 0;
-	data->pl->plY = 0;
+	data->pl->dex = 0;
+	data->pl->dey = 0;
+	data->pl->dirx = 0;
+	data->pl->diry = 0;
+	data->pl->plx = 0;
+	data->pl->ply = 0;
 	data->pl->rot = 0;
 	data->pl->totalrots = 0;
 }

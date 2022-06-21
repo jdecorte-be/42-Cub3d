@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/21 17:06:46 by lxu-wu            #+#    #+#             */
+/*   Updated: 2022/06/21 17:07:52 by lxu-wu           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
@@ -13,8 +25,8 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
-# define screenWidth 900
-# define screenHeight 680
+# define WIN_WIDTH 900
+# define WIN_HEIGHT 680
 
 typedef struct s_dlist
 {
@@ -50,21 +62,21 @@ typedef struct s_file
 
 typedef struct l_sprite
 {
-	int 	texX;
-	int 	texY;
-	int 	stripe;
-	double *buffer;
-	double	invDet;
-	double	transfX;
-	double	transfY;
+	int		texx;
+	int		texy;
+	int		stripe;
+	double	*buffer;
+	double	invdet;
+	double	transfx;
+	double	transfy;
 	int		vmovescreen;
-	int		spriteScreenX;
-	int 	spriteHeight;
-	int	 	drawStartY;
-	int 	drawEndY;
-	int 	spriteWidth;
-	int		drawStartX;
-	int 	drawEndX;
+	int		spritescreenx;
+	int		spriteheight;
+	int		drawstarty;
+	int		drawendy;
+	int		spritewidth;
+	int		drawstartx;
+	int		drawendx;
 
 }	t_sprite;
 
@@ -78,14 +90,14 @@ typedef struct l_time
 typedef struct l_player
 {
 	double	posx;
-	double	posY;
-	double	dirX;
-	double	dirY;
-	double	plX;
-	double	plY;
+	double	posy;
+	double	dirx;
+	double	diry;
+	double	plx;
+	double	ply;
 	double	rot;
-	double	deX;
-	double	deY;
+	double	dex;
+	double	dey;
 	double	totalrots;
 }	t_player;
 

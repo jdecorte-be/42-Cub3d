@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:52:29 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/20 22:59:10 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 17:07:51 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	put_pxl(t_img *img, int x, int y, int color)
 {
 	int		i;
 
-	if (x < screenWidth && y < screenHeight)
+	if (x < WIN_WIDTH && y < WIN_HEIGHT)
 	{
 		i = (x * img->bt / 8) + (y * img->s_line);
 		img->p_img[i] = color;

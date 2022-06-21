@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:42:00 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 17:00:18 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/21 17:07:51 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	set_texture(t_data *p)
 {
 	if (p->dda->side == 1 || p->dda->side == 2 || p->dda->side == 6)
 	{
-		p->dda->wallx = p->pl->posY + p->dda->walldist * p->dda->raydir_y;
+		p->dda->wallx = p->pl->posy + p->dda->walldist * p->dda->raydir_y;
 		p->dda->wallx -= floor(p->dda->wallx);
 		p->dda->textx = (int)(p->dda->wallx
 				* (double)p->img[p->dda->side]->width);
@@ -68,7 +68,7 @@ int	draw_texture(t_data *p, int y)
 	i = 0;
 	set_texture(p);
 	p->dda->step = 1.0 * p->img[p->dda->side]->height / p->dda->lineheight;
-	p->dda->textpos = (p->dda->drawstart - screenHeight / 2
+	p->dda->textpos = (p->dda->drawstart - WIN_HEIGHT / 2
 			+ p->dda->lineheight / 2) * p->dda->step;
 	while (y < p->dda->drawend)
 	{
@@ -87,15 +87,15 @@ void	run_draw(t_data *data)
 	int	y;
 
 	y = 0;
-	data->dda->lineheight = (int)(screenHeight / data->dda->walldist);
-	data->dda->drawstart = -data->dda->lineheight / 2 + screenHeight / 2;
+	data->dda->lineheight = (int)(WIN_HEIGHT / data->dda->walldist);
+	data->dda->drawstart = -data->dda->lineheight / 2 + WIN_HEIGHT / 2;
 	if (data->dda->drawstart < 0)
 		data->dda->drawstart = 0;
-	data->dda->drawend = data->dda->lineheight / 2 + screenHeight / 2;
-	if (data->dda->drawend > screenHeight)
-		data->dda->drawend = screenHeight - 1;
+	data->dda->drawend = data->dda->lineheight / 2 + WIN_HEIGHT / 2;
+	if (data->dda->drawend > WIN_HEIGHT)
+		data->dda->drawend = WIN_HEIGHT - 1;
 	y += draw_vertline(data, data->dda->screenx,
 			data->dda->drawstart, data->map->c, 0);
 	y += draw_texture(data, y);
-	draw_vertline(data, data->dda->screenx, screenHeight, data->map->f, y);
+	draw_vertline(data, data->dda->screenx, WIN_HEIGHT, data->map->f, y);
 }

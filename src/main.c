@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:34:59 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 16:57:55 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/21 17:07:51 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	launch_game(t_data *data)
 	void	*img;
 	char	*str;
 
-	img = mlx_new_image(data->mlx, screenWidth, screenHeight);
+	img = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
 	data->img[0]->p_img = mlx_get_data_addr(img, &data->img[0]->bt, \
 			&data->img[0]->s_line, &data->img[0]->endian);
 	mlx_hook(data->mlx_win, 2, 0, key_handler, data);
@@ -78,7 +78,7 @@ int	main(int ac, char **av)
 	if (!data)
 		return (0);
 	init_data(data);
-	mlx_mouse_move(data->mlx_win, screenWidth / 2, screenHeight / 2);
+	mlx_mouse_move(data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	map_init(&map, data);
 	if (parsing(data, &map, av))
 		exit (0);

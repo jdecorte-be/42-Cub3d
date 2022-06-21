@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:39:20 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 17:00:18 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/21 17:00:45 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	set_spawn(t_data *data)
 {
 	data->map->dirspawn = ((t_item *)(data->map->spawn->content))->type;
 	data->pl->posx = ((t_item *)(data->map->spawn->content))->py + 0.5;
-	data->pl->posY = ((t_item *)(data->map->spawn->content))->px + 0.5;
+	data->pl->posy = ((t_item *)(data->map->spawn->content))->px + 0.5;
 }
 
 void	trace_line(float x0, float y0, float x1, float y1,t_img *img, int color)

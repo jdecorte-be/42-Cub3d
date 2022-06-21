@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:11:18 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 17:00:18 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/21 17:00:45 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	check_dist(t_data *ptr)
 		ptr->dda->walldist = (ptr->dda->map_x - ptr->pl->posx + \
 			(1 - ptr->dda->stepx) / 2) / ptr->dda->raydir_x;
 	else if (ptr->dda->side == 3 || ptr->dda->side == 4 || ptr->dda->side == 6)
-		ptr->dda->walldist = (ptr->dda->map_y - ptr->pl->posY + \
+		ptr->dda->walldist = (ptr->dda->map_y - ptr->pl->posy + \
 			(1 - ptr->dda->stepy) / 2) / ptr->dda->raydir_y;
 }
 
@@ -101,13 +101,13 @@ void	check_side(t_data *ptr)
 	if (ptr->dda->raydir_y < 0)
 	{
 		ptr->dda->stepy = -1;
-		ptr->dda->sidedist_y = (ptr->pl->posY - \
+		ptr->dda->sidedist_y = (ptr->pl->posy - \
 			ptr->dda->map_y) * ptr->dda->deltadist_y;
 	}
 	else
 	{
 		ptr->dda->stepy = 1;
 		ptr->dda->sidedist_y = (ptr->dda->map_y + 1.0 - \
-			ptr->pl->posY) * ptr->dda->deltadist_y;
+			ptr->pl->posy) * ptr->dda->deltadist_y;
 	}
 }

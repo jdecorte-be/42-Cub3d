@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:31:39 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 17:00:18 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/21 17:07:51 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void	put_sprite(t_data *data, int y)
 	int	i;
 	int	j;
 
-	j = data->img[data->t->n_frame]->s_line * data->sp->texY + \
-		data->sp->texX * data->img[data->t->n_frame]->bt / 8;
+	j = data->img[data->t->n_frame]->s_line * data->sp->texy + \
+		data->sp->texx * data->img[data->t->n_frame]->bt / 8;
 	if (data->img[data->t->n_frame]->p_img[j] == 0 && \
 		data->img[data->t->n_frame]->p_img[j + 1] == 0 && \
 			data->img[data->t->n_frame]->p_img[j + 2] == 0)
@@ -39,7 +39,7 @@ void	put_spirtes(t_data *data)
 	{
 		content = (t_item *)tmp->content;
 		if (content->py == (int)data->pl->posx && \
-			content->px == (int)data->pl->posY)
+			content->px == (int)data->pl->posy)
 		{
 			data->n_taken++;
 			content->px = -1;
@@ -69,38 +69,38 @@ void	timer_and_calc(t_data *data, double x, double y)
 			data->t->tmp = (int)(ceil(time));
 		}
 	}
-	data->sp->invDet = 1.0 / (data->pl->plX * data->pl->dirY - \
-		data->pl->dirX * data->pl->plY);
-	data->sp->transfX = (1.0 / (data->pl->plX * data->pl->dirY - data->pl->dirX \
-		* data->pl->plY)) * (data->pl->dirY * (x - data->pl->posx) \
-			- data->pl->dirX * (y - data->pl->posY));
+	data->sp->invdet = 1.0 / (data->pl->plx * data->pl->diry - \
+		data->pl->dirx * data->pl->ply);
+	data->sp->transfx = (1.0 / (data->pl->plx * data->pl->diry - data->pl->dirx \
+		* data->pl->ply)) * (data->pl->diry * (x - data->pl->posx) \
+			- data->pl->dirx * (y - data->pl->posy));
 }
 
 void	calc(t_data *data, double x, double y)
 {
-	data->sp->transfY = (1.0 / (data->pl->plX * data->pl->dirY - data->pl->dirX \
-		* data->pl->plY)) * (-data->pl->plY * (x - data->pl->posx) \
-			+ data->pl->plX * (y - data->pl->posY));
-	data->sp->vmovescreen = 120 / data->sp->transfY;
-	data->sp->spriteScreenX = (int)((screenWidth / 2) * \
-		(1 + data->sp->transfX / data->sp->transfY));
-	data->sp->spriteHeight = abs((int)(screenHeight / (data->sp->transfY))) / 3;
-	data->sp->drawStartY = -data->sp->spriteHeight / 2 + \
-		screenHeight / 2 + data->sp->vmovescreen;
-	if (data->sp->drawStartY < 0)
-		data->sp->drawStartY = 0;
-	data->sp->drawEndY = data->sp->spriteHeight / 2 + \
-		screenHeight / 2 + data->sp->vmovescreen;
-	if (data->sp->drawEndY >= screenHeight)
-		data->sp->drawEndY = screenHeight - 1;
-	data->sp->spriteWidth = abs((int)(screenHeight / (data->sp->transfY))) / 3;
-	data->sp->drawStartX = -data->sp->spriteWidth / 2 + data->sp->spriteScreenX;
-	if (data->sp->drawStartX < 0)
-		data->sp->drawStartX = 0;
-	data->sp->drawEndX = data->sp->spriteWidth / 2 + data->sp->spriteScreenX;
-	if (data->sp->drawEndX >= screenWidth)
-		data->sp->drawEndX = screenWidth - 1;
-	data->sp->stripe = data->sp->drawStartX;
+	data->sp->transfy = (1.0 / (data->pl->plx * data->pl->diry - data->pl->dirx \
+		* data->pl->ply)) * (-data->pl->ply * (x - data->pl->posx) \
+			+ data->pl->plx * (y - data->pl->posy));
+	data->sp->vmovescreen = 120 / data->sp->transfy;
+	data->sp->spritescreenx = (int)((WIN_WIDTH / 2) * \
+		(1 + data->sp->transfx / data->sp->transfy));
+	data->sp->spriteheight = abs((int)(WIN_HEIGHT / (data->sp->transfy))) / 3;
+	data->sp->drawstarty = -data->sp->spriteheight / 2 + \
+		WIN_HEIGHT / 2 + data->sp->vmovescreen;
+	if (data->sp->drawstarty < 0)
+		data->sp->drawstarty = 0;
+	data->sp->drawendy = data->sp->spriteheight / 2 + \
+		WIN_HEIGHT / 2 + data->sp->vmovescreen;
+	if (data->sp->drawendy >= WIN_HEIGHT)
+		data->sp->drawendy = WIN_HEIGHT - 1;
+	data->sp->spritewidth = abs((int)(WIN_HEIGHT / (data->sp->transfy))) / 3;
+	data->sp->drawstartx = -data->sp->spritewidth / 2 + data->sp->spritescreenx;
+	if (data->sp->drawstartx < 0)
+		data->sp->drawstartx = 0;
+	data->sp->drawendx = data->sp->spritewidth / 2 + data->sp->spritescreenx;
+	if (data->sp->drawendx >= WIN_WIDTH)
+		data->sp->drawendx = WIN_WIDTH - 1;
+	data->sp->stripe = data->sp->drawstartx;
 }
 
 void	draw_sprites(t_data *data, double x, double y)
@@ -109,23 +109,23 @@ void	draw_sprites(t_data *data, double x, double y)
 
 	timer_and_calc(data, x, y);
 	calc(data, x, y);
-	while (++data->sp->stripe < data->sp->drawEndX)
+	while (++data->sp->stripe < data->sp->drawendx)
 	{
-		data->sp->texX = (int)(256 * (data->sp->stripe - \
-			(-data->sp->spriteWidth / 2 + data->sp->spriteScreenX)) \
+		data->sp->texx = (int)(256 * (data->sp->stripe - \
+			(-data->sp->spritewidth / 2 + data->sp->spritescreenx)) \
 				* data->img[data->t->n_frame]->width / \
-				data->sp->spriteWidth) / 256;
-		if (data->sp->transfY > 0 && data->sp->stripe > 0 && \
-		data->sp->stripe < screenWidth && data->sp->transfY \
+				data->sp->spritewidth) / 256;
+		if (data->sp->transfy > 0 && data->sp->stripe > 0 && \
+		data->sp->stripe < WIN_WIDTH && data->sp->transfy \
 		< data->sp->buffer[data->sp->stripe])
 		{
-			y = data->sp->drawStartY;
-			while (++y < data->sp->drawEndY)
+			y = data->sp->drawstarty;
+			while (++y < data->sp->drawendy)
 			{
-				d = (y - data->sp->vmovescreen) * 256 - screenHeight \
-					* 128 + data->sp->spriteHeight * 128;
-				data->sp->texY = ((d * data->img[data->t->n_frame]->height) \
-					/ data->sp->spriteHeight) / 256;
+				d = (y - data->sp->vmovescreen) * 256 - WIN_HEIGHT \
+					* 128 + data->sp->spriteheight * 128;
+				data->sp->texy = ((d * data->img[data->t->n_frame]->height) \
+					/ data->sp->spriteheight) / 256;
 				put_sprite(data, y);
 			}
 		}
