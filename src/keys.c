@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdecorte <jdecorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:28:39 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 17:02:11 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/21 18:05:59 by jdecorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,6 @@ void	spawn_changer(int key, t_data *data)
 
 int	key_handler(int key, t_data *data)
 {
-	printf("%d\n", key);
 	if (key == 53)
 	{
 		mlx_destroy_window(data->mlx, data->mlx_win);

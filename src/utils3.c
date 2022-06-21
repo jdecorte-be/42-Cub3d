@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdecorte <jdecorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:39:20 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 17:00:45 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/21 18:19:29 by jdecorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,22 +28,22 @@ void	set_spawn(t_data *data)
 	data->pl->posy = ((t_item *)(data->map->spawn->content))->px + 0.5;
 }
 
-void	trace_line(float x0, float y0, float x1, float y1,t_img *img, int color)
+void	trace_line(t_img *img, int color, t_data *data)
 {
 	float	x_step;
 	float	y_step;
 	int		max;
 
-	x_step = x1 - x0;
-	y_step = y1 - y0;
+	x_step = data->x1 - data->x0;
+	y_step = data->y1 - data->y0;
 	max = find_max(find_mod(x_step), find_mod(y_step));
 	x_step /= max;
 	y_step /= max;
-	while ((int)(x0 - x1) || (int)(y0 - y1))
+	while ((int)(data->x0 - data->x1) || (int)(data->y0 - data->y1))
 	{
-		if (x0 < 1000 && y0 < 800 && x0 > 0 && y0 > 0)
-			put_pxl(img, x0, y0, color);
-		x0 += x_step;
-		y0 += y_step;
+		if (data->x0 < 1000 && data->y0 < 800 && data->x0 > 0 && data->y0 > 0)
+			put_pxl(img, data->x0, data->y0, color);
+		data->x0 += x_step;
+		data->y0 += y_step;
 	}
 }

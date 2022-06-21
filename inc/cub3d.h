@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdecorte <jdecorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 17:06:46 by lxu-wu            #+#    #+#             */
-/*   Updated: 2022/06/21 17:07:52 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/21 18:12:15 by jdecorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,10 @@ typedef struct l_map
 
 typedef struct l_data
 {
+	float x0;
+	float x1;
+	float y1;
+	float y0;
 	void		*mlx;
 	void		*mlx_win;
 	int			n_taken;
@@ -195,7 +199,7 @@ int		find_max(int num1, int num2);
 int		find_mod(int num);
 void	raycaster(t_data *data);
 int		mouse_hook(int key, t_data *data);
-void	trace_line(float x0, float y0, float x1, float y1, t_img *img, int color);
+void	trace_line(t_img *img, int color, t_data *data);
 char	*ft_free_join(char const *s1, char const *s2, int e);
 void	put_pxl(t_img *img, int x, int y, int color);
 void	put_spawn(t_data *data);
