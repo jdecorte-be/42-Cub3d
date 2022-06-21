@@ -1,27 +1,5 @@
 #include "../inc/cub3d.h"
 
-// void    find_spawn(char **map, t_data *data)
-// {
-//     int i = 0;
-//     int j;
-//     while(map[i])
-//     {
-//         j = 0;
-//         while(map[i][j])
-//         {
-//             if(map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W')
-//             {
-//                 data->map->dirSpawn = map[i][j];
-//                 data->pl->posX = i + 0.5;
-//                 data->pl->posY = j + 0.5;
-//                 break;
-//             }
-//             j++;
-//         }
-//         i++;
-//     }
-// }
-
 int	write_error(char *str)
 {
 	write(2, str, ft_strlen(str));

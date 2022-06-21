@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   dlst.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/21 09:41:54 by jdecorte42        #+#    #+#             */
+/*   Updated: 2022/06/21 09:41:55 by jdecorte42       ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/cub3d.h"
 
 
@@ -15,7 +27,7 @@ t_list	*ft_lstnew(void *content)
 
 t_dlist	*dlstnew(void *content)
 {
-	t_dlist *lst;
+	t_dlist	*lst;
 
 	lst = malloc(sizeof(t_dlist));
 	if (!lst)

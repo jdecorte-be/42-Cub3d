@@ -13,9 +13,10 @@
 # include <stdlib.h>
 # include <stdbool.h>
 
-#define screenWidth 900
-#define screenHeight 680
-
+# define screenWidth 900
+# define screenHeight 680
+# define CPL_ROT 2 * M_PI
+# define ROTX CPL_ROT / 2880
 
 typedef struct s_dlist
 {
@@ -55,6 +56,17 @@ typedef struct l_sprite
 	int texY;
 	int stripe;
 	double *buffer;
+	double	invDet;
+	double	transfX;
+	double	transfY;
+	int		vmovescreen;
+	int		spriteScreenX;
+	int spriteHeight;
+	int drawStartY;
+	int drawEndY;
+	int spriteWidth;
+	int drawStartX;
+	int drawEndX;
 
 }	t_sprite;
 
@@ -62,6 +74,7 @@ typedef struct l_time
 {
 	clock_t start;
 	int n_frame;
+	int tmp;
 }	t_time;
 
 typedef struct l_player
@@ -149,6 +162,17 @@ typedef struct l_data
 	t_dda *dda;
 }   t_data;
 
+
+void	draw_bg(t_data *data);
+int	splitlen(char **tab);
+void	update_param(t_data *data, double rot);
+int	mousing(t_data *data);
+void	ft_error(void *arg, int e);
+void	set_spawn(t_data *data);
+int	mousing(t_data *data);
+void	check_dist(t_data *ptr);
+void	calc_dda(t_data *ptr);
+void	check_side(t_data *ptr);
 void draw_verttext(t_data *data, int x, int y, t_img *text);
 void draw_door(t_data *data, int x, int y);
 void    update_fps(t_data *data);
@@ -164,6 +188,7 @@ int	find_mod(int num);
 void    raycaster(t_data *data);
 int mouse_hook(int key, t_data *data);
 void	trace_line(float x0, float y0, float x1, float y1, t_img *img, int color);
+char	*ft_free_join(char const *s1, char const *s2, int e);
 void	put_pxl(t_img *img, int x, int y, int color);
 void    put_spawn(t_data *data);
 int		key_exit(int key, t_data *data);

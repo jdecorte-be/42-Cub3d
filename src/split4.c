@@ -75,11 +75,3 @@ char	**split1(char const *s, char c)
 		return (NULL);
 	return (ft_to_create_tab(tab, s, c));
 }
-
-// int main()
-// {
-// 	char **tab;
-// 	tab = split1("abba", 'b');
-// 	for(int i=0;tab[i];i++)
-// 		printf("%s\n", tab[i]);
-// }
