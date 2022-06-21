@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:42:00 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 15:15:17 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 17:00:18 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	set_texture(t_data *p)
 	}
 	else if (p->dda->side == 3 || p->dda->side == 4 || p->dda->side == 6)
 	{
-		p->dda->wallx = p->pl->posX + p->dda->walldist * p->dda->raydir_x;
+		p->dda->wallx = p->pl->posx + p->dda->walldist * p->dda->raydir_x;
 		p->dda->wallx -= floor(p->dda->wallx);
 		p->dda->textx = (int)(p->dda->wallx
 				* (double)p->img[p->dda->side]->width);
@@ -95,7 +95,7 @@ void	run_draw(t_data *data)
 	if (data->dda->drawend > screenHeight)
 		data->dda->drawend = screenHeight - 1;
 	y += draw_vertline(data, data->dda->screenx,
-			data->dda->drawstart, data->map->C, 0);
+			data->dda->drawstart, data->map->c, 0);
 	y += draw_texture(data, y);
-	draw_vertline(data, data->dda->screenx, screenHeight, data->map->F, y);
+	draw_vertline(data, data->dda->screenx, screenHeight, data->map->f, y);
 }

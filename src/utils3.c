@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:39:20 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 15:26:28 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 17:00:18 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void	ft_error(void *arg, int e)
 
 void	set_spawn(t_data *data)
 {
-	data->map->dirSpawn = ((t_item *)(data->map->spawn->content))->type;
-	data->pl->posX = ((t_item *)(data->map->spawn->content))->py + 0.5;
+	data->map->dirspawn = ((t_item *)(data->map->spawn->content))->type;
+	data->pl->posx = ((t_item *)(data->map->spawn->content))->py + 0.5;
 	data->pl->posY = ((t_item *)(data->map->spawn->content))->px + 0.5;
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:11:18 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 10:30:08 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 17:00:18 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ void	check_dist(t_data *ptr)
 	while (ptr->dda->hit == 0)
 		check_dist_step(ptr);
 	if (ptr->dda->side == 1 || ptr->dda->side == 2 || ptr->dda->side == 6)
-		ptr->dda->walldist = (ptr->dda->map_x - ptr->pl->posX + \
+		ptr->dda->walldist = (ptr->dda->map_x - ptr->pl->posx + \
 			(1 - ptr->dda->stepx) / 2) / ptr->dda->raydir_x;
 	else if (ptr->dda->side == 3 || ptr->dda->side == 4 || ptr->dda->side == 6)
 		ptr->dda->walldist = (ptr->dda->map_y - ptr->pl->posY + \
@@ -89,14 +89,14 @@ void	check_side(t_data *ptr)
 	if (ptr->dda->raydir_x < 0)
 	{
 		ptr->dda->stepx = -1;
-		ptr->dda->sidedist_x = (ptr->pl->posX - \
+		ptr->dda->sidedist_x = (ptr->pl->posx - \
 			ptr->dda->map_x) * ptr->dda->deltadist_x;
 	}
 	else
 	{
 		ptr->dda->stepx = 1;
 		ptr->dda->sidedist_x = (ptr->dda->map_x + 1.0 - \
-			ptr->pl->posX) * ptr->dda->deltadist_x;
+			ptr->pl->posx) * ptr->dda->deltadist_x;
 	}
 	if (ptr->dda->raydir_y < 0)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:08:14 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 15:27:15 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 17:00:18 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,10 @@ void	minimap(t_data *data)
 		{
 			if (data->map->map[x][y] == '1')
 				draw_wall(data, (y - data->pl->posY) * 30 + 105, \
-					(x - data->pl->posX) * 30 + 105, 0xB85E4F);
+					(x - data->pl->posx) * 30 + 105, 0xB85E4F);
 			if (data->map->map[x][y] == 'D')
 				draw_wall(data, (y - data->pl->posY) * 30 + 105, \
-					(x - data->pl->posX) * 30 + 105, 0x4C3232);
+					(x - data->pl->posx) * 30 + 105, 0x4C3232);
 			y++;
 		}
 		x++;

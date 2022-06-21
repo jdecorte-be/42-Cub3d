@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:26:13 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 15:26:38 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 16:59:22 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ int	ext_cub(char *str)
 
 int	convert_file(t_data *data, t_map *map, t_file *file)
 {
-	init_texture(data, 1, file->NO);
-	init_texture(data, 2, file->SO);
-	init_texture(data, 3, file->WE);
-	init_texture(data, 4, file->EA);
+	init_texture(data, 1, file->no);
+	init_texture(data, 2, file->so);
+	init_texture(data, 3, file->so);
+	init_texture(data, 4, file->ea);
 	init_texture(data, 5, "./res/door1.xpm");
 	init_texture(data, 6, "./res/frame_0.xpm");
 	init_texture(data, 7, "./res/frame_1.xpm");
@@ -80,7 +80,7 @@ int	convert_file(t_data *data, t_map *map, t_file *file)
 	init_texture(data, 10, "./res/frame_4.xpm");
 	init_texture(data, 11, "./res/frame_5.xpm");
 	init_texture(data, 12, "./res/frame_6.xpm");
-	if (conv_color(&map->F, file->F) || conv_color(&map->C, file->C))
+	if (conv_color(&map->f, file->f) || conv_color(&map->c, file->c))
 		return (write_error("Error\nColor error\n"));
 	return (0);
 }

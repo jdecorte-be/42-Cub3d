@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:28:39 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 15:23:23 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 17:00:18 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,21 +59,21 @@ void	set_dir(t_data *ptr, char flag)
 
 void	key_dir(t_data *data)
 {
-	if (data->map->map[(int)(data->pl->posX - 1.0)] \
+	if (data->map->map[(int)(data->pl->posx - 1.0)] \
 			[(int)(data->pl->posY)] == 'D')
-		data->map->map[(int)(data->pl->posX - 1.0 + data->pl->dirX \
+		data->map->map[(int)(data->pl->posx - 1.0 + data->pl->dirX \
 			* data->pl->deY)][(int)(data->pl->posY)] = '0';
-	else if (data->map->map[(int)(data->pl->posX + 1.0)] \
+	else if (data->map->map[(int)(data->pl->posx + 1.0)] \
 			[(int)(data->pl->posY)] == 'D')
-		data->map->map[(int)(data->pl->posX + 1.0 + data->pl->dirX \
+		data->map->map[(int)(data->pl->posx + 1.0 + data->pl->dirX \
 			* data->pl->deY)][(int)(data->pl->posY)] = '0';
-	else if (data->map->map[(int)(data->pl->posX)] \
+	else if (data->map->map[(int)(data->pl->posx)] \
 			[(int)(data->pl->posY + 1.0)] == 'D')
-		data->map->map[(int)(data->pl->posX + data->pl->dirX \
+		data->map->map[(int)(data->pl->posx + data->pl->dirX \
 				* data->pl->deY)][(int)(data->pl->posY + 1.0)] = '0';
-	else if (data->map->map[(int)(data->pl->posX)] \
+	else if (data->map->map[(int)(data->pl->posx)] \
 			[(int)(data->pl->posY - 1.0)] == 'D')
-		data->map->map[(int)(data->pl->posX + data->pl->dirX * \
+		data->map->map[(int)(data->pl->posx + data->pl->dirX * \
 				data->pl->deY)][(int)(data->pl->posY - 1.0)] = '0';
 }
 
@@ -84,14 +84,14 @@ void	spawn_changer(int key, t_data *data)
 		pl_init(data);
 		data->map->spawn = data->map->spawn->next;
 		set_spawn(data);
-		set_plane(data, data->map->dirSpawn);
+		set_plane(data, data->map->dirspawn);
 	}
 	if (key == 125)
 	{
 		pl_init(data);
 		data->map->spawn = data->map->spawn->prev;
 		set_spawn(data);
-		set_plane(data, data->map->dirSpawn);
+		set_plane(data, data->map->dirspawn);
 	}
 }
 

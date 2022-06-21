@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:44:43 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 15:13:26 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 16:51:57 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	struct_init(t_file *file, t_map *map)
 {
 	file->map_start = 0;
 	file->tab_len = 0;
-	file->NO = 0;
-	file->SO = 0;
-	file->WE = 0;
-	file->EA = 0;
-	file->F = 0;
-	file->C = 0;
+	file->no = 0;
+	file->so = 0;
+	file->we = 0;
+	file->ea = 0;
+	file->f = 0;
+	file->c = 0;
 	file->f1 = 0;
 	file->f2 = 0;
 	file->f3 = 0;

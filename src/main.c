@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:34:59 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 15:22:56 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 16:57:55 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	main(int ac, char **av)
 		exit (0);
 	data->n_sprites = ft_lstsize(data->map->item);
 	set_spawn(data);
-	set_plane(data, data->map->dirSpawn);
+	set_plane(data, data->map->dirspawn);
 	mlx_mouse_hide();
 	mlx_do_key_autorepeaton(data->mlx);
 	mlx_hook(data->mlx_win, 2, 0, key_handler, data);

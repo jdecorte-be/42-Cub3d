@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_elem.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:27:31 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 15:27:38 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 16:53:07 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,17 @@ int	elem_type(char *str, size_t i)
 void	cpl_free(t_file *file, int face)
 {
 	if (face == 1)
-		free(file->NO);
+		free(file->no);
 	else if (face == 2)
-		free(file->SO);
+		free(file->so);
 	else if (face == 3)
-		free(file->WE);
+		free(file->we);
 	else if (face == 4)
-		free(file->EA);
+		free(file->ea);
 	else if (face == 5)
-		free(file->F);
+		free(file->f);
 	else if (face == 6)
-		free(file->C);
+		free(file->c);
 }
 
 int	cpl_face(t_file *file, char *str, size_t start, int face)
@@ -56,20 +56,20 @@ int	cpl_face(t_file *file, char *str, size_t start, int face)
 	while (str[end] && str[end] != 32)
 		end++;
 	if (face == 1 && ++file->f1)
-		file->NO = ft_substr(str, start, end - start);
+		file->no = ft_substr(str, start, end - start);
 	else if (face == 2 && ++file->f2)
-		file->SO = ft_substr(str, start, end - start);
+		file->so = ft_substr(str, start, end - start);
 	else if (face == 3 && ++file->f3)
-		file->WE = ft_substr(str, start, end - start);
+		file->we = ft_substr(str, start, end - start);
 	else if (face == 4 && ++file->f4)
-		file->EA = ft_substr(str, start, end - start);
+		file->ea = ft_substr(str, start, end - start);
 	else if (face == 5 && ++file->f5)
-		file->F = ft_substr(str, start, end - start);
+		file->f = ft_substr(str, start, end - start);
 	else if (face == 6 && ++file->f6)
-		file->C = ft_substr(str, start, end - start);
-	if ((face == 1 && !file->NO) || (face == 2 && !file->SO)
-		|| (face == 3 && !file->WE) || (face == 4 && !file->EA)
-		|| (face == 5 && !file->F) || (face == 6 && !file->C))
+		file->c = ft_substr(str, start, end - start);
+	if ((face == 1 && !file->no) || (face == 2 && !file->so)
+		|| (face == 3 && !file->we) || (face == 4 && !file->ea)
+		|| (face == 5 && !file->f) || (face == 6 && !file->c))
 		ft_error(file, 2);
 	return (0);
 }

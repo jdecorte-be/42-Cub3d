@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   up_param.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:41:15 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 09:41:38 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 17:00:18 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	mousing(t_data *data)
 	mlx_mouse_get_pos(data->mlx_win, &x, &y);
 	dx = x - screenWidth / 2;
 	if (dx > 0)
-		update_param(data, dx * (-ROTX));
+		update_param(data, dx * (-(2 * M_PI / 11520)));
 	else if (dx < 0)
-		update_param(data, -dx * ROTX);
+		update_param(data, -dx * 2 * M_PI / 11520);
 	mlx_mouse_move(data->mlx_win, screenWidth / 2, screenHeight / 2);
 	return (0);
 }
@@ -45,16 +45,16 @@ void	update_param(t_data *data, double rot)
 	oldplanex = data->pl->plX;
 	data->pl->plX = data->pl->plX * cos(rot) - data->pl->plY * sin(rot);
 	data->pl->plY = oldplanex * sin(rot) + data->pl->plY * cos(rot);
-	if (!ft_strchr("1D", data->map->map[(int)(data->pl->posX + \
+	if (!ft_strchr("1D", data->map->map[(int)(data->pl->posx + \
 			data->pl->dirX * data->pl->deY)][(int)(data->pl->posY)]))
-		data->pl->posX += data->pl->dirX * data->pl->deY;
-	if (!ft_strchr("1D", data->map->map[(int)(data->pl->posX)] \
+		data->pl->posx += data->pl->dirX * data->pl->deY;
+	if (!ft_strchr("1D", data->map->map[(int)(data->pl->posx)] \
 			[(int)(data->pl->posY + data->pl->dirY * data->pl->deY)]))
 		data->pl->posY += data->pl->dirY * data->pl->deY;
-	if (!ft_strchr("1D", data->map->map[(int)(data->pl->posX + \
+	if (!ft_strchr("1D", data->map->map[(int)(data->pl->posx + \
 			data->pl->plX * data->pl->deX)][(int)data->pl->posY]))
-		data->pl->posX += data->pl->plX * data->pl->deX;
-	if (!ft_strchr("1D", data->map->map[(int)data->pl->posX] \
+		data->pl->posx += data->pl->plX * data->pl->deX;
+	if (!ft_strchr("1D", data->map->map[(int)data->pl->posx] \
 			[(int)(data->pl->posY + data->pl->plY * data->pl->deX)]))
 		data->pl->posY += data->pl->plY * data->pl->deX;
 }

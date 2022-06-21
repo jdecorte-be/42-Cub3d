@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sprites.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:31:39 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 15:35:17 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/21 17:00:18 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	put_spirtes(t_data *data)
 	while (tmp)
 	{
 		content = (t_item *)tmp->content;
-		if (content->py == (int)data->pl->posX && \
+		if (content->py == (int)data->pl->posx && \
 			content->px == (int)data->pl->posY)
 		{
 			data->n_taken++;
@@ -72,14 +72,14 @@ void	timer_and_calc(t_data *data, double x, double y)
 	data->sp->invDet = 1.0 / (data->pl->plX * data->pl->dirY - \
 		data->pl->dirX * data->pl->plY);
 	data->sp->transfX = (1.0 / (data->pl->plX * data->pl->dirY - data->pl->dirX \
-		* data->pl->plY)) * (data->pl->dirY * (x - data->pl->posX) \
+		* data->pl->plY)) * (data->pl->dirY * (x - data->pl->posx) \
 			- data->pl->dirX * (y - data->pl->posY));
 }
 
 void	calc(t_data *data, double x, double y)
 {
 	data->sp->transfY = (1.0 / (data->pl->plX * data->pl->dirY - data->pl->dirX \
-		* data->pl->plY)) * (-data->pl->plY * (x - data->pl->posX) \
+		* data->pl->plY)) * (-data->pl->plY * (x - data->pl->posx) \
 			+ data->pl->plX * (y - data->pl->posY));
 	data->sp->vmovescreen = 120 / data->sp->transfY;
 	data->sp->spriteScreenX = (int)((screenWidth / 2) * \
