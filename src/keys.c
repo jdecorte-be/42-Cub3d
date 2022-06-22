@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdecorte <jdecorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:28:39 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/22 15:19:59 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/22 21:13:34 by jdecorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,23 +100,23 @@ int	key_handler(int key, t_data *data)
 	if (key == 53)
 	{
 		mlx_destroy_window(data->mlx, data->mlx_win);
-		system("leaks cub3d");
+		// system("leaks cub3d");
 		exit(0);
 	}
 	if (key == 14)
 		key_dir(data);
 	if (key == 13)
-		data->pl->dey = 0.1;
+		data->pl->dey = 0.07;
 	if (key == 1)
-		data->pl->dey = -0.1;
+		data->pl->dey = -0.07;
 	if (key == 2)
-		data->pl->dex = 0.1;
+		data->pl->dex = 0.07;
 	if (key == 0)
-		data->pl->dex = -0.1;
+		data->pl->dex = -0.07;
 	if (key == 123)
-		data->pl->rot = 0.1;
+		data->pl->rot = 0.07;
 	if (key == 124)
-		data->pl->rot = -0.1;
+		data->pl->rot = -0.07;
 	spawn_changer(key, data);
 	return (0);
 }

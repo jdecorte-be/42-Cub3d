@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jdecorte <jdecorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:26:49 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 15:27:01 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/22 21:26:22 by jdecorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	ft_tab_len(t_file *file, char **tab)
 	size_t	i;
 
 	i = file->map_start;
-	printf("%zu \n", i);
 	while (tab[i])
 		i++;
 	file->tab_len = i - file->map_start;

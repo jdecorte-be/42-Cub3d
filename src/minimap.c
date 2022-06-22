@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdecorte <jdecorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:08:14 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/22 15:13:14 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/22 21:27:03 by jdecorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,10 @@ void	draw_bg(t_data *data)
 		trace_line(data->img[0], 0xE1D5C8, data);
 		i += 1;
 	}
+}
+void minimap2(t_data *data)
+{
+	
 }
 
 void	minimap(t_data *data)

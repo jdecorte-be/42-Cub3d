@@ -69,7 +69,6 @@ char	**split1(char const *s, char c)
 
 	if (!s)
 		return (0);
-	printf("%d\n", ft_count_words(s, c));
 	tab = malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
 	if (!tab)
 		return (NULL);

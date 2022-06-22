@@ -6,7 +6,7 @@
 /*   By: jdecorte <jdecorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 17:51:31 by jdecorte          #+#    #+#             */
-/*   Updated: 2022/06/21 17:51:31 by jdecorte         ###   ########.fr       */
+/*   Updated: 2022/06/22 21:26:27 by jdecorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ char	**split1(char const *s, char c)
 
 	if (!s)
 		return (0);
-	printf("%d\n", ft_count_words(s, c));
 	tab = malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
 	if (!tab)
 		return (NULL);

@@ -268,7 +268,6 @@ void	ft_tab_len(t_file *file, char **tab)
 	size_t	i;
 
 	i = file->map_start;
-	printf("%zu \n", i);
 	while (tab[i])
 		i++;
 	// 	printf("%s\n", tab[i++]);
