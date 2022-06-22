@@ -6,7 +6,7 @@
 /*   By: jdecorte <jdecorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:28:39 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/22 21:13:34 by jdecorte         ###   ########.fr       */
+/*   Updated: 2022/06/22 21:33:08 by jdecorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,6 @@ int	key_handler(int key, t_data *data)
 	if (key == 53)
 	{
 		mlx_destroy_window(data->mlx, data->mlx_win);
-		// system("leaks cub3d");
 		exit(0);
 	}
 	if (key == 14)

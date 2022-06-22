@@ -6,7 +6,7 @@
 /*   By: jdecorte <jdecorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:39:20 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 18:19:29 by jdecorte         ###   ########.fr       */
+/*   Updated: 2022/06/22 21:32:08 by jdecorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,26 @@ void	trace_line(t_img *img, int color, t_data *data)
 	while ((int)(data->x0 - data->x1) || (int)(data->y0 - data->y1))
 	{
 		if (data->x0 < 1000 && data->y0 < 800 && data->x0 > 0 && data->y0 > 0)
+			put_pxl(img, data->x0, data->y0, color);
+		data->x0 += x_step;
+		data->y0 += y_step;
+	}
+}
+
+void	trace_line_wall(t_img *img, int color, t_data *data)
+{
+	float	x_step;
+	float	y_step;
+	int		max;
+
+	x_step = data->x1 - data->x0;
+	y_step = data->y1 - data->y0;
+	max = find_max(find_mod(x_step), find_mod(y_step));
+	x_step /= max;
+	y_step /= max;
+	while ((int)(data->x0 - data->x1) || (int)(data->y0 - data->y1))
+	{
+		if (data->x0 < 200 && data->y0 < 200 && data->x0 > 10 && data->y0 > 10)
 			put_pxl(img, data->x0, data->y0, color);
 		data->x0 += x_step;
 		data->y0 += y_step;

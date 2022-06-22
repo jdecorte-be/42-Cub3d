@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdecorte <jdecorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 17:06:46 by lxu-wu            #+#    #+#             */
-/*   Updated: 2022/06/22 16:24:38 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/22 21:32:36 by jdecorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,7 @@ typedef struct l_data
 	t_dda		*dda;
 }	t_data;
 
+void	trace_line_wall(t_img *img, int color, t_data *data);
 void	draw_bg(t_data *data);
 int		splitlen(char **tab);
 void	update_param(t_data *data, double rot);

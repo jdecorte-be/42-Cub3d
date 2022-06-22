@@ -6,31 +6,11 @@
 /*   By: jdecorte <jdecorte@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:08:14 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/22 21:27:03 by jdecorte         ###   ########.fr       */
+/*   Updated: 2022/06/22 21:32:14 by jdecorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-
-void	trace_line_wall(t_img *img, int color, t_data *data)
-{
-	float	x_step;
-	float	y_step;
-	int		max;
-
-	x_step = data->x1 - data->x0;
-	y_step = data->y1 - data->y0;
-	max = find_max(find_mod(x_step), find_mod(y_step));
-	x_step /= max;
-	y_step /= max;
-	while ((int)(data->x0 - data->x1) || (int)(data->y0 - data->y1))
-	{
-		if (data->x0 < 200 && data->y0 < 200 && data->x0 > 10 && data->y0 > 10)
-			put_pxl(img, data->x0, data->y0, color);
-		data->x0 += x_step;
-		data->y0 += y_step;
-	}
-}
 
 void	draw_wall(t_data *data, double x, double y, int color)
 {
@@ -79,9 +59,30 @@ void	draw_bg(t_data *data)
 		i += 1;
 	}
 }
-void minimap2(t_data *data)
+
+void	minimap2(t_data *data)
 {
-	
+	data->x0 = 10;
+	data->y0 = 10;
+	data->x1 = 200;
+	data->y1 = 10;
+	trace_line(data->img[0], 0x4C3232, data);
+	data->x0 = 10;
+	data->y0 = 10;
+	data->x1 = 10;
+	data->y1 = 200;
+	trace_line(data->img[0], 0x4C3232, data);
+	data->x0 = 200;
+	data->y0 = 10;
+	data->x1 = 200;
+	data->y1 = 200;
+	trace_line(data->img[0], 0x4C3232, data);
+	data->x0 = 10;
+	data->y0 = 200;
+	data->x1 = 200;
+	data->y1 = 200;
+	trace_line(data->img[0], 0x4C3232, data);
+	draw_spawn(data, 100, 100);
 }
 
 void	minimap(t_data *data)
@@ -106,25 +107,5 @@ void	minimap(t_data *data)
 		}
 		x++;
 	}
-	data->x0 = 10;
-	data->y0 = 10;
-	data->x1 = 200;
-	data->y1 = 10;
-	trace_line(data->img[0], 0x4C3232, data);
-	data->x0 = 10;
-	data->y0 = 10;
-	data->x1 = 10;
-	data->y1 = 200;
-	trace_line(data->img[0], 0x4C3232, data);
-	data->x0 = 200;
-	data->y0 = 10;
-	data->x1 = 200;
-	data->y1 = 200;
-	trace_line(data->img[0], 0x4C3232, data);
-	data->x0 = 10;
-	data->y0 = 200;
-	data->x1 = 200;
-	data->y1 = 200;
-	trace_line(data->img[0], 0x4C3232, data);
-	draw_spawn(data, 100, 100);
+	minimap2(data);
 }
