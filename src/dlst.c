@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dlst.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:41:54 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 15:23:56 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/22 22:41:23 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,15 @@ void	dlstadd_back(t_dlist **lst, t_dlist *new)
 void	dlst_free(t_dlist **lst)
 {
 	t_dlist	*tmp;
+	t_dlist *tf;
 
-	while (*lst)
+	tmp = (*lst)->next;
+	(*lst)->next = 0;
+	while (tmp)
 	{
-		tmp = *lst;
-		*lst = (*lst)->next;
-		free(tmp);
-		tmp = 0;
+		free(tmp->content);
+		tf = tmp;
+		tmp = tmp->next;
+		free(tf);
 	}
 }
