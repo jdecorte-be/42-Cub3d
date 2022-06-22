@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:54:04 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 15:27:34 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/22 16:55:51 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	conv_color(int *color, char *str)
 	*color = 0;
 	while (i < 3)
 		if (ft_rgb(color, rgb, i++))
-			return (1);
+			return (ft_free(tab[0], tab[1], tab[2], tab));
+	ft_free(tab[0], tab[1], tab[2], tab);
 	return (0);
 }

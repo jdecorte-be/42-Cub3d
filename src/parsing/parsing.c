@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:26:13 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/22 16:38:38 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/22 16:54:58 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int	convert_file(t_data *data, t_map *map, t_file *file)
 	init_texture(data, 2, file->so);
 	init_texture(data, 3, file->we);
 	init_texture(data, 4, file->ea);
+	ft_free(file->no, file->so, file->we, file->ea);
 	init_texture(data, 5, "./res/door1.xpm");
 	init_texture(data, 6, "./res/frame_0.xpm");
 	init_texture(data, 7, "./res/frame_1.xpm");
@@ -82,6 +83,7 @@ int	convert_file(t_data *data, t_map *map, t_file *file)
 	init_texture(data, 12, "./res/frame_6.xpm");
 	if (conv_color(&map->f, file->f) || conv_color(&map->c, file->c))
 		return (write_error("Error\nColor error\n"));
+	ft_free(file->c, file->f, 0, 0);
 	return (0);
 }
 
