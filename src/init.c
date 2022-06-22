@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:42:05 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 17:07:51 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/22 15:17:08 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	init_texture(t_data *ptr, int flag, char *path)
 		&ptr->img[flag]->bt, &ptr->img[flag]->s_line, &ptr->img[flag]->endian);
 }
 
-void	init_data(t_data *data)
+int	init_data(t_data *data)
 {
 	int	i;
 
@@ -56,20 +56,21 @@ void	init_data(t_data *data)
 		WIN_HEIGHT, "cub3d");
 	data->pl = malloc(sizeof(t_player));
 	data->dda = malloc(sizeof(t_dda));
-	data->map = malloc(sizeof(t_map));
 	data->t = malloc(sizeof(t_time));
 	data->img = malloc(sizeof(t_img *) * 13);
-	if (!data->img)
-		return ;
+	if (!data->mlx || !data->mlx_win || !data->pl
+		|| !data->dda || !data->t || !data->img)
+		return (1);
 	while (i <= 12)
 	{
 		data->img[i] = malloc(sizeof(t_img));
 		if (!data->img[i])
-			return ;
+			return (1);
 		i++;
 	}
 	data->sp = malloc(sizeof(t_sprite));
 	data->sp->buffer = malloc(sizeof(double) * (WIN_WIDTH + 1));
+	return (0);
 }
 
 void	pl_init(t_data *data)

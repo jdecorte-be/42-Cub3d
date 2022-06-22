@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cp_map.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:27:47 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 15:27:48 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/22 16:36:11 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,9 @@ int	take_map(t_file *file, t_map *map, char **tab)
 	i2 = 0;
 	while (tab[i])
 	{
-		map->map[i2++] = tab[i];
+		map->map[i2] = ft_strdup(tab[i]);
+		if (!map->map[i2++])
+			return (write_error("Error\nMalloc failed\n"));
 		i++;
 	}
 	map->map[i2] = 0;

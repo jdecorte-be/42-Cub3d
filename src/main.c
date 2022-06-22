@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:34:59 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 17:07:51 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/22 15:19:49 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ int	main(int ac, char **av)
 	data = malloc(sizeof(t_data));
 	if (!data)
 		return (0);
-	init_data(data);
+	if (init_data(data))
+		return (1);
 	mlx_mouse_move(data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	map_init(&map, data);
 	if (parsing(data, &map, av))

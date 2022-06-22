@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:26:13 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 16:59:22 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/22 16:38:38 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	parse_map(t_map *map, t_file *file, char **argv)
 		return (1);
 	if (check_map(map))
 		return (1);
-	return (0);
+	return (free_tab(tab, 0));
 }
 
 int	ext_cub(char *str)
@@ -70,7 +70,7 @@ int	convert_file(t_data *data, t_map *map, t_file *file)
 {
 	init_texture(data, 1, file->no);
 	init_texture(data, 2, file->so);
-	init_texture(data, 3, file->so);
+	init_texture(data, 3, file->we);
 	init_texture(data, 4, file->ea);
 	init_texture(data, 5, "./res/door1.xpm");
 	init_texture(data, 6, "./res/frame_0.xpm");
@@ -87,14 +87,17 @@ int	convert_file(t_data *data, t_map *map, t_file *file)
 
 int	parsing(t_data *data, t_map *map, char **argv)
 {
-	t_file	file;
+	t_file	*file;
 
+	file = malloc(sizeof(t_file));
+	if (!file)
+		return (1);
 	if (ext_cub(argv[1]))
 		return (1);
-	struct_init(&file, map);
-	if (parse_map(map, &file, argv))
+	struct_init(file, map);
+	if (parse_map(map, file, argv))
 		return (1);
-	if (convert_file(data, map, &file))
+	if (convert_file(data, map, file))
 		return (1);
 	return (0);
 }

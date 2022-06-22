@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:27:28 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 16:59:38 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/22 16:29:48 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,35 +22,6 @@ int	read_file(char **str, int fd)
 		return (1);
 	(*str)[len] = 0;
 	return (0);
-}
-
-char	**ws_cute(char **tab)
-{
-	size_t	i;
-	size_t	i2;
-	char	**ret;
-
-	i = 0;
-	i2 = 0;
-	while (tab[i])
-	{
-		if (are_space(tab[i]))
-			i2--;
-		i++;
-	}
-	i2 += i;
-	ret = malloc(sizeof(char *) * (i2 + 1));
-	i2 = 0;
-	i = 0;
-	while (tab[i])
-	{
-		if (are_space(tab[i]) && ft_free(tab[i++], 0, 0, 0))
-			continue ;
-		ret[i2++] = tab[i++];
-	}
-	ret[i2] = 0;
-	free(tab);
-	return (ret);
 }
 
 int	get_file(int fd, char ***tab)

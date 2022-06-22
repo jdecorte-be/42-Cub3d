@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte <jdecorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 17:06:46 by lxu-wu            #+#    #+#             */
-/*   Updated: 2022/06/21 18:12:15 by jdecorte         ###   ########.fr       */
+/*   Updated: 2022/06/22 16:24:38 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,10 +159,10 @@ typedef struct l_map
 
 typedef struct l_data
 {
-	float x0;
-	float x1;
-	float y1;
-	float y0;
+	float		x0;
+	float		x1;
+	float		y1;
+	float		y0;
 	void		*mlx;
 	void		*mlx_win;
 	int			n_taken;
@@ -189,7 +189,7 @@ void	draw_verttext(t_data *data, int x, int y, t_img *text);
 void	draw_door(t_data *data, int x, int y);
 void	update_fps(t_data *data);
 void	set_plane(t_data *ptr, char flag);
-void	init_data(t_data *data);
+int		init_data(t_data *data);
 void	put_spirtes(t_data *data);
 void	run_draw(t_data *data);
 int		key_handler(int key, t_data *data);
