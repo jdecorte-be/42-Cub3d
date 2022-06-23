@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:34:59 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 12:29:46 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/23 12:46:58 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	main(int ac, char **av)
 	if (parsing(data, &map, av))
 	{
 		free_init_data(data);
-		exit (0);
+		exit (1);
 	}
 	data->n_sprites = ft_lstsize(data->map->item);
 	set_spawn(data);

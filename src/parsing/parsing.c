@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:26:13 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 09:53:32 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/23 12:51:04 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,16 @@ int	parse_map(t_map *map, t_file *file, char **argv)
 	if (fd == -1)
 		return (write_error("Error\nOpen failed\n"));
 	if (get_file(fd, &tab))
-		return (1);
+		return (free_tab(tab, 1));
 	close(fd);
 	if (map_elem(file, tab))
-		return (1);
+		return (free_tab(tab, 1));
 	if (all_face(file))
-		return (1);
+		return (free_tab(tab, 1));
 	if (take_map(file, map, tab))
-		return (1);
+		return (free_tab(tab, 1));
 	if (check_map(map))
-		return (1);
+		return (free_tab(tab, 1));
 	return (free_tab(tab, 0));
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 12:31:57 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 12:33:00 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/23 13:07:17 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 void    free_init_data(t_data *data)
 {
-    free(data->pl);
-    free(data->dda);
-    free(data->t);
-    free(data->sp->buffer);
-    free(data->sp);
-    int i = -1;
+	int	i;
+
+	i = -1;
+	free(data->pl);
+	free(data->dda);
+	free(data->t);
+	free(data->sp->buffer);
+	free(data->sp);
 	while (++i <= 12)
 		free(data->img[i]);
 	free(data->img);
-    free(data);
+	free(data);
 }
 
 int	free_exit(t_data *data)
@@ -45,7 +47,7 @@ int	free_exit(t_data *data)
 	while (data->map->map[++i])
 		free(data->map->map[i]);
 	free(data->map->map);
-	free(data->map->spawn);
-    free_init_data(data);
+	dlst_free(&data->map->spawn);
+	free_init_data(data);
 	exit(0);
 }

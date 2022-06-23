@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 14:40:11 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 12:17:46 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/23 12:46:51 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,15 @@ int	add_item(t_map *map, int x, int y)
 	if (isspawn(map->map[y][x]))
 	{
 		tmp2 = dlstnew(item);
+		if (!tmp)
+			return (1);
 		dlstadd_back(&map->spawn, tmp2);
 	}
 	else if (isitem(map->map[y][x]))
 	{
 		tmp = ft_lstnew(item);
+		if (!tmp)
+			return (1);
 		ft_lstadd_back(&map->item, tmp);
 	}
 	return (0);
