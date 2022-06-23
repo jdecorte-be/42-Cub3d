@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:26:13 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 15:44:10 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/23 19:20:02 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,13 @@
 
 int	all_face(t_file *file)
 {
-	if (!file->f1)
+	if (!file->f1 || !file->f2 || !file->f3
+		|| !file->f4 || !file->f5 || !file->f6)
+	{
+		ft_free(file->no, file->so, file->we, file->ea);
+		ft_free(file->c, file->f, file, 0);
 		return (1);
-	if (!file->f2)
-		return (1);
-	if (!file->f3)
-		return (1);
-	if (!file->f4)
-		return (1);
-	if (!file->f5)
-		return (1);
-	if (!file->f6)
-		return (1);
+	}
 	return (0);
 }
 
@@ -88,7 +83,7 @@ int	convert_file(t_data *data, t_map *map, t_file *file)
 	init_texture(data, 16, "./res/door1.xpm");
 	if (conv_color(&map->f, file->f) || conv_color(&map->c, file->c))
 		exit (write_error("Error\nColor error\n"));
-	ft_free(file->c, file->f, 0, 0);
+	ft_free(file->c, file->f, file, 0);
 	return (0);
 }
 
@@ -100,21 +95,12 @@ int	parsing(t_data *data, t_map *map, char **argv)
 	if (!file)
 		return (1);
 	if (ext_cub(argv[1]))
-	{
-		free(file);
-		return (1);
-	}
+		return (ft_free(file, 0, 0, 0));
 	struct_init(file, map);
 	if (parse_map(map, file, argv))
-	{
-		free(file);
 		return (1);
-	}
 	if (convert_file(data, map, file))
-	{
-		free(file);
 		return (1);
-	}
 	free(file);
 	return (0);
 }

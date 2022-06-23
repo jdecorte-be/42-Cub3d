@@ -6,14 +6,14 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 17:06:46 by lxu-wu            #+#    #+#             */
-/*   Updated: 2022/06/23 13:17:43 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/23 19:08:52 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-// # include "../wraloc.h"÷
+# include "../wraloc.h"
 # include <math.h>
 # include <time.h>
 # include "../minilibx_macos/mlx.h"
