@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:42:00 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 17:07:51 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/23 13:36:14 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	draw_verttext(t_data *data, int x, int y, t_img *text)
 
 void	set_texture(t_data *p)
 {
-	if (p->dda->side == 1 || p->dda->side == 2 || p->dda->side == 6)
+	if (p->dda->side == 13 || p->dda->side == 14)
 	{
 		p->dda->wallx = p->pl->posy + p->dda->walldist * p->dda->raydir_y;
 		p->dda->wallx -= floor(p->dda->wallx);
@@ -50,7 +50,25 @@ void	set_texture(t_data *p)
 		if (p->dda->raydir_x > 0)
 			p->dda->textx = p->img[p->dda->side]->width - p->dda->textx - 1;
 	}
-	else if (p->dda->side == 3 || p->dda->side == 4 || p->dda->side == 6)
+	else if (p->dda->side == 15 || p->dda->side == 16)
+	{
+		p->dda->wallx = p->pl->posx + p->dda->walldist * p->dda->raydir_x;
+		p->dda->wallx -= floor(p->dda->wallx);
+		p->dda->textx = (int)(p->dda->wallx
+				* (double)p->img[p->dda->side]->width);
+		if (p->dda->raydir_y < 0)
+			p->dda->textx = p->img[p->dda->side]->width - p->dda->textx - 1;
+	}
+	if (p->dda->side == 1 || p->dda->side == 2)
+	{
+		p->dda->wallx = p->pl->posy + p->dda->walldist * p->dda->raydir_y;
+		p->dda->wallx -= floor(p->dda->wallx);
+		p->dda->textx = (int)(p->dda->wallx
+				* (double)p->img[p->dda->side]->width);
+		if (p->dda->raydir_x > 0)
+			p->dda->textx = p->img[p->dda->side]->width - p->dda->textx - 1;
+	}
+	else if (p->dda->side == 3 || p->dda->side == 4)
 	{
 		p->dda->wallx = p->pl->posx + p->dda->walldist * p->dda->raydir_x;
 		p->dda->wallx -= floor(p->dda->wallx);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:54:04 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/22 16:55:51 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/23 13:09:10 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	conv_color(int *color, char *str)
 		return (1);
 	tab = ft_split(str, ",");
 	if (tab == 0)
-		return (write_error("Error\nmalloc_failed\n"));
+		exit (write_error("Error\nmalloc_failed\n"));
 	i = 0;
 	while (tab[i] && i <= 4)
 	{
@@ -56,7 +56,7 @@ int	conv_color(int *color, char *str)
 		i++;
 	}
 	if (i > 3)
-		return (write_error("Error\nUse r,g,b format!\n"));
+		exit (write_error("Error\nUse r,g,b format!\n"));
 	i = 0;
 	*color = 0;
 	while (i < 3)

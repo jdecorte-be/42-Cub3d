@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:42:05 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/22 15:17:08 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/23 13:24:38 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,11 @@ int	init_data(t_data *data)
 	data->pl = malloc(sizeof(t_player));
 	data->dda = malloc(sizeof(t_dda));
 	data->t = malloc(sizeof(t_time));
-	data->img = malloc(sizeof(t_img *) * 13);
+	data->img = malloc(sizeof(t_img *) * 17);
 	if (!data->mlx || !data->mlx_win || !data->pl
 		|| !data->dda || !data->t || !data->img)
 		return (1);
-	while (i <= 12)
+	while (i <= 16)
 	{
 		data->img[i] = malloc(sizeof(t_img));
 		if (!data->img[i])

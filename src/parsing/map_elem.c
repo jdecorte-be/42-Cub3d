@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_elem.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:27:31 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 16:53:07 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/23 13:09:57 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	map_face(t_file *file, char *str, size_t i)
 		return (0);
 	face = elem_type(str, i);
 	if (face == 0)
-		return (write_error("Error\nBad elem\n"));
+		exit (write_error("Error\nBad elem\n"));
 	else if (face == 7)
 		return (2);
 	while (str[i] && str[i] != 32)
@@ -99,7 +99,7 @@ int	map_face(t_file *file, char *str, size_t i)
 	while (str[i] && str[i] == 32)
 		i++;
 	if (str[i])
-		return (write_error("Error\nBad elem\n"));
+		exit (write_error("Error\nBad elem\n"));
 	return (0);
 }
 
