@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 12:31:57 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 13:07:17 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/23 13:25:05 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void    free_init_data(t_data *data)
 	free(data->t);
 	free(data->sp->buffer);
 	free(data->sp);
-	while (++i <= 12)
+	while (++i <= 16)
 		free(data->img[i]);
 	free(data->img);
 	free(data);
