@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:27:28 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 15:25:01 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/23 15:28:47 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int	read_file(char **str, int fd)
 	if (len == -1)
 		return (1);
 	(*str)[len] = 0;
-	if (len == 0)
-		exit(write_error("Error\nEmpty file\n"));
 	return (0);
 }
 
