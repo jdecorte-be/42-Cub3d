@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:26:13 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/22 16:54:58 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/23 09:53:32 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,21 @@ int	parsing(t_data *data, t_map *map, char **argv)
 	if (!file)
 		return (1);
 	if (ext_cub(argv[1]))
+	{
+		free(file);
 		return (1);
+	}
 	struct_init(file, map);
 	if (parse_map(map, file, argv))
+	{
+		free(file);
 		return (1);
+	}
 	if (convert_file(data, map, file))
+	{
+		free(file);
 		return (1);
+	}
+	free(file);
 	return (0);
 }

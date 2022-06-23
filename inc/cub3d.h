@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte <jdecorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 17:06:46 by lxu-wu            #+#    #+#             */
-/*   Updated: 2022/06/22 21:32:36 by jdecorte         ###   ########.fr       */
+/*   Updated: 2022/06/23 12:28:54 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include "../wraloc.h"
 # include <math.h>
 # include <time.h>
 # include "../minilibx_macos/mlx.h"
@@ -175,6 +176,8 @@ typedef struct l_data
 	t_dda		*dda;
 }	t_data;
 
+int	free_exit(t_data *data);
+void free_init_data(t_data *data);
 void	trace_line_wall(t_img *img, int color, t_data *data);
 void	draw_bg(t_data *data);
 int		splitlen(char **tab);

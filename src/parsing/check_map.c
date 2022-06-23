@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 14:40:11 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 15:05:54 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/23 12:17:46 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 int	add_item(t_map *map, int x, int y)
 {
 	t_item	*item;
+	t_list	*tmp;
+	t_dlist	*tmp2;
 
-	item = 0;
 	item = malloc(sizeof(t_item));
 	if (!item)
 		return (1);
@@ -24,9 +25,15 @@ int	add_item(t_map *map, int x, int y)
 	item->px = x;
 	item->py = y;
 	if (isspawn(map->map[y][x]))
-		dlstadd_back(&map->spawn, dlstnew(item));
+	{
+		tmp2 = dlstnew(item);
+		dlstadd_back(&map->spawn, tmp2);
+	}
 	else if (isitem(map->map[y][x]))
-		ft_lstadd_back(&map->item, ft_lstnew(item));
+	{
+		tmp = ft_lstnew(item);
+		ft_lstadd_back(&map->item, tmp);
+	}
 	return (0);
 }
 
@@ -88,10 +95,20 @@ int	check_map(t_map *map)
 	if (!map_len)
 		return (write_error("Error\nNeed map\n"));
 	if (cpl_map_len(map->map, &map_len))
+	{
+		free(map_len);
 		return (1);
+	}
 	if (check(map, map_len))
+	{
+		free(map_len);
 		return (1);
+	}
 	if (!map->spawn)
+	{
+		free(map_len);
 		return (write_error("Error\nNeed spawn\n"));
+	}
+	free(map_len);
 	return (0);
 }

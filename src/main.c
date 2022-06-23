@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:34:59 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/22 15:19:49 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/23 12:29:46 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,10 @@ void	put_text(t_data *data)
 	else
 		mlx_string_put(data->mlx, data->mlx_win, 700, 650, 0xffffff, \
 			"Good Job You Have Finished!");
+	free(str);
+	free(str2);
+	free(n);
+	free(n2);
 }
 
 int	launch_game(t_data *data)
@@ -61,12 +65,6 @@ int	launch_game(t_data *data)
 	return (0);
 }
 
-int	free_exit(t_data *data)
-{
-	mlx_destroy_window(data->mlx, data->mlx_win);
-	exit(0);
-}
-
 int	main(int ac, char **av)
 {
 	t_data	*data;
@@ -82,7 +80,10 @@ int	main(int ac, char **av)
 	mlx_mouse_move(data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	map_init(&map, data);
 	if (parsing(data, &map, av))
+	{
+		free_init_data(data);
 		exit (0);
+	}
 	data->n_sprites = ft_lstsize(data->map->item);
 	set_spawn(data);
 	set_plane(data, data->map->dirspawn);
