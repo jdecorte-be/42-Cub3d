@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 17:06:46 by lxu-wu            #+#    #+#             */
-/*   Updated: 2022/06/23 12:28:54 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/23 13:17:43 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../wraloc.h"
+// # include "../wraloc.h"÷
 # include <math.h>
 # include <time.h>
 # include "../minilibx_macos/mlx.h"
