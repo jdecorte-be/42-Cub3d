@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 12:31:57 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 15:35:48 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/23 19:20:41 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ int	free_exit(t_data *data)
 		free(tmp2);
 	}
 	i = -1;
-	while (data->map->map[++i])
-		free(data->map->map[i]);
+	if (data->map && data->map->map)
+		while (data->map->map[++i])
+			free(data->map->map[i]);
 	free(data->map->map);
 	dlst_free(&data->map->spawn);
 	free_init_data(data);

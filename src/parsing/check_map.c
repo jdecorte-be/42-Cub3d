@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 14:40:11 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 13:09:58 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/23 19:15:34 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	check(t_map *map, size_t *map_len)
 				&& map->map[y + 1] && map_len[y + 1] >= x
 				&& ismap(map->map[y + 1][x - 1])
 				&& ismap(map->map[y + 1][x]) && ismap(map->map[y + 1][x + 1])))
-				exit (write_error("Error\nMap isnt close\n"));
+				return (write_error("Error\nMap isnt close\n"));
 			if (isspawn(map->map[y][x]) || isitem(map->map[y][x]))
 				if (add_item(map, x, y))
 					return (1);
@@ -82,7 +82,7 @@ int	cpl_map_len(char **map, size_t	**map_len)
 		while (map[y][x])
 		{
 			if (!(ismap(map[y][x]) || map[y][x] == 32 || map[y][x] == '\n'))
-				exit (write_error("Error\nMap elem error\n"));
+				return (write_error("Error\nMap elem error\n"));
 			x++;
 		}
 		(*map_len)[y] = x;
@@ -97,7 +97,7 @@ int	check_map(t_map *map)
 
 	map_len = malloc(sizeof(size_t) * map->map_len);
 	if (!map_len)
-		exit (write_error("Error\nNeed map\n"));
+		return (write_error("Error\nNeed map\n"));
 	if (cpl_map_len(map->map, &map_len))
 	{
 		free(map_len);
@@ -111,7 +111,7 @@ int	check_map(t_map *map)
 	if (!map->spawn)
 	{
 		free(map_len);
-		exit (write_error("Error\nNeed spawn\n"));
+		return (write_error("Error\nNeed spawn\n"));
 	}
 	free(map_len);
 	return (0);

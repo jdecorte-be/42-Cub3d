@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:26:13 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 15:27:27 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/24 14:43:03 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,13 @@
 
 int	all_face(t_file *file)
 {
-	if (!file->f1)
+	if (!file->f1 || !file->f2 || !file->f3
+		|| !file->f4 || !file->f5 || !file->f6)
+	{
+		ft_free(file->no, file->so, file->we, file->ea);
+		ft_free(file->c, file->f, file, 0);
 		return (1);
-	if (!file->f2)
-		return (1);
-	if (!file->f3)
-		return (1);
-	if (!file->f4)
-		return (1);
-	if (!file->f5)
-		return (1);
-	if (!file->f6)
-		return (1);
+	}
 	return (0);
 }
 
@@ -38,7 +33,7 @@ int	parse_map(t_map *map, t_file *file, char **argv)
 	if (fd == -1)
 		exit (write_error("Error\nOpen failed\n"));
 	if (get_file(fd, &tab))
-		return (free_tab(tab, 1));
+		return (1);
 	close(fd);
 	if (map_elem(file, tab))
 		return (free_tab(tab, 1));
@@ -47,7 +42,11 @@ int	parse_map(t_map *map, t_file *file, char **argv)
 	if (take_map(file, map, tab))
 		return (free_tab(tab, 1));
 	if (check_map(map))
+	{
+		ft_free(file->no, file->so, file->we, file->ea);
+		ft_free(file->c, file->f, file, 0);
 		return (free_tab(tab, 1));
+	}
 	return (free_tab(tab, 0));
 }
 
@@ -88,7 +87,7 @@ int	convert_file(t_data *data, t_map *map, t_file *file)
 	init_texture(data, 16, "./res/wall01.xpm");
 	if (conv_color(&map->f, file->f) || conv_color(&map->c, file->c))
 		exit (write_error("Error\nColor error\n"));
-	ft_free(file->c, file->f, 0, 0);
+	ft_free(file->c, file->f, file, 0);
 	return (0);
 }
 
@@ -100,21 +99,12 @@ int	parsing(t_data *data, t_map *map, char **argv)
 	if (!file)
 		return (1);
 	if (ext_cub(argv[1]))
-	{
-		free(file);
-		return (1);
-	}
+		return (ft_free(file, 0, 0, 0));
 	struct_init(file, map);
 	if (parse_map(map, file, argv))
-	{
-		free(file);
 		return (1);
-	}
 	if (convert_file(data, map, file))
-	{
-		free(file);
 		return (1);
-	}
 	free(file);
 	return (0);
 }

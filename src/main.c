@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:34:59 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 13:10:16 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/23 19:14:28 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,15 @@ int	main(int ac, char **av)
 		exit (write_error("Error\nMalloc failed\n"));
 	if (init_data(data))
 		return (1);
-	mlx_mouse_move(data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	map_init(&map, data);
 	if (parsing(data, &map, av))
 	{
-		free_init_data(data);
+		// free_init_data(data);
+		printf("caca\n");
+		free_exit(data);
 		exit (1);
 	}
+	mlx_mouse_move(data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	data->n_sprites = ft_lstsize(data->map->item);
 	set_spawn(data);
 	set_plane(data, data->map->dirspawn);

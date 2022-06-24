@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_elem.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:27:31 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 13:09:57 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/23 19:03:01 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	cpl_face(t_file *file, char *str, size_t start, int face)
 	if ((face == 1 && !file->no) || (face == 2 && !file->so)
 		|| (face == 3 && !file->we) || (face == 4 && !file->ea)
 		|| (face == 5 && !file->f) || (face == 6 && !file->c))
-		ft_error(file, 2);
+		return (write_error("Error\nMalloc\n"));
 	return (0);
 }
 
@@ -85,7 +85,7 @@ int	map_face(t_file *file, char *str, size_t i)
 		return (0);
 	face = elem_type(str, i);
 	if (face == 0)
-		exit (write_error("Error\nBad elem\n"));
+		return (write_error("Error\nBad elem\n"));
 	else if (face == 7)
 		return (2);
 	while (str[i] && str[i] != 32)
@@ -99,7 +99,7 @@ int	map_face(t_file *file, char *str, size_t i)
 	while (str[i] && str[i] == 32)
 		i++;
 	if (str[i])
-		exit (write_error("Error\nBad elem\n"));
+		return (write_error("Error\nBad elem\n"));
 	return (0);
 }
 
@@ -115,7 +115,11 @@ int	map_elem(t_file *file, char **tab)
 	{
 		ret = map_face(file, tab[i], i3);
 		if (ret == 1)
+		{
+			ft_free(file->no, file->so, file->we, file->ea);
+			ft_free(file->c, file->f, file, 0);
 			return (1);
+		}
 		else if (ret == 2)
 		{
 			file->map_start = i;
