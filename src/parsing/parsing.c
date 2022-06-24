@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:26:13 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 19:20:02 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/24 03:51:42 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,11 @@ int	parse_map(t_map *map, t_file *file, char **argv)
 	if (take_map(file, map, tab))
 		return (free_tab(tab, 1));
 	if (check_map(map))
+	{
+		ft_free(file->no, file->so, file->we, file->ea);
+		ft_free(file->c, file->f, file, 0);
 		return (free_tab(tab, 1));
+	}
 	return (free_tab(tab, 0));
 }
 
