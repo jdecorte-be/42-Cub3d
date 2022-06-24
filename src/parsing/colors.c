@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 10:54:04 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/24 19:06:27 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/24 19:08:32 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,9 @@ int	conv_color(int *color, char *str)
 	tab = color_split(str);
 	if (tab == 0)
 		exit (write_error("Error\nmalloc_failed\n"));
-	i = 0;
-	while (tab[i])
-	{
+	i = -1;
+	while (tab[++i])
 		rgb[i] = ft_atoi_positive(tab[i]);
-		i++;
-	}
 	i = 0;
 	*color = 0;
 	while (i < 3)
