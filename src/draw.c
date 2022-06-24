@@ -105,6 +105,9 @@ void	run_draw(t_data *data)
 	int	y;
 
 	y = 0;
+	data->img[data->dda->side]->height = data->img[data->dda->side]->height % 200;
+	data->img[data->dda->side]->width = data->img[data->dda->side]->width % 200;
+
 	data->dda->lineheight = (int)(WIN_HEIGHT / data->dda->walldist);
 	data->dda->drawstart = -data->dda->lineheight / 2 + WIN_HEIGHT / 2;
 	if (data->dda->drawstart < 0)

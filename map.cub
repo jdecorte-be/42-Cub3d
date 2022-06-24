@@ -1,7 +1,7 @@
 NO ./res/d_wall.xpm
 SO ./res/d_wall.xpm
 WE ./res/d_wall6.xpm
-EA ./res/d_wall.xpm
+EA ./res/4k.xpm
 
 F 200,225,204
 C 222,243,246
