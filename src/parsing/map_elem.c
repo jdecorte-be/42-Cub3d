@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:27:31 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 19:03:01 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/24 16:52:36 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	cpl_face(t_file *file, char *str, size_t start, int face)
 	size_t	end;
 
 	end = start;
-	while (str[end] && str[end] != 32)
+	while (str[end] && str[end] != 0)
 		end++;
 	if (face == 1 && ++file->f1)
 		file->no = ft_substr(str, start, end - start);
@@ -94,12 +94,14 @@ int	map_face(t_file *file, char *str, size_t i)
 		i++;
 	if (cpl_face(file, str, i, face))
 		return (1);
-	while (str[i] && str[i] != 32)
+	while (str[i])
 		i++;
-	while (str[i] && str[i] == 32)
-		i++;
-	if (str[i])
-		return (write_error("Error\nBad elem\n"));
+	// while (str[i] && str[i] != 32)
+	// 	i++;
+	// while (str[i] && str[i] == 32)
+	// 	i++;
+	// if (str[i])
+	// 	return (write_error("Error\nBad elem\n"));
 	return (0);
 }
 
