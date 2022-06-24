@@ -54,6 +54,8 @@ int	init_data(t_data *data)
 	data->mlx = mlx_init();
 	data->mlx_win = mlx_new_window(data->mlx, WIN_WIDTH, \
 		WIN_HEIGHT, "cub3d");
+	data->p_img = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
+
 	data->pl = malloc(sizeof(t_player));
 	data->dda = malloc(sizeof(t_dda));
 	data->t = malloc(sizeof(t_time));
@@ -70,6 +72,8 @@ int	init_data(t_data *data)
 	}
 	data->sp = malloc(sizeof(t_sprite));
 	data->sp->buffer = malloc(sizeof(double) * (WIN_WIDTH + 1));
+	data->img[0]->p_img = mlx_get_data_addr(data->p_img, &data->img[0]->bt, \
+			&data->img[0]->s_line, &data->img[0]->endian);
 	return (0);
 }
 

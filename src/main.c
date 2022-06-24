@@ -48,19 +48,12 @@ void	put_text(t_data *data)
 
 int	launch_game(t_data *data)
 {
-	void	*img;
-	char	*str;
-
-	img = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
-	data->img[0]->p_img = mlx_get_data_addr(img, &data->img[0]->bt, \
-			&data->img[0]->s_line, &data->img[0]->endian);
-	mlx_hook(data->mlx_win, 2, 0, key_handler, data);
 	mousing(data);
 	update_param(data, data->pl->rot);
 	raycaster(data);
 	draw_bg(data);
 	minimap(data);
-	mlx_put_image_to_window(data->mlx, data->mlx_win, img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->p_img, 0, 0);
 	put_text(data);
 	return (0);
 }
@@ -79,12 +72,7 @@ int	main(int ac, char **av)
 		return (1);
 	map_init(&map, data);
 	if (parsing(data, &map, av))
-	{
-		// free_init_data(data);
-		printf("caca\n");
 		free_exit(data);
-		exit (1);
-	}
 	mlx_mouse_move(data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	data->n_sprites = ft_lstsize(data->map->item);
 	set_spawn(data);

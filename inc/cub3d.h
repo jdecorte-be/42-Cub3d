@@ -13,7 +13,6 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-# include "../wraloc.h"
 # include <math.h>
 # include <time.h>
 # include "../minilibx_macos/mlx.h"
@@ -160,6 +159,7 @@ typedef struct l_map
 
 typedef struct l_data
 {
+	void	*p_img;
 	float		x0;
 	float		x1;
 	float		y1;
