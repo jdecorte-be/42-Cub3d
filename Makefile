@@ -2,7 +2,7 @@ NAME = cub3d
 
 CC = gcc
 
-CFLAGS = -I minilibx -L minilibx_macos -lmlx -framework OpenGL -framework AppKit -fsanitize=address -g
+CFLAGS = -I minilibx -L minilibx_macos -lmlx -framework OpenGL -framework AppKit -g
 
 RM = rm -rf
 

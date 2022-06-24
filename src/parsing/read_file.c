@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:27:28 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 15:28:47 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/23 15:36:35 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,14 @@ int	get_file(int fd, char ***tab)
 		if (are_printable(s1))
 			exit (write_error("Error\nBad elem\n"));
 		str = ft_free_join(str, s1, 1);
-		if (read_file(&s1, fd))
-			exit (write_error("Error\nRead failed\n"));
+		if (!str || read_file(&s1, fd))
+		{
+			return (write_error("Error\nRead failed\n"));
+		}
 	}
 	*tab = split1(str, '\n');
+	if (!tab)
+		return (write_error("Error\nMap empty\n"));
 	free(s1);
 	free(str);
 	return (0);
