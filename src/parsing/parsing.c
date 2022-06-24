@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:26:13 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/24 14:43:03 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/24 14:53:57 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int	parse_map(t_map *map, t_file *file, char **argv)
 	if (fd == -1)
 		exit (write_error("Error\nOpen failed\n"));
 	if (get_file(fd, &tab))
-		return (1);
+	{
+		ft_free(file->no, file->so, file->we, file->ea);
+		return (ft_free(file->c, file->f, file, 0));
+	}
 	close(fd);
 	if (map_elem(file, tab))
 		return (free_tab(tab, 1));
@@ -80,7 +83,6 @@ int	convert_file(t_data *data, t_map *map, t_file *file)
 	init_texture(data, 10, "./res/frame_4.xpm");
 	init_texture(data, 11, "./res/frame_5.xpm");
 	init_texture(data, 12, "./res/frame_6.xpm");
-
 	init_texture(data, 13, "./res/wall01.xpm");
 	init_texture(data, 14, "./res/WALL0.xpm");
 	init_texture(data, 15, "./res/wall01.xpm");
@@ -105,6 +107,5 @@ int	parsing(t_data *data, t_map *map, char **argv)
 		return (1);
 	if (convert_file(data, map, file))
 		return (1);
-	free(file);
 	return (0);
 }
