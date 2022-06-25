@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:42:00 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/25 19:12:54 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/26 01:21:54 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	set_texture(t_data *p)
 		p->dda->wallx = p->pl->posy + p->dda->walldist * p->dda->raydir_y;
 		p->dda->wallx -= floor(p->dda->wallx);
 		p->dda->textx = (int)(p->dda->wallx
-				* (double)p->img[p->dda->side]->width) % p->img[p->dda->side]->width;
+				* (double)p->img[p->dda->side]->width)
 		if (p->dda->raydir_x > 0)
 			p->dda->textx = p->img[p->dda->side]->width - p->dda->textx - 1;
 	}
@@ -65,7 +65,7 @@ void	set_texture(t_data *p)
 		p->dda->wallx = p->pl->posx + p->dda->walldist * p->dda->raydir_x;
 		p->dda->wallx -= floor(p->dda->wallx);
 		p->dda->textx = (int)(p->dda->wallx
-				* (double)p->img[p->dda->side]->width) % p->img[p->dda->side]->width;
+				* (double)p->img[p->dda->side]->width);
 		if (p->dda->raydir_y < 0)
 			p->dda->textx = p->img[p->dda->side]->width - p->dda->textx - 1;
 	}
