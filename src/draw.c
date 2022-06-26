@@ -6,32 +6,31 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:42:00 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/26 01:21:54 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/26 11:30:27 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 #include <math.h>
 
-int			get_texture_color(t_img *img, int x, int y)
-{
-	if (x >= 0 && x < WIN_WIDTH
-		&& y >= 0 && y < WIN_HEIGHT)
-	{
-		return (*(int*)(img->p_img
-			+ (4 * img->width * (int)y)
-			+ (4 * (int)x)));
-	}
-	return (0x0);
-}
-
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
-	if (x >= 0 && x < WIN_WIDTH
-		&& y >= 0 && y < WIN_HEIGHT)
-		*(int*)(img->p_img
-			+ (4 * (int)WIN_WIDTH * (int)y)
-			+ ((int)x * 4)) = color;
+	int		*dst;
+
+	dst = (void *)img->p_img + (y * img->s_line + x * \
+											(img->bt / 8));
+	*(int*)dst = color;
+}
+
+int			get_pixel(t_img *img, int x, int y)
+{
+	int		*dst;
+	int		color;
+
+	dst = (void *)img->p_img + (y * img->s_line + x * \
+												(img->bt / 8));
+	color = *(int*)dst;
+	return (color);
 }
 
 int	draw_vertline(t_data *data, int x, int y, int color, int j)
@@ -56,7 +55,7 @@ void	set_texture(t_data *p)
 		p->dda->wallx = p->pl->posy + p->dda->walldist * p->dda->raydir_y;
 		p->dda->wallx -= floor(p->dda->wallx);
 		p->dda->textx = (int)(p->dda->wallx
-				* (double)p->img[p->dda->side]->width)
+				* (double)p->img[p->dda->side]->width);
 		if (p->dda->raydir_x > 0)
 			p->dda->textx = p->img[p->dda->side]->width - p->dda->textx - 1;
 	}
@@ -83,11 +82,10 @@ int	draw_texture(t_data *p, int y)
 			+ p->dda->lineheight / 2) * p->dda->step;
 	while (y < p->dda->drawend - 1)
 	{
-		p->dda->texty = (int)((y * 2 - WIN_HEIGHT + p->dda->lineheight)
-				* ((p->img[p->dda->side]->height / 2.) / p->dda->lineheight));
-		color = get_texture_color(p->img[p->dda->side], p->dda->textx, p->dda->texty);
+		p->dda->texty = (int)p->dda->textpos & (p->img[p->dda->side]->height - 1);
+		p->dda->textpos += p->dda->step;
+		color = get_pixel(p->img[p->dda->side], p->dda->textx, p->dda->textpos);
 		my_mlx_pixel_put(p->img[0], p->dda->screenx, y, color);
-		// printf("%d / %d\n", p->dda->texty, p->dda->lineheight);
 		y++;
 		i++;
 	}

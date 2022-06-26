@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:11:18 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 15:14:50 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/26 11:30:12 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,12 @@ void	check_dist(t_data *ptr)
 	ptr->dda->side = 0;
 	while (ptr->dda->hit == 0)
 		check_dist_step(ptr);
-	if (ptr->dda->side == 1 || ptr->dda->side == 2 || ptr->dda->side == 13 || ptr->dda->side == 14)
+	if (ptr->dda->side == 1 || ptr->dda->side == 2 || \
+		ptr->dda->side == 13 || ptr->dda->side == 14)
 		ptr->dda->walldist = (ptr->dda->map_x - ptr->pl->posx + \
 			(1 - ptr->dda->stepx) / 2) / ptr->dda->raydir_x;
-	else if (ptr->dda->side == 3 || ptr->dda->side == 4 || ptr->dda->side == 15 || ptr->dda->side == 16)
+	else if (ptr->dda->side == 3 || ptr->dda->side == 4 || \
+			ptr->dda->side == 15 || ptr->dda->side == 16)
 		ptr->dda->walldist = (ptr->dda->map_y - ptr->pl->posy + \
 			(1 - ptr->dda->stepy) / 2) / ptr->dda->raydir_y;
 }

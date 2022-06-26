@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 12:31:57 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 19:20:41 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/26 11:29:44 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-void    free_init_data(t_data *data)
+void	free_init_data(t_data *data)
 {
 	int	i;
 
