@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:52:29 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 17:07:51 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/26 11:42:45 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,11 @@ int	find_mod(int num)
 	return (num);
 }
 
-void	put_pxl(t_img *img, int x, int y, int color)
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color)
 {
-	int		i;
+	int		*dst;
 
-	if (x < WIN_WIDTH && y < WIN_HEIGHT)
-	{
-		i = (x * img->bt / 8) + (y * img->s_line);
-		img->p_img[i] = color;
-		img->p_img[++i] = color >> 8;
-		img->p_img[++i] = color >> 16;
-	}
+	dst = (void *)img->p_img + (y * img->s_line + x * \
+		(img->bt / 8));
+	*(int *)dst = color;
 }

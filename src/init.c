@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:42:05 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/25 16:11:11 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/26 11:45:20 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,9 @@ int	init_data(t_data *data)
 	int	i;
 
 	i = 0;
-	data->mlx = mlx_init();
 	data->mlx_win = mlx_new_window(data->mlx, WIN_WIDTH, \
 		WIN_HEIGHT, "cub3d");
 	data->p_img = mlx_new_image(data->mlx, WIN_WIDTH, WIN_HEIGHT);
-
 	data->pl = malloc(sizeof(t_player));
 	data->dda = malloc(sizeof(t_dda));
 	data->t = malloc(sizeof(t_time));

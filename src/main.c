@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:34:59 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/26 11:18:58 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/26 11:45:52 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ int	main(int ac, char **av)
 	data = malloc(sizeof(t_data));
 	if (!data)
 		exit (write_error("Error\nMalloc failed\n"));
+	data->mlx = mlx_init();
 	if (init_data(data))
 		return (1);
 	map_init(&map, data);

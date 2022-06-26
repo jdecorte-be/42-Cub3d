@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 17:06:46 by lxu-wu            #+#    #+#             */
-/*   Updated: 2022/06/25 17:19:27 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/26 11:43:03 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ typedef struct l_data
 	t_dda		*dda;
 }	t_data;
 
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 int	free_exit(t_data *data);
 void free_init_data(t_data *data);
 void	trace_line_wall(t_img *img, int color, t_data *data);
