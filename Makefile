@@ -15,7 +15,7 @@ SRCS_BONUS = src_bonus/*.c\
 
 $(NAME) :
 	make all -C minilibx_macos
-	make all -C libft
+	make bonus -C libft
 	gcc $(CFLAGS) $(SRCS) -o $(NAME)
 
 bonus :

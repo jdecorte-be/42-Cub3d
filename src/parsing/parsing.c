@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:26:13 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/24 18:15:53 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/26 12:01:43 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,10 @@ int	convert_file(t_data *data, t_map *map, t_file *file)
 	init_texture(data, 10, "./res/frame_4.xpm");
 	init_texture(data, 11, "./res/frame_5.xpm");
 	init_texture(data, 12, "./res/frame_6.xpm");
-	init_texture(data, 13, "./res/wall01.xpm");
-	init_texture(data, 14, "./res/WALL0.xpm");
-	init_texture(data, 15, "./res/wall01.xpm");
-	init_texture(data, 16, "./res/wall01.xpm");
+	init_texture(data, 13, "./res/CustomDoor.xpm");
+	init_texture(data, 14, "./res/CustomDoor.xpm");
+	init_texture(data, 15, "./res/CustomDoor.xpm");
+	init_texture(data, 16, "./res/CustomDoor.xpm");
 	if (conv_color(&map->f, file->f) || conv_color(&map->c, file->c))
 		exit (write_error("Error\nColor error\n"));
 	ft_free(file->c, file->f, file, 0);
