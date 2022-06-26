@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:27:47 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 19:10:52 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/26 16:24:19 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	special_free(t_file *file, t_map *map)
 {
+	(void)map;
 	ft_free(file->no, file->so, file->we, file->ea);
 	ft_free(file->c, file->f, file, 0);
 	return (write_error("Error\nMalloc failed\n"));

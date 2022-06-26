@@ -2,7 +2,7 @@ NAME = cub3D
 
 CC = gcc
 
-CFLAGS = -I minilibx -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
+CFLAGS = -Werror -Wextra -Wall -I minilibx -L minilibx_macos -lmlx -framework OpenGL -framework AppKit
 
 RM = rm -rf
 

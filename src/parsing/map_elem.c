@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:27:31 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/24 16:52:36 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/26 16:24:00 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,13 +109,13 @@ int	map_elem(t_file *file, char **tab)
 {
 	size_t	i;
 	size_t	i2;
-	size_t	i3;
 	int		ret;
 
 	i = 0;
+	i2 = 0;
 	while (tab[i])
 	{
-		ret = map_face(file, tab[i], i3);
+		ret = map_face(file, tab[i], i2);
 		if (ret == 1)
 		{
 			ft_free(file->no, file->so, file->we, file->ea);

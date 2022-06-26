@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:27:28 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/24 14:51:52 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/26 16:23:13 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	read_file(char **str, int fd)
 {
 	long		len;
-	static int	i = 0;
 
 	len = read(fd, *str, 10240);
 	if (len == -1)

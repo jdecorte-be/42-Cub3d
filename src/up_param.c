@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   up_param.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte <jdecorte@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:41:15 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/22 21:07:44 by jdecorte         ###   ########.fr       */
+/*   Updated: 2022/06/26 16:26:17 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,10 @@
 
 int	mousing(t_data *data)
 {
-	static int	mx;
 	int			x;
 	int			y;
-	double		olddirx;
 	int			dx;
 
-	mx = mx - 1;
-	if (mx == -1)
-		mx = x;
 	mlx_mouse_get_pos(data->mlx_win, &x, &y);
 	dx = x - WIN_WIDTH / 2;
 	if (dx > 0)

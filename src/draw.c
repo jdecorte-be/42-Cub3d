@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:42:00 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/26 11:42:49 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/26 16:26:31 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int	get_pixel(t_img *img, int x, int y)
 
 int	draw_vertline(t_data *data, int y, int color, int j)
 {
-	int	i;
-
 	while (j < y)
 	{
 		my_mlx_pixel_put(data->img[0], data->dda->screenx, j, color);

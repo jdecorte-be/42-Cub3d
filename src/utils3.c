@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:39:20 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/26 11:43:33 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/26 16:25:47 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_error(void *arg, int e)
 {
+	(void)arg;
 	if (e == 2)
 		write (2, "malloc\n", 7);
 	else if (e == 9)

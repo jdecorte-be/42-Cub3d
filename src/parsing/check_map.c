@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 14:40:11 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/23 19:15:34 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/26 16:25:31 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	add_item(t_map *map, int x, int y)
 	if (isspawn(map->map[y][x]))
 	{
 		tmp2 = dlstnew(item);
-		if (!tmp)
+		if (!tmp2)
 			return (1);
 		dlstadd_back(&map->spawn, tmp2);
 	}
@@ -43,8 +43,8 @@ int	add_item(t_map *map, int x, int y)
 
 int	check(t_map *map, size_t *map_len)
 {
-	int		x;
-	int		y;
+	size_t	x;
+	size_t	y;
 
 	y = 0;
 	while (map->map[y])
