@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:27:25 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 15:27:26 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/27 13:44:17 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	isitem(char c)
 
 int	inmap(char c)
 {
-	if (c == '0' || isitem(c) || isspawn(c) || isdoor(c))
+	if (c == '0' || isspawn(c))
 		return (1);
 	return (0);
 }

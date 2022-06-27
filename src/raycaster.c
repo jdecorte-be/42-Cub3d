@@ -6,30 +6,11 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:11:18 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/26 11:30:12 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/27 13:41:13 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
-
-void	is_side_door(t_data *ptr)
-{
-	ptr->dda->hit = 1;
-	if (!ptr->dda->side)
-	{
-		if (ptr->dda->raydir_x < 0)
-			ptr->dda->side = 13;
-		else if (ptr->dda->raydir_x > 0)
-			ptr->dda->side = 14;
-	}
-	else if (ptr->dda->side == 1)
-	{
-		if (ptr->dda->raydir_y < 0)
-			ptr->dda->side = 15;
-		else if (ptr->dda->raydir_y > 0)
-			ptr->dda->side = 16;
-	}
-}
 
 void	is_side(t_data *ptr)
 {
@@ -64,8 +45,6 @@ void	check_dist_step(t_data *ptr)
 		ptr->dda->map_y += ptr->dda->stepy;
 		ptr->dda->side = 1;
 	}
-	if (ptr->map->map[ptr->dda->map_x][ptr->dda->map_y] == 'D')
-		is_side_door(ptr);
 	if (ptr->map->map[ptr->dda->map_x][ptr->dda->map_y] == '1')
 		is_side(ptr);
 }

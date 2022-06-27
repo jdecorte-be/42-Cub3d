@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
+/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:15:07 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/21 17:07:38 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/27 13:39:31 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	raycaster(t_data *data)
 	{
 		calc_dda(data);
 		run_draw(data);
-		data->sp->buffer[data->dda->screenx] = data->dda->walldist;
 		data->dda->screenx++;
 	}
-	put_spirtes(data);
 }

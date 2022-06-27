@@ -11,7 +11,8 @@ SRCS = 	src/*.c\
         libft/libft.a\
 
 SRCS_BONUS = src_bonus/*.c\
-        libft/libft.a\
+			src/parsing/*.c\
+        	libft/libft.a\
 
 $(NAME) :
 	make all -C minilibx_macos

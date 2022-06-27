@@ -6,7 +6,7 @@
 /*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:34:59 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/26 11:45:52 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/27 13:39:10 by jdecorte42       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,37 +24,11 @@ void	map_init(t_map *map, t_data *data)
 	data->n_taken = 0;
 }
 
-void	put_text(t_data *data)
-{
-	char	*str;
-	char	*str2;
-	char	*n;
-	char	*n2;
-
-	n = ft_itoa(data->n_taken);
-	n2 = ft_itoa(data->n_sprites);
-	str = ft_strjoin(n, " / ");
-	str2 = ft_strjoin(str, n2);
-	if (data->n_taken != data->n_sprites)
-		mlx_string_put(data->mlx, data->mlx_win, 800, 650, 0xffffff, str2);
-	else
-		mlx_string_put(data->mlx, data->mlx_win, 700, 650, 0xffffff, \
-			"Good Job You Have Finished!");
-	free(str);
-	free(str2);
-	free(n);
-	free(n2);
-}
-
 int	launch_game(t_data *data)
 {
-	mousing(data);
 	update_param(data, data->pl->rot);
 	raycaster(data);
-	draw_bg(data);
-	minimap(data);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->p_img, 0, 0);
-	put_text(data);
 	return (0);
 }
 
