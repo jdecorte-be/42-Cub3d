@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keys.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:28:39 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/26 11:29:20 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/27 13:50:01 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,12 @@ void	spawn_changer(int key, t_data *data)
 {
 	if (key == 126)
 	{
-		pl_init(data);
 		data->map->spawn = data->map->spawn->next;
 		set_spawn(data);
 		set_plane(data, data->map->dirspawn);
 	}
 	if (key == 125)
 	{
-		pl_init(data);
 		data->map->spawn = data->map->spawn->prev;
 		set_spawn(data);
 		set_plane(data, data->map->dirspawn);

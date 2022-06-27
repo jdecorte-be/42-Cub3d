@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 14:40:11 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/27 13:42:47 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/27 13:58:04 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	add_item(t_map *map, int x, int y)
 {
 	t_item	*item;
-	t_list	*tmp;
 	t_dlist	*tmp2;
 
 	item = malloc(sizeof(t_item));
@@ -30,13 +29,6 @@ int	add_item(t_map *map, int x, int y)
 		if (!tmp2)
 			return (1);
 		dlstadd_back(&map->spawn, tmp2);
-	}
-	else if (isitem(map->map[y][x]))
-	{
-		tmp = ft_lstnew(item);
-		if (!tmp)
-			return (1);
-		ft_lstadd_back(&map->item, tmp);
 	}
 	return (0);
 }
@@ -60,7 +52,7 @@ int	check(t_map *map, size_t *map_len)
 				&& ismap(map->map[y + 1][x - 1])
 				&& ismap(map->map[y + 1][x]) && ismap(map->map[y + 1][x + 1])))
 				return (write_error("Error\nMap isnt close\n"));
-			if (isspawn(map->map[y][x]) || isitem(map->map[y][x]))
+			if (isspawn(map->map[y][x]))
 				if (add_item(map, x, y))
 					return (1);
 			x++;

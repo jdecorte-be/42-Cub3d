@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:27:25 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/27 13:44:17 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/27 13:57:42 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,6 @@
 int	isspawn(char c)
 {
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-		return (1);
-	return (0);
-}
-
-int	isdoor(char c)
-{
-	if (c == 'D')
-		return (1);
-	return (0);
-}
-
-int	isitem(char c)
-{
-	if (c == '2')
 		return (1);
 	return (0);
 }

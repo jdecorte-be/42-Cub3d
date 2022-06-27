@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_elem.c                                         :+:      :+:    :+:   */
+/*   map_elem_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:27:31 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/26 16:24:00 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/27 14:14:35 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc/cub3d_bonus.h"
 
 int	elem_type(char *str, size_t i)
 {
@@ -96,12 +96,6 @@ int	map_face(t_file *file, char *str, size_t i)
 		return (1);
 	while (str[i])
 		i++;
-	// while (str[i] && str[i] != 32)
-	// 	i++;
-	// while (str[i] && str[i] == 32)
-	// 	i++;
-	// if (str[i])
-	// 	return (write_error("Error\nBad elem\n"));
 	return (0);
 }
 

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:34:59 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/26 11:45:52 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/27 13:58:45 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../inc/cub3d_bonus.h"
 
 void	map_init(t_map *map, t_data *data)
 {
@@ -76,7 +76,6 @@ int	main(int ac, char **av)
 		free_exit(data);
 	mlx_mouse_move(data->mlx_win, WIN_WIDTH / 2, WIN_HEIGHT / 2);
 	data->n_sprites = ft_lstsize(data->map->item);
-	pl_init(data);
 	set_spawn(data);
 	set_plane(data, data->map->dirspawn);
 	mlx_mouse_hide();

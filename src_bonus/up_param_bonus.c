@@ -6,11 +6,11 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 09:41:15 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/26 16:26:17 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/27 13:59:15 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../inc/cub3d_bonus.h"
 
 int	mousing(t_data *data)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 17:06:46 by lxu-wu            #+#    #+#             */
-/*   Updated: 2022/06/26 11:43:03 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/27 14:04:38 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ typedef struct l_dda
 
 typedef struct l_img
 {
-	char 	*p_img;
+	char	*p_img;
 	int		width;
 	int		height;
 	int		bt;
@@ -159,7 +159,7 @@ typedef struct l_map
 
 typedef struct l_data
 {
-	void	*p_img;
+	void		*p_img;
 	float		x0;
 	float		x1;
 	float		y1;
@@ -177,22 +177,17 @@ typedef struct l_data
 }	t_data;
 
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
-int	free_exit(t_data *data);
-void free_init_data(t_data *data);
+int		free_exit(t_data *data);
+void	free_init_data(t_data *data);
 void	trace_line_wall(t_img *img, int color, t_data *data);
-void	draw_bg(t_data *data);
 int		splitlen(char **tab);
 void	update_param(t_data *data, double rot);
-int		mousing(t_data *data);
 void	ft_error(void *arg, int e);
 void	set_spawn(t_data *data);
-int		mousing(t_data *data);
 void	check_dist(t_data *ptr);
 void	calc_dda(t_data *ptr);
 void	check_side(t_data *ptr);
 void	draw_verttext(t_data *data, int x, int y, t_img *text);
-void	draw_door(t_data *data, int x, int y);
-void	update_fps(t_data *data);
 void	set_plane(t_data *ptr, char flag);
 int		init_data(t_data *data);
 void	put_spirtes(t_data *data);
@@ -203,28 +198,19 @@ void	ft_free_tab(char **tab);
 int		find_max(int num1, int num2);
 int		find_mod(int num);
 void	raycaster(t_data *data);
-int		mouse_hook(int key, t_data *data);
 void	trace_line(t_img *img, int color, t_data *data);
 char	*ft_free_join(char const *s1, char const *s2, int e);
-void	put_pxl(t_img *img, int x, int y, int color);
 void	put_spawn(t_data *data);
 int		key_exit(int key, t_data *data);
-void	minimap(t_data *data);
-void	count_sprites(t_data *data);
 void	draw_sprites(t_data *data, double x, double y);
-void	draw_door(t_data *data, int x, int y);
-void	put_sprite(t_data *data, int y);
-
 int		parsing(t_data *data, t_map *map, char **argv);
 void	ft_error(void *arg, int e);
 char	*ft_free_join(char const *s1, char const *s2, int e);
 int		ft_atoi_positive(const char *str);
 
-void	put_hud(t_data *data);
 t_dlist	*dlstnew(void *content);
 void	dlstadd_back(t_dlist **lst, t_dlist *new);
 void	dlst_free(t_dlist **lst);
-void	find_spawn(char **map, t_data *data);
 char	**split1(char const *s, char c);
 int		free_tab(char **tab, int ret);
 
@@ -234,8 +220,6 @@ void	struct_init(t_file *file, t_map *map);
 
 int		write_error(char *str);
 int		isspawn(char c);
-int		isdoor(char c);
-int		isitem(char c);
 int		inmap(char c);
 int		ismap(char c);
 

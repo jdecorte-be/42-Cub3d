@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing_utils.c                                    :+:      :+:    :+:   */
+/*   parsing_utils_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jdecorte42 <jdecorte42@student.42.fr>      +#+  +:+       +#+        */
+/*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/21 15:27:25 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/27 13:43:11 by jdecorte42       ###   ########.fr       */
+/*   Updated: 2022/06/27 14:20:35 by lxu-wu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/cub3d.h"
+#include "../../inc/cub3d_bonus.h"
 
 int	isspawn(char c)
 {
@@ -35,7 +35,7 @@ int	isitem(char c)
 
 int	inmap(char c)
 {
-	if (c == '0' || isspawn(c))
+	if (c == '0' || isspawn(c) || isitem(c) || isdoor(c))
 		return (1);
 	return (0);
 }
