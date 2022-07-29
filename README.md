@@ -14,13 +14,6 @@
 	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jdecorte-be/42-Cub3d?color=green" />
 </p>
 
-<h3 align="center">
-	<a href="#%EF%B8%8F-about">About</a>
-	<span> · </span>
-	<a href="#%EF%B8%8F-usage">Usage</a>
-	<span> · </span>
-	<a href="#-testing">Testing</a>
-</h3>
 
 ## Description
 This project’s objectives are similar to all this first year’s objectives: Rigor, use of C, use of basic algorithms, information research etc.
