@@ -100,4 +100,3 @@ The use of calculations with real numbers and only a single use of rounding to f
 [Guide MinilibX](https://qst0.github.io/ft_libgfx/man_mlx.html)  
 [Guide MinilibX v 2.0](https://harm-smits.github.io/42docs/libs/minilibx)  
   
-**Author:** *[Mark Veligod](https://github.com/markveligod)*
