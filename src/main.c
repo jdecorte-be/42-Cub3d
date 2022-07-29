@@ -6,7 +6,7 @@
 /*   By: lxu-wu <lxu-wu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/20 22:34:59 by jdecorte42        #+#    #+#             */
-/*   Updated: 2022/06/27 13:52:00 by lxu-wu           ###   ########.fr       */
+/*   Updated: 2022/06/27 16:01:49 by jdecorte         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ int	main(int ac, char **av)
 	t_data	*data;
 	t_map	map;
 
-	if (ac == 1)
-		return (0);
+	if (ac != 2)
+		return (write_error("Need exactly one parameter (./cub3D <map>.cub)"));
 	data = malloc(sizeof(t_data));
 	if (!data)
 		exit (write_error("Error\nMalloc failed\n"));
