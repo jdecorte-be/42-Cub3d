@@ -1,4 +1,27 @@
-# Cub3D
+<h1 align="center">
+	📖 get_next_line
+</h1>
+
+<p align="center">
+	<b><i>Reading a line on a fd is way too tedious</i></b><br>
+</p>
+
+<p align="center">
+	<img alt="GitHub code size in bytes" src="https://img.shields.io/github/languages/code-size/jdecorte-be/42-Get-next-line?color=lightblue" />
+	<img alt="Number of lines of code" src="https://img.shields.io/tokei/lines/github/jdecorte-be/42-Get-next-line?color=critical" />
+	<img alt="Code language count" src="https://img.shields.io/github/languages/count/jdecorte-be/42-Get-next-line?color=yellow" />
+	<img alt="GitHub top language" src="https://img.shields.io/github/languages/top/jdecorte-be/42-Get-next-line?color=blue" />
+	<img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/jdecorte-be/42-Get-next-line?color=green" />
+</p>
+
+<h3 align="center">
+	<a href="#%EF%B8%8F-about">About</a>
+	<span> · </span>
+	<a href="#%EF%B8%8F-usage">Usage</a>
+	<span> · </span>
+	<a href="#-testing">Testing</a>
+</h3>
+
 ## Description
 This project’s objectives are similar to all this first year’s objectives: Rigor, use of C, use of basic algorithms, information research etc.
 As a graphic design project, cub3D will enable you to improve your skills in these areas: windows, colors, events, fill shapes, etc.
