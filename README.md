@@ -3,7 +3,7 @@
 </h1>
 
 <p align="center">
-	<b><i>Reproduction of an raycasting</i></b><br>
+	<b><i>Reproduction of an raycasting game</i></b><br>
 </p>
 
 <p align="center">
